@@ -7,13 +7,18 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "Home",
   components: {},
   methods: {
     handleRoute(path) {
       this.$router.push(path);
+      // TODO: replace with real page title
+      this.updatePageTitle("대체 텍스트");
     },
+    ...mapMutations("pageMetaData", ["updatePageTitle"]),
   },
 };
 </script>
