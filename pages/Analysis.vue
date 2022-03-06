@@ -1,16 +1,18 @@
 <template>
   <div>
     <main>
-      <h1>ANS 경제성 분석</h1>
+      <h1>데이터 분석</h1>
     </main>
-    <br /><br /><br />
-    <NuxtLink to="/Data">
-      <button class="button-main">데이터 입력 및 확인</button>
-    </NuxtLink>
-    <NuxtLink to="/Analysis">
-      <button class="button2-main">데이터 분석</button>
-    </NuxtLink>
-    <button class="button3-main">데이터 검토 및 기록</button>
+    <div>
+      <br /><br /><br />
+      <NuxtLink to="/Data">
+        <button class="button-analysis">데이터 입력 및 확인</button>
+      </NuxtLink>
+      <button class="button2-analysis">데이터 분석</button>
+      <NuxtLink to="/">
+        <button class="button3-analysis">Return</button>
+      </NuxtLink>
+    </div>
   </div>
 </template>
 
@@ -32,7 +34,7 @@ main {
 }
 </style>
 <style type="text/css">
-.button-main {
+.button-analysis {
   font-weight: bold;
   border: 2;
   line-height: 2.5;
@@ -45,12 +47,12 @@ main {
   position: absolute;
   right: 100px;
 }
-.button-main:hover {
+.button-analysis:hover {
   background-color: rgb(136, 171, 218);
 }
 </style>
 <style type="text/css">
-.button2-main {
+.button2-analysis {
   font-weight: bold;
   border: 2;
   line-height: 2.5;
@@ -64,12 +66,12 @@ main {
   right: 100px;
   position: absolute;
 }
-.button2-main:hover {
+.button2-analysis:hover {
   background-color: rgb(136, 171, 218);
 }
 </style>
 <style type="text/css">
-.button3-main {
+.button3-analysis {
   font-weight: bold;
   border: 2;
   line-height: 2.5;
@@ -83,7 +85,7 @@ main {
   right: 100px;
   position: absolute;
 }
-.button3-main:hover {
+.button3-analysis:hover {
   background-color: rgb(136, 171, 218);
 }
 </style>
