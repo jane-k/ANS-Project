@@ -1,23 +1,23 @@
 <template>
   <div>
     <main>
-      <h1>기본 가정 자료</h1>
+      <h1>ANS 경제성 분석</h1>
     </main>
-    <div>
-      <br /><br /><br />
-      <button class="button-assumption">사업 기간</button>
-      <button class="button2-assumption">성과 목표</button>
-      <button class="button3-assumption">기타 가정</button>
-    </div>
+    <br /><br /><br />
+    <NuxtLink to="/Data">
+      <button class="button-main">데이터 입력 및 확인</button>
+    </NuxtLink>
+    <NuxtLink to="/Analysis">
+      <button class="button2-main">데이터 분석</button>
+    </NuxtLink>
+    <button class="button3-main">데이터 검토 및 기록</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "MainPage",
-  props: {
-    msg: String,
-  },
+  name: "Home",
+  components: {},
 };
 </script>
 
@@ -32,7 +32,7 @@ main {
 }
 </style>
 <style type="text/css">
-.button-assumption {
+.button-main {
   font-weight: bold;
   border: 2;
   line-height: 2.5;
@@ -45,12 +45,12 @@ main {
   position: absolute;
   right: 100px;
 }
-.button-assumption:hover {
+.button-main:hover {
   background-color: rgb(136, 171, 218);
 }
 </style>
 <style type="text/css">
-.button2-assumption {
+.button2-main {
   font-weight: bold;
   border: 2;
   line-height: 2.5;
@@ -64,12 +64,12 @@ main {
   right: 100px;
   position: absolute;
 }
-.button2-assumption:hover {
+.button2-main:hover {
   background-color: rgb(136, 171, 218);
 }
 </style>
 <style type="text/css">
-.button3-assumption {
+.button3-main {
   font-weight: bold;
   border: 2;
   line-height: 2.5;
@@ -83,7 +83,7 @@ main {
   right: 100px;
   position: absolute;
 }
-.button3-assumption:hover {
+.button3-main:hover {
   background-color: rgb(136, 171, 218);
 }
 </style>
