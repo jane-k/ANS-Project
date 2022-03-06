@@ -20,3 +20,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.presentation-container {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid #cdcdcd;
+  border-radius: 0.5rem;
+}
+</style>
