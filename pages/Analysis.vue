@@ -8,7 +8,7 @@
 export default {
   name: "MainPage",
   components: {
-    Analysis: () => import("@/components/pages/Analysis"),
+    Analysis: () => import("@/components/pages/analysis"),
   },
 };
 </script>

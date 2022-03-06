@@ -6,7 +6,7 @@
 export default {
   name: "MainPage",
   components: {
-    Home: () => import("@/components/pages/Home"),
+    Home: () => import("@/components/pages/home"),
   },
 };
 </script>
