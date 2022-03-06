@@ -1,12 +1,8 @@
 <template>
   <ul class="button__list">
-    <NuxtLink to="/data">
-      <button>데이터 입력 및 확인</button>
-    </NuxtLink>
+    <button @click="handleRoute('/data')">데이터 입력 및 확인</button>
     <button>데이터 분석</button>
-    <NuxtLink to="/">
-      <button>Return</button>
-    </NuxtLink>
+    <button @click="handleRoute('/')">Return</button>
   </ul>
 </template>
 
@@ -14,5 +10,10 @@
 export default {
   name: "MainPage",
   components: {},
+  methods: {
+    handleRoute(path) {
+      this.$router.push(path);
+    },
+  },
 };
 </script>

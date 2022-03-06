@@ -1,11 +1,10 @@
 <template>
   <div class="layout-container">
+    <Header />
     <h2 class="page-title">{{ pageTitle }}</h2>
     <main class="content">
-      <Presentation class="presentation" />
-      <div class="button__list">
-        <Nuxt />
-      </div>
+      <Presentation />
+      <Nuxt />
     </main>
   </div>
 </template>
@@ -15,7 +14,8 @@ import { mapState } from "vuex";
 
 export default {
   components: {
-    Presentation: () => import("../components/presentation"),
+    Header: () => import("@/components/common/header"),
+    Presentation: () => import("@/components/presentation"),
   },
   computed: {
     ...mapState("pageMetaData", ["pageTitle"]),
@@ -29,7 +29,6 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 100%;
-  margin-top: 4rem;
 
   & > h2 {
     text-align: center;
@@ -40,15 +39,10 @@ export default {
 }
 
 .content {
-  width: 100%;
+  width: 90%;
+  height: 60%;
   display: flex;
-}
-
-.presentation {
-  padding: 1rem;
-  flex: 1;
-  margin: 0 1rem;
-  border: 1px solid #cdcdcd;
+  gap: 2rem;
 }
 </style>
 
@@ -56,9 +50,27 @@ export default {
 .button__list {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
+  a {
+    flex: 1;
+  }
 
   button {
-    width: 4rem;
+    width: 12rem;
+    flex: 1;
+    padding: 0.5rem 0.25rem;
+    background-color: #c6e5f5;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out background-color;
+
+    &:hover {
+      background-color: #73bade;
+    }
   }
 }
 </style>
