@@ -1,9 +1,7 @@
-export const state = () => ({
-  counter: 0
+const state = () => ({
+  selectedANSType: null,
+  ANSData: null,
+  filteredANSData: null
 })
 
-export const mutations = {
-  increment(state) {
-    state.counter++
-  }
-}
+export default state

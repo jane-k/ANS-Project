@@ -1,13 +1,14 @@
 <template>
-  <Home />
+  <div>
+    <Analysis />
+  </div>
 </template>
 
 <script>
 export default {
   name: "MainPage",
   components: {
-    Home: () => import("@/components/pages/home"),
+    Analysis: () => import("@/components/pages/analysis"),
   },
-  created: () => {},
 };
 </script>

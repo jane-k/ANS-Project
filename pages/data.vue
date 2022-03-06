@@ -1,13 +1,15 @@
 <template>
-  <Home />
+  <Data />
 </template>
 
 <script>
 export default {
   name: "MainPage",
-  components: {
-    Home: () => import("@/components/pages/home"),
+  props: {
+    msg: String,
   },
-  created: () => {},
+  components: {
+    Data: () => import("@/components/pages/data"),
+  },
 };
 </script>
