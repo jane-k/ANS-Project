@@ -1,8 +1,7 @@
 <template>
   <div class="presentation-container">
-    <div>프레젠테이션</div>
     <ul>
-      <li :key="data.variable" v-for="data in dataList">
+      <li :key="data.variable" v-for="data in ANSData">
         {{ data.label }}
       </li>
     </ul>
@@ -10,13 +9,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Presentation",
-  props: {
-    dataList: {
-      type: String,
-      default: [],
-    },
+  computed: {
+    ...mapState("ansData", ["ANSData"]),
   },
 };
 </script>
@@ -27,5 +25,6 @@ export default {
   padding: 1rem;
   border: 1px solid #cdcdcd;
   border-radius: 0.5rem;
+  overflow: auto;
 }
 </style>

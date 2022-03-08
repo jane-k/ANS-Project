@@ -8,8 +8,6 @@ export default {
   components: {
     Assumption: () => import("@/components/pages/assumption"),
   },
-  props: {
-    msg: String,
-  },
+  props: {},
 };
 </script>
