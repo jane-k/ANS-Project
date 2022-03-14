@@ -14,7 +14,7 @@ header {
   align-items: center;
   justify-content: center;
   height: 3rem;
-  background-color: #dcf0fa;
+  background-color: var(--primary);
   width: 100%;
   margin-bottom: 4rem;
   box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.1);

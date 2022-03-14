@@ -24,11 +24,19 @@ export default {
 
 <style scoped lang="scss">
 .modal-body {
-  padding: 1rem;
+  position: fixed;
+  top: 30%;
+  left: 20%;
+  padding: 1.5rem;
   width: 60%;
   height: 40%;
   background-color: white;
   border-radius: 1rem;
   z-index: 1;
+
+  & > h1 {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
 }
 </style>

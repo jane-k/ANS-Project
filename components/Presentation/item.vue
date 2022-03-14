@@ -3,13 +3,13 @@
     <div class="presentation-value">
       <p class="presentation-label">{{ label }}</p>
       <p v-if="!isEditable">{{ value }}</p>
-      <div v-else class="presentation-input__container">
-        <div v-if="!isMultipleData">
+      <div v-else>
+        <div v-if="!isMultipleData" class="presentation-input__container">
           <input :value="value" />
           <button @click="onChangeComplete">확인</button>
         </div>
         <div v-else>
-          <MultiEditModal :onClose="toggleIOMode" />
+          <MultiEditModal :onClose="toggleIOMode" :title="label" />
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@ export default {
       default: "",
     },
     value: {
-      type: Number,
+      type: [Number, Array],
     },
   },
   methods: {
