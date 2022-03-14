@@ -6,7 +6,7 @@
 export default {
   name: "MainPage",
   components: {
-    Analysis: () => import("@/components/pages/analysis"),
+    Analysis: () => import("@/components/pages/Analysis"),
   },
 };
 </script>

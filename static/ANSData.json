@@ -3,7 +3,7 @@
     "type": "ASSUMPTION",
     "variable": "Work_Start",
     "label": "사업 시작 시기",
-    "value": 0
+    "value": ["hdhd", "djdj"]
   },
   {
     "type": "ASSUMPTION",

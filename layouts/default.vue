@@ -15,7 +15,7 @@ import { mapState } from "vuex";
 export default {
   components: {
     Header: () => import("@/components/common/header"),
-    Presentation: () => import("@/components/presentation"),
+    Presentation: () => import("@/components/Presentation"),
   },
   computed: {
     ...mapState("pageMetaData", ["pageTitle"]),
