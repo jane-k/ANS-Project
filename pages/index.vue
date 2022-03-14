@@ -27,9 +27,10 @@ export default {
     this.initData(data);
   },
   methods: {
-    ...mapMutations("ansData", ["mutateANSData"]),
+    ...mapMutations("ansData", ["mutateANSData", "mutateFilteredANSData"]),
     initData(data) {
       this.mutateANSData(data);
+      this.mutateFilteredANSData(data);
     },
   },
 };
