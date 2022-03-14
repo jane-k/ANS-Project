@@ -12,6 +12,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "axios": "^0.26.0",
     "core-js": "^3.19.3",
+    "csvtojson": "^2.0.10",
     "nuxt": "^2.15.8",
     "sass": "^1.49.9",
     "sass-loader": "10",

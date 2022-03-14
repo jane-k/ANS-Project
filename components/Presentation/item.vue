@@ -4,8 +4,13 @@
       <p class="presentation-label">{{ label }}</p>
       <p v-if="!isEditable">{{ value }}</p>
       <div v-else class="presentation-input__container">
-        <input :value="value" />
-        <button @click="onChangeComplete">확인</button>
+        <div v-if="!isMultipleData">
+          <input :value="value" />
+          <button @click="onChangeComplete">확인</button>
+        </div>
+        <div v-else>
+          <MultiEditModal :onClose="toggleIOMode" />
+        </div>
       </div>
     </div>
     <button class="edit__button" @click="toggleIOMode">수정</button>
@@ -15,6 +20,9 @@
 <script>
 export default {
   name: "PresentationItem",
+  components: {
+    MultiEditModal: () => import("./multiEditModal.vue"),
+  },
   data: () => ({
     isEditable: false,
   }),
@@ -38,6 +46,11 @@ export default {
     onValueChange() {},
     onChangeComplete() {
       this.isEditable = false;
+    },
+  },
+  computed: {
+    isMultipleData() {
+      return Array.isArray(this.value);
     },
   },
 };
