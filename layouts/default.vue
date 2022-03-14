@@ -2,10 +2,12 @@
   <div class="layout-container">
     <Header />
     <h2 class="page-title">{{ pageTitle }}</h2>
+    <div class="divider" />
     <main class="content">
       <Presentation />
       <Nuxt />
     </main>
+    <Footer />
   </div>
 </template>
 
@@ -15,6 +17,7 @@ import { mapState } from "vuex";
 export default {
   components: {
     Header: () => import("@/components/common/header"),
+    Footer: () => import("@/components/common/footer"),
     Presentation: () => import("@/components/Presentation"),
   },
   computed: {
@@ -34,7 +37,14 @@ export default {
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    height: 1px;
+    width: 90%;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
   }
 }
 
@@ -50,7 +60,7 @@ export default {
 .button__list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 1rem;
 
   a {
@@ -60,16 +70,21 @@ export default {
   button {
     width: 12rem;
     flex: 1;
+    max-height: 3rem;
     padding: 0.5rem 0.25rem;
-    background-color: #c6e5f5;
-    border: none;
-    border-radius: 0.5rem;
+    background-color: white;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    font-weight: bold;
+    border-radius: 1rem;
     font-size: 1.125rem;
     cursor: pointer;
-    transition: 0.2s ease-in-out background-color;
+    transition: 0.2s ease-in-out all;
 
     &:hover {
-      background-color: #73bade;
+      background-color: var(--secondary);
+      opacity: 0.7;
+      color: white;
     }
   }
 }
