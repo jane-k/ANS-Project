@@ -6,7 +6,7 @@
 export default {
   name: "AssumptionPage",
   components: {
-    Assumption: () => import("@/components/pages/assumption"),
+    Assumption: () => import("@/components/pages/Assumption"),
   },
   props: {},
 };

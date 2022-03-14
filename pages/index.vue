@@ -9,7 +9,7 @@ import { mapMutations } from "vuex";
 export default {
   name: "MainPage",
   components: {
-    Home: () => import("@/components/pages/home"),
+    Home: () => import("@/components/pages/Home"),
   },
   async mounted() {
     const { data } = await getLocalANSData();

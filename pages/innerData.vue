@@ -6,7 +6,7 @@
 export default {
   name: "InnerDataPage",
   components: {
-    InnerData: () => import("@/components/pages/innerData"),
+    InnerData: () => import("@/components/pages/InnerData"),
   },
   props: {
     msg: String,

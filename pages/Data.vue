@@ -9,7 +9,7 @@ export default {
     msg: String,
   },
   components: {
-    Data: () => import("@/components/pages/data"),
+    Data: () => import("@/components/pages/Data"),
   },
 };
 </script>
