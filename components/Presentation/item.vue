@@ -4,9 +4,16 @@
       <p class="presentation-label">{{ label }}</p>
       <div v-if="!isEditable">
         <p v-if="!isMultipleData">{{ value }}</p>
-        <p v-else :key="item" v-for="item in value">
-          {{ item }}
-        </p>
+        <MultiItemList v-else>
+          <li
+            :key="index"
+            v-for="(item, index) in value"
+            class="display-multi__item"
+          >
+            <p class="multi-data__index">{{ `데이터 ${index + 1}` }}</p>
+            <p class="multi-data__value">{{ item }}</p>
+          </li>
+        </MultiItemList>
       </div>
       <div v-else>
         <div v-if="!isMultipleData" class="presentation-input__container">
@@ -31,7 +38,8 @@
 export default {
   name: "PresentationItem",
   components: {
-    MultiEditModal: () => import("./multiEditModal.vue"),
+    // MultiEditModal: () => import("./multiEditModal.vue"),
+    MultiItemList: () => import("./multiItemList.vue"),
     Select: () => import("@/components/common/Select"),
   },
   data: () => ({
@@ -57,9 +65,7 @@ export default {
     },
     onValueChange() {},
     onSelect(e) {
-      console.log(e);
       this.selectedIndex = e.target.selectedIndex;
-      console.log(this.selectedIndex);
     },
     onChangeComplete() {
       this.isEditable = false;
@@ -80,6 +86,26 @@ export default {
   width: 20rem;
 }
 
+.display-multi__item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .multi-data__index {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    color: #666;
+    white-space: nowrap;
+  }
+}
+
+.display-multi__item::after {
+  content: "";
+  position: relative;
+  left: 0.5rem;
+  border-right: 1px solid #cdcdcd;
+}
+
 .presentation-item {
   display: flex;
   justify-content: space-between;
@@ -87,8 +113,9 @@ export default {
   gap: 1rem;
   cursor: pointer;
   transition: 0.2s ease-in-out all;
-  padding: 0.75rem;
+  padding: 1.25rem 1rem;
   border-radius: 0.5rem;
+  border-bottom: 1px solid #efefef;
 
   &:hover {
     background-color: #e6eef7;
@@ -122,6 +149,7 @@ button {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  height: 1.5rem;
   transition: 0.2s ease-in-out all;
 }
 

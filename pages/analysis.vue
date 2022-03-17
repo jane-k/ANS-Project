@@ -4,9 +4,10 @@
 
 <script>
 export default {
-  name: "MainPage",
+  name: "AnalysisPage",
   components: {
     Analysis: () => import("@/components/pages/Analysis"),
   },
+  layout: "analysis",
 };
 </script>

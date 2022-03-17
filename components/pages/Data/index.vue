@@ -30,7 +30,10 @@ export default {
         this.mutateFilteredANSData(this.ANSData);
       }
     },
-    ...mapMutations("ansData", ["mutateFilteredANSData"]),
+    ...mapMutations("ansData", [
+      "mutateFilteredANSData",
+      "mutateFilteredDataType",
+    ]),
   },
   computed: {
     ...mapState("ansData", ["ANSData"]),
