@@ -1,5 +1,7 @@
 <template>
-  <footer></footer>
+  <footer>
+    <img src="~/assets/images/emblem.jpg" class="kau-logo" />
+  </footer>
 </template>
 
 <script>
@@ -10,9 +12,17 @@ export default {
 
 <style scoped lang="scss">
 footer {
-  height: 3rem;
+  display: flex;
+  align-items: center;
+  height: 5rem;
   width: 100%;
-  background-color: #dedede;
   margin-top: auto;
+  border-top: 1px solid #cdcdcd;
+}
+
+.kau-logo {
+  width: 12rem;
+  margin-left: 2rem;
+  margin-right: auto;
 }
 </style>

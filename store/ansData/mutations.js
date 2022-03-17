@@ -5,3 +5,7 @@ export const mutateANSData = (state, data) => {
 export const mutateFilteredANSData = (state, data) => {
   state.filteredANSData = data
 }
+
+export const mutateFilteredDataType = (state, data) => {
+  state.filteredDataType = data
+}

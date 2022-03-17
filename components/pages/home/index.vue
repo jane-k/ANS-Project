@@ -16,7 +16,7 @@ export default {
     handleRoute(path) {
       this.$router.push(path);
       // TODO: replace with real page title
-      this.updatePageTitle("대체 텍스트");
+      // this.updatePageTitle("대체 텍스트");
     },
     ...mapMutations("pageMetaData", ["updatePageTitle"]),
   },

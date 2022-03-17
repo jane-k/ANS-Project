@@ -2,18 +2,35 @@
   <li class="presentation-item">
     <div class="presentation-value">
       <p class="presentation-label">{{ label }}</p>
-      <p v-if="!isEditable">{{ value }}</p>
+      <div v-if="!isEditable">
+        <p v-if="!isMultipleData">{{ value }}</p>
+        <MultiItemList v-else>
+          <li
+            :key="index"
+            v-for="(item, index) in value"
+            class="display-multi__item"
+          >
+            <p class="multi-data__index">{{ `데이터 ${index + 1}` }}</p>
+            <p class="multi-data__value">{{ item }}</p>
+          </li>
+        </MultiItemList>
+      </div>
       <div v-else>
         <div v-if="!isMultipleData" class="presentation-input__container">
           <input :value="value" />
-          <button @click="onChangeComplete">확인</button>
         </div>
-        <div v-else>
-          <MultiEditModal :onClose="toggleIOMode" :title="label" />
+        <div v-else class="presentation-input__container">
+          <Select :selectItems="value" :onChange="onSelect" />
+          <input :value="value[selectedIndex]" />
         </div>
       </div>
     </div>
-    <button class="edit__button" @click="toggleIOMode">수정</button>
+    <button v-if="!isEditable" class="edit__button" @click="toggleIOMode">
+      수정
+    </button>
+    <button v-else @click="onChangeComplete" class="confirm__button">
+      확인
+    </button>
   </li>
 </template>
 
@@ -21,10 +38,13 @@
 export default {
   name: "PresentationItem",
   components: {
-    MultiEditModal: () => import("./multiEditModal.vue"),
+    // MultiEditModal: () => import("./multiEditModal.vue"),
+    MultiItemList: () => import("./multiItemList.vue"),
+    Select: () => import("@/components/common/Select"),
   },
   data: () => ({
     isEditable: false,
+    selectedIndex: 0,
   }),
   props: {
     label: {
@@ -44,6 +64,9 @@ export default {
       this.isEditable = !this.isEditable;
     },
     onValueChange() {},
+    onSelect(e) {
+      this.selectedIndex = e.target.selectedIndex;
+    },
     onChangeComplete() {
       this.isEditable = false;
     },
@@ -60,6 +83,27 @@ export default {
 .presentation-label {
   display: flex;
   align-items: center;
+  width: 20rem;
+}
+
+.display-multi__item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .multi-data__index {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    color: #666;
+    white-space: nowrap;
+  }
+}
+
+.display-multi__item::after {
+  content: "";
+  position: relative;
+  left: 0.5rem;
+  border-right: 1px solid #cdcdcd;
 }
 
 .presentation-item {
@@ -69,14 +113,14 @@ export default {
   gap: 1rem;
   cursor: pointer;
   transition: 0.2s ease-in-out all;
-  padding: 0.75rem;
+  padding: 1.25rem 1rem;
   border-radius: 0.5rem;
+  border-bottom: 1px solid #efefef;
 
   &:hover {
     background-color: #e6eef7;
   }
 }
-
 .presentation-input__container {
   display: flex;
   gap: 1rem;
@@ -101,10 +145,20 @@ export default {
 }
 
 button {
-  background-color: #cdcdcd;
   border: none;
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  height: 1.5rem;
+  transition: 0.2s ease-in-out all;
+}
+
+.edit__button {
+  background-color: #bed6ed;
+}
+
+.confirm__button {
+  background-color: #6c7ca6;
+  color: #efefef;
 }
 </style>

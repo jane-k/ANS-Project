@@ -1,5 +1,5 @@
 <template>
-  <header>한국항공대 경영학과 랩실</header>
+  <header></header>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ header {
   align-items: center;
   justify-content: center;
   height: 3rem;
-  background-color: var(--primary);
+  background-color: #312a7c;
   width: 100%;
   margin-bottom: 4rem;
   box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.1);

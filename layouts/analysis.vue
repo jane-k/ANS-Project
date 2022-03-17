@@ -4,7 +4,7 @@
     <h2 class="page-title">{{ pageTitle }}</h2>
     <div class="divider" />
     <main class="content">
-      <Presentation />
+      <Chart />
       <Nuxt />
     </main>
     <Footer />
@@ -18,7 +18,7 @@ export default {
   components: {
     Header: () => import("@/components/common/header"),
     Footer: () => import("@/components/common/footer"),
-    Presentation: () => import("@/components/Presentation"),
+    Chart: () => import("@/components/Chart"),
   },
   computed: {
     ...mapState("pageMetaData", ["pageTitle"]),

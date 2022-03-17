@@ -1,5 +1,5 @@
 export const state = () => ({
-  pageTitle: "ANS 경제성 분석"
+  pageTitle: "ANS 경제성 분석 도구"
 })
 
 export const mutations = {
