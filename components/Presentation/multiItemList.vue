@@ -20,8 +20,6 @@ export default {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  height: 3rem;
-  overflow-x: scroll;
-  width: 600px;
+  margin-bottom: 0.75rem;
 }
 </style>

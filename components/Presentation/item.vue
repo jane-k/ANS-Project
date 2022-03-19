@@ -1,36 +1,38 @@
 <template>
   <li class="presentation-item">
-    <div class="presentation-value">
-      <p class="presentation-label">{{ label }}</p>
-      <div v-if="!isEditable">
-        <p v-if="!isMultipleData">{{ value }}</p>
-        <MultiItemList v-else>
-          <li
-            :key="index"
-            v-for="(item, index) in value"
-            class="display-multi__item"
-          >
-            <p class="multi-data__index">{{ `데이터 ${index + 1}` }}</p>
-            <p class="multi-data__value">{{ item }}</p>
-          </li>
-        </MultiItemList>
+    <!-- <div class="presentation-value"> -->
+    <p class="presentation-label">{{ label }}</p>
+    <div v-if="!isEditable" class="presentation-display__container">
+      <p v-if="!isMultipleData" class="single-display">{{ value }}</p>
+      <MultiItemList v-else class="multiple-display">
+        <li
+          :key="index"
+          v-for="(item, index) in value"
+          class="display-multi__item"
+        >
+          <p class="multi-data__index">{{ `데이터 ${index + 1}` }}</p>
+          <p class="multi-data__value">{{ item }}</p>
+        </li>
+      </MultiItemList>
+    </div>
+    <div v-else class="presentation-input__container">
+      <div v-if="!isMultipleData" class="single-input">
+        <input :value="value" />
       </div>
-      <div v-else>
-        <div v-if="!isMultipleData" class="presentation-input__container">
-          <input :value="value" />
-        </div>
-        <div v-else class="presentation-input__container">
-          <Select :selectItems="value" :onChange="onSelect" />
-          <input :value="value[selectedIndex]" />
-        </div>
+      <div v-else class="multiple-input">
+        <Select :selectItems="value" :onChange="onSelect" />
+        <input :value="value[selectedIndex]" />
       </div>
     </div>
-    <button v-if="!isEditable" class="edit__button" @click="toggleIOMode">
-      수정
-    </button>
-    <button v-else @click="onChangeComplete" class="confirm__button">
-      확인
-    </button>
+    <div class="button__wrapper">
+      <button v-if="!isEditable" class="edit__button" @click="toggleIOMode">
+        수정
+      </button>
+      <button v-else @click="onChangeComplete" class="confirm__button">
+        확인
+      </button>
+    </div>
+    <!-- </div> -->
   </li>
 </template>
 
@@ -83,7 +85,7 @@ export default {
 .presentation-label {
   display: flex;
   align-items: center;
-  width: 20rem;
+  flex: 4;
 }
 
 .display-multi__item {
@@ -121,11 +123,38 @@ export default {
     background-color: #e6eef7;
   }
 }
+
+.presentation-display__container {
+  flex: 8;
+  overflow-y: hidden;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 10px !important;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #9abad8;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+  }
+}
+
 .presentation-input__container {
   display: flex;
   gap: 1rem;
+  flex: 8;
+}
 
-  & > input {
+.multiple-input {
+  input {
+    margin-left: 1rem;
     padding: 0.25rem 0.5rem;
     width: 8rem;
     border: 1px solid #cdcdcd;
@@ -141,16 +170,23 @@ export default {
 
 .presentation-value {
   display: flex;
+  width: 100%;
+  overflow-x: hidden;
   gap: 1rem;
 }
 
-button {
-  border: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  height: 1.5rem;
-  transition: 0.2s ease-in-out all;
+.button__wrapper {
+  text-align: center;
+  flex: 1;
+
+  button {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    height: 1.5rem;
+    transition: 0.2s ease-in-out all;
+  }
 }
 
 .edit__button {
