@@ -18,11 +18,13 @@ export default {
 
   css: [
     '@/styles/reset.css',
-    '@/styles/global.css'
+    '@/styles/global.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/fontawesome.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
