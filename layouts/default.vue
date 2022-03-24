@@ -3,10 +3,7 @@
     <Header />
     <h2 class="page-title">{{ pageTitle }}</h2>
     <div class="divider" />
-    <main class="content">
-      <Presentation />
-      <Nuxt />
-    </main>
+    <Nuxt />
     <Footer />
   </div>
 </template>
