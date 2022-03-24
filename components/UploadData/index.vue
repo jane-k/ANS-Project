@@ -1,16 +1,51 @@
 <template>
-  <div class="upload-container">
-    <input type="file" id="initialData" />
+  <div class="upload-container" @dragover="handleDrag" @drop="handleDrop">
+    <input type="file" id="initialData" @change="handleUpload" />
     <label for="initialData" class="data-upload__text">
       <font-awesome-icon icon="fa-upload" class="fa-2x upload-icon" />
-      <p>ANS 계산을 위한 .CSV 형식의 초기 파일을 업로드해주세요.</p>
+      <p class="upload-guide__text">클릭 또는 드래그</p>
+      <p>ANS 계산을 위한 .CSV 형식의 초기 데이터를 업로드해주세요.</p>
     </label>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+import csv from "csvtojson";
+
 export default {
   name: "UploadData",
+  methods: {
+    readFile(file) {
+      let initialDataReader = new FileReader();
+      initialDataReader.onloadend = (e) => {
+        let readFile = e.target;
+        const csvFile = readFile.result;
+        csv({
+          noheader: true,
+          output: "csv",
+        })
+          .fromString(csvFile)
+          .then((csvRow) => {
+            this.mutateInitialData(csvRow);
+          });
+      };
+      initialDataReader.readAsText(file);
+    },
+    handleUpload(e) {
+      const uploadedFile = e.target.files[0];
+      this.readFile(uploadedFile);
+    },
+    handleDrag(e) {
+      e.preventDefault();
+    },
+    handleDrop(e) {
+      e.preventDefault();
+      const uploadedFile = e.dataTransfer.files[0];
+      this.readFile(uploadedFile);
+    },
+    ...mapMutations("ansData", ["mutateInitialData"]),
+  },
 };
 </script>
 
@@ -36,6 +71,10 @@ export default {
 
     .upload-icon {
       color: var(--secondary);
+    }
+
+    .upload-guide__text {
+      color: #999;
     }
   }
 }
