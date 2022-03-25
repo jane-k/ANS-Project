@@ -1,9 +1,12 @@
 <template>
-  <ul class="button__list">
-    <button @click="handleRoute('/data')">데이터 입력 및 확인</button>
-    <button @click="handleRoute('/analysis')">데이터 분석</button>
-    <button>데이터 검토 및 기록</button>
-  </ul>
+  <div class="Container">
+    <Intro />
+    <ul class="button__list">
+      <button @click="handleRoute('/data')">데이터 입력 및 확인</button>
+      <button @click="handleRoute('/analysis')">데이터 분석</button>
+      <button>데이터 검토 및 기록</button>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -11,7 +14,9 @@ import { mapMutations } from "vuex";
 
 export default {
   name: "Home",
-  components: {},
+  components: {
+    Intro: () => import("@/components/Intro"),
+  },
   methods: {
     handleRoute(path) {
       this.$router.push(path);
@@ -23,4 +28,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.Container {
+  width: 90%;
+  height: 60%;
+  display: flex;
+  gap: 2rem;
+}
+</style>

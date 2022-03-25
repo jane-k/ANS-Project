@@ -1,11 +1,13 @@
 <template>
   <div class="presentation-container">
-    <div class="presentation-title">
-      <h2 class="data-title">전체 자료 목록 (102)</h2>
+    <div class="presentation-title" v-if="initialData">
+      <h2 class="data-title">
+        {{ dataTypeheaderText }} ({{ dataCountHeaderText }})
+      </h2>
       <div class="data-save">데이터 저장</div>
     </div>
     <!-- TODO: initialData 업로드 로직 작성 -->
-    <UploadData v-if="initialData" />
+    <UploadData v-if="!initialData" />
     <ul v-else class="presentation-list">
       <PresentationItem
         :key="data.variable"
@@ -28,7 +30,20 @@ export default {
     UploadData: () => import("@/components/UploadData"),
   },
   computed: {
-    ...mapState("ansData", ["ANSData", "initialData", "filteredANSData"]),
+    ...mapState("ansData", [
+      "ANSData",
+      "initialData",
+      "filteredANSData",
+      "filteredDataName",
+      "filteredDataCount",
+    ]),
+    dataTypeheaderText() {
+      const filteredDataName = "전체 자료 목록";
+      return this.filteredDataName || filteredDataName;
+    },
+    dataCountHeaderText() {
+      return this.filteredANSData.length || this.ANSData.length;
+    },
   },
   mounted: () => {
     // console.log(this.filteredANSData);
@@ -41,7 +56,6 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: 100%;
   border: 1px solid #cdcdcd;
   border-radius: 0.5rem;
   overflow-x: hidden;
