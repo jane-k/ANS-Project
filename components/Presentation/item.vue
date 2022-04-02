@@ -17,11 +17,11 @@
     </div>
     <div v-else class="presentation-input__container">
       <div v-if="!isMultipleData" class="single-input">
-        <input :value="value" />
+        <input :value="value" @change="onValueChange" />
       </div>
       <div v-else class="multiple-input">
         <Select :selectItems="value" :onChange="onSelect" />
-        <input :value="value[selectedIndex]" />
+        <input :value="value[selectedIndex]" @change="onValueChange" />
       </div>
     </div>
     <div class="button__wrapper">
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+
 export default {
   name: "PresentationItem",
   components: {
@@ -58,25 +60,54 @@ export default {
       default: "",
     },
     value: {
-      type: [Number, Array],
+      type: [Number, String, Array],
     },
   },
   methods: {
     toggleIOMode() {
       this.isEditable = !this.isEditable;
     },
-    onValueChange() {},
+    onValueChange(e) {
+      if (Array.isArray(this.value)) {
+        let modifiedList = this.ANSData.map((el) => {
+          const modifiedValue = [...this.value];
+          modifiedValue[this.selectedIndex] = e.target.value;
+          return el.label === this.label
+            ? {
+                ...el,
+                value: modifiedValue,
+              }
+            : el;
+        });
+        this.mutateANSData(modifiedList);
+        this.filterANSDataList();
+      } else {
+        let modifiedList = this.ANSData.map((el) => {
+          return el.label === this.label
+            ? { ...el, value: +e.target.value }
+            : el;
+        });
+        this.mutateANSData(modifiedList);
+        console.log(modifiedList);
+        this.filterANSDataList();
+      }
+    },
     onSelect(e) {
       this.selectedIndex = e.target.selectedIndex;
     },
     onChangeComplete() {
       this.isEditable = false;
     },
+    filterANSDataList() {
+      this.mutateFilteredANSData(this.ANSData);
+    },
+    ...mapMutations("ansData", ["mutateANSData", "mutateFilteredANSData"]),
   },
   computed: {
     isMultipleData() {
       return Array.isArray(this.value);
     },
+    ...mapState("ansData", ["ANSData"]),
   },
 };
 </script>
@@ -85,7 +116,8 @@ export default {
 .presentation-label {
   display: flex;
   align-items: center;
-  flex: 4;
+  line-height: 1.4;
+  flex: 5;
 }
 
 .display-multi__item {
@@ -120,7 +152,7 @@ export default {
   border-bottom: 1px solid #efefef;
 
   &:hover {
-    background-color: #e6eef7;
+    background-color: rgba(116, 158, 203, 0.24);
   }
 }
 
@@ -150,6 +182,21 @@ export default {
   display: flex;
   gap: 1rem;
   flex: 8;
+}
+
+.single-input {
+  input {
+    padding: 0.25rem 0.5rem;
+    width: 8rem;
+    border: 1px solid #cdcdcd;
+    border-radius: 0.25rem;
+    transition: 0.2s ease-in-out all;
+
+    &:focus {
+      border: 1px solid #666;
+      outline: none;
+    }
+  }
 }
 
 .multiple-input {

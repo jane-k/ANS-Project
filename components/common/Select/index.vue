@@ -1,6 +1,6 @@
 <template>
   <select class="select" @change="onChange">
-    <option :key="item" v-for="(item, index) in selectItems">
+    <option :key="`${item}-${index}`" v-for="(item, index) in selectItems">
       {{ `데이터 ${index + 1}` }}
     </option>
   </select>

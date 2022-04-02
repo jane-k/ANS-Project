@@ -4,6 +4,7 @@
       <h2 class="data-title">
         {{ dataTypeheaderText }} ({{ dataCountHeaderText }})
       </h2>
+      <div class="data-reset">데이터 초기화</div>
       <div class="data-save">데이터 저장</div>
     </div>
     <!-- TODO: initialData 업로드 로직 작성 -->
@@ -45,9 +46,7 @@ export default {
       return this.filteredANSData.length || this.ANSData.length;
     },
   },
-  mounted: () => {
-    // console.log(this.filteredANSData);
-  },
+  mounted: () => {},
 };
 </script>
 
@@ -55,11 +54,26 @@ export default {
 .presentation-container {
   display: flex;
   flex-direction: column;
+  position: relative;
   flex: 1;
   border: 1px solid #cdcdcd;
   border-radius: 0.5rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+.presentation-container::after {
+  content: "";
+  background: url("~/assets/images/intro-logo.png") no-repeat;
+  background-position: center;
+  opacity: 0.12;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
 }
 
 .presentation-title {
@@ -80,13 +94,38 @@ export default {
   text-align: center;
 }
 
+.data-reset {
+  color: #ababab;
+  position: absolute;
+  right: 6.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.2s ease-in-out all;
+  padding: 0.375rem 0.5rem;
+}
+
+.data-reset:hover {
+  color: #333;
+  background-color: #efefef;
+  border-radius: 0.5rem;
+}
+
 .data-save {
-  color: #666;
+  color: #ababab;
   position: absolute;
   right: 1rem;
   font-size: 0.875rem;
   white-space: nowrap;
   cursor: pointer;
+  transition: 0.2s ease-in-out all;
+  padding: 0.375rem 0.5rem;
+}
+
+.data-save:hover {
+  color: #333;
+  background-color: #efefef;
+  border-radius: 0.5rem;
 }
 
 .presentation-list {

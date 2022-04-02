@@ -70,7 +70,7 @@ export default {
     font-size: 1.125rem;
 
     .upload-icon {
-      color: var(--secondary);
+      color: #312a7c;
     }
 
     .upload-guide__text {
