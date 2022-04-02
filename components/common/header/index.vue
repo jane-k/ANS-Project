@@ -1,9 +1,9 @@
 <template>
   <header>
-    <div class="language-select">
+    <!-- <div class="language-select">
       <p class="lang-ko">KO</p>
       <p class="lang-en">EN</p>
-    </div>
+    </div> -->
   </header>
 </template>
 
