@@ -120,7 +120,7 @@ export default {
   border-bottom: 1px solid #efefef;
 
   &:hover {
-    background-color: #e6eef7;
+    background-color: rgba(116, 158, 203, 0.24);
   }
 }
 
@@ -150,6 +150,21 @@ export default {
   display: flex;
   gap: 1rem;
   flex: 8;
+}
+
+.single-input {
+  input {
+    padding: 0.25rem 0.5rem;
+    width: 8rem;
+    border: 1px solid #cdcdcd;
+    border-radius: 0.25rem;
+    transition: 0.2s ease-in-out all;
+
+    &:focus {
+      border: 1px solid #666;
+      outline: none;
+    }
+  }
 }
 
 .multiple-input {

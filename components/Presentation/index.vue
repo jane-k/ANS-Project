@@ -45,9 +45,7 @@ export default {
       return this.filteredANSData.length || this.ANSData.length;
     },
   },
-  mounted: () => {
-    // console.log(this.filteredANSData);
-  },
+  mounted: () => {},
 };
 </script>
 
@@ -55,11 +53,25 @@ export default {
 .presentation-container {
   display: flex;
   flex-direction: column;
+  position: relative;
   flex: 1;
   border: 1px solid #cdcdcd;
   border-radius: 0.5rem;
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+.presentation-container::after {
+  content: "";
+  background: url("~/assets/images/intro-logo.png") no-repeat;
+  background-position: center;
+  opacity: 0.12;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
 }
 
 .presentation-title {
