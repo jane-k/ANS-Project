@@ -32,7 +32,7 @@ export default {
 
   & > h2 {
     text-align: center;
-    font-size: 1.625rem;
+    font-size: 1.8rem;
     font-weight: bolder;
     margin-bottom: 1rem;
   }

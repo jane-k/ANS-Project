@@ -30,5 +30,6 @@ export default {};
   left: 0px;
   right: 0px;
   bottom: 0px;
+  z-index: -1;
 }
 </style>

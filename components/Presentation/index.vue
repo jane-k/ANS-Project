@@ -4,6 +4,7 @@
       <h2 class="data-title">
         {{ dataTypeheaderText }} ({{ dataCountHeaderText }})
       </h2>
+      <div class="data-reset">데이터 초기화</div>
       <div class="data-save">데이터 저장</div>
     </div>
     <!-- TODO: initialData 업로드 로직 작성 -->
@@ -57,6 +58,7 @@ export default {
   flex: 1;
   border: 1px solid #cdcdcd;
   border-radius: 0.5rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -92,13 +94,38 @@ export default {
   text-align: center;
 }
 
+.data-reset {
+  color: #ababab;
+  position: absolute;
+  right: 6.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.2s ease-in-out all;
+  padding: 0.375rem 0.5rem;
+}
+
+.data-reset:hover {
+  color: #333;
+  background-color: #efefef;
+  border-radius: 0.5rem;
+}
+
 .data-save {
-  color: #666;
+  color: #ababab;
   position: absolute;
   right: 1rem;
   font-size: 0.875rem;
   white-space: nowrap;
   cursor: pointer;
+  transition: 0.2s ease-in-out all;
+  padding: 0.375rem 0.5rem;
+}
+
+.data-save:hover {
+  color: #333;
+  background-color: #efefef;
+  border-radius: 0.5rem;
 }
 
 .presentation-list {
