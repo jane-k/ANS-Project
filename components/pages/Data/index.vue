@@ -29,7 +29,7 @@ export default {
     },
     filterANSDataList(type) {
       if (type !== "ALL") {
-        const filteredANSData = this.ANSData.filter(
+        const filteredANSData = Object.values(this.ANSData).filter(
           (data) => data.type === type
         );
         const filteredDataName = this.setFilteredDataName(type);
@@ -38,8 +38,8 @@ export default {
         this.mutateFilteredDataName(filteredDataName);
       } else {
         const filteredDataName = "전체 자료 목록";
-        this.mutateFilteredANSData(this.ANSData);
-        this.mutateFilteredDataCount(this.ANSData?.length);
+        this.mutateFilteredANSData(Object.values(this.ANSData));
+        this.mutateFilteredDataCount(Object.values(this.ANSData)?.length);
         this.mutateFilteredDataName(filteredDataName);
       }
     },

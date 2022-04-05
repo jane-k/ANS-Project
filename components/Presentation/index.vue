@@ -43,7 +43,9 @@ export default {
       return this.filteredDataName || filteredDataName;
     },
     dataCountHeaderText() {
-      return this.filteredANSData.length || this.ANSData.length;
+      return (
+        this.filteredANSData?.length || Object.values(this.ANSData)?.length
+      );
     },
   },
   mounted: () => {},

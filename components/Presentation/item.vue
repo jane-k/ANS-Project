@@ -69,7 +69,7 @@ export default {
     },
     onValueChange(e) {
       if (Array.isArray(this.value)) {
-        let modifiedList = this.ANSData.map((el) => {
+        let modifiedList = Object.values(this.ANSData).map((el) => {
           const modifiedValue = [...this.value];
           modifiedValue[this.selectedIndex] = e.target.value;
           return el.label === this.label
@@ -82,7 +82,7 @@ export default {
         this.mutateANSData(modifiedList);
         this.filterANSDataList();
       } else {
-        let modifiedList = this.ANSData.map((el) => {
+        let modifiedList = Object.values(this.ANSData).map((el) => {
           return el.label === this.label
             ? { ...el, value: +e.target.value }
             : el;
@@ -99,7 +99,7 @@ export default {
       this.isEditable = false;
     },
     filterANSDataList() {
-      this.mutateFilteredANSData(this.ANSData);
+      this.mutateFilteredANSData(Object.values(this.ANSData));
     },
     ...mapMutations("ansData", ["mutateANSData", "mutateFilteredANSData"]),
   },

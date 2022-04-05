@@ -10,8 +10,10 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
 import csv from "csvtojson";
+import calculateANS from "@/utils/helpers/calculateANS.js";
+import ANSDataTemplate from "@/utils/constants/ANSDataTemplate.js";
+import { mapMutations } from "vuex";
 import { YEAR } from "@/utils/constants/config.js";
 
 export default {
@@ -43,6 +45,7 @@ export default {
                 }, []);
             });
             this.mutateInitialData(parsedDatabase);
+            calculateANS(parsedDatabase);
           });
       };
       initialDataReader.readAsText(file);
