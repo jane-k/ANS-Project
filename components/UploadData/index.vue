@@ -12,6 +12,7 @@
 <script>
 import { mapMutations } from "vuex";
 import csv from "csvtojson";
+import { YEAR } from "@/utils/constants/config.js";
 
 export default {
   name: "UploadData",
@@ -29,9 +30,18 @@ export default {
           .then((csvRow) => {
             const parsedDatabase = {};
             csvRow.forEach((rowItem) => {
-              parsedDatabase[rowItem[0]] = rowItem.slice(1);
+              parsedDatabase[rowItem[0]] = rowItem
+                .slice(1)
+                .reduce((acc, cur, idx) => {
+                  const arrayIndex = parseInt(idx / YEAR);
+                  if (idx % YEAR === 0) {
+                    const arr = [];
+                    acc.push(arr);
+                  }
+                  acc[arrayIndex].push(cur);
+                  return acc;
+                }, []);
             });
-            console.log(parsedDatabase);
             this.mutateInitialData(parsedDatabase);
           });
       };
