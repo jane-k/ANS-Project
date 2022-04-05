@@ -1,5 +1,8 @@
 <template>
-  <div class="review-container">데이터 리뷰 페이지</div>
+  <div class="review-container">
+    <img src="@/assets/images/demo-review-image.png" width="600" />
+    <div>데이터 리뷰 데모 이미지</div>
+  </div>
 </template>
 
 <script>
@@ -10,6 +13,8 @@ export default {};
 .review-container {
   flex: 1;
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
   border: 1px solid #cdcdcd;
