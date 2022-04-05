@@ -5,6 +5,11 @@
     <div v-if="!isEditable" class="presentation-display__container">
       <p v-if="!isMultipleData" class="single-display">{{ value }}</p>
       <MultiItemList v-else class="multiple-display">
+        <SelectItem
+          :selectItems="value"
+          :selectedIndex="selectedIndex"
+          :onChange="onSelect"
+        />
         <li
           :key="index"
           v-for="(item, index) in value"
@@ -48,6 +53,7 @@ export default {
   components: {
     // MultiEditModal: () => import("./multiEditModal.vue"),
     MultiItemList: () => import("./multiItemList.vue"),
+    SelectItem: () => import("./SelectItem.vue"),
     Select: () => import("@/components/common/Select"),
   },
   data: () => ({

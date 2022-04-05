@@ -26,10 +26,6 @@ const Time_DLD = []
 const Time_DIRoute = []
 const Time_AIRoute = []
 const Time_DRoute = []
-const Avg_DD_Dly = []
-const Avg_DI_Dly = []
-const Avg_AD_Dly = []
-const Avg_AI_Dly = []
 const N_Pass_Flght = []
 const OP_DDcost = []
 const OP_DIcost = []
@@ -99,5 +95,5 @@ export {
   DLY_AD_cost_PSG,
   DLY_AI_cost_PSG,
   PSG_AD,
-  PSG_AI
+  PSG_AI,
 }

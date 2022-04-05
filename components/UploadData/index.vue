@@ -32,20 +32,24 @@ export default {
           .then((csvRow) => {
             const parsedDatabase = {};
             csvRow.forEach((rowItem) => {
-              parsedDatabase[rowItem[0]] = rowItem
-                .slice(1)
-                .reduce((acc, cur, idx) => {
-                  const arrayIndex = parseInt(idx / YEAR);
-                  if (idx % YEAR === 0) {
-                    const arr = [];
-                    acc.push(arr);
-                  }
-                  acc[arrayIndex].push(cur);
-                  return acc;
-                }, []);
+              parsedDatabase[rowItem[0]] =
+                rowItem.slice(1).filter(Number).length > YEAR
+                  ? rowItem.slice(1).reduce((acc, cur, idx) => {
+                      const arrayIndex = parseInt(idx / YEAR);
+                      if (idx % YEAR === 0 && (cur || cur === 0)) {
+                        const arr = [];
+                        acc.push(arr);
+                      }
+                      if (cur || cur === 0) {
+                        acc[arrayIndex].push(cur);
+                      }
+                      return acc;
+                    }, [])
+                  : rowItem.slice(1).filter((el) => el || el === 0);
             });
             this.mutateInitialData(parsedDatabase);
             calculateANS(parsedDatabase);
+            console.log(ANSDataTemplate);
           });
       };
       initialDataReader.readAsText(file);

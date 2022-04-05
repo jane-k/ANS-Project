@@ -266,12 +266,13 @@ const ANSDataTemplate = {
     label: "총 국내선 착륙과정 운항 절감비용",
     value: Array(MAX).fill(Array(YEAR).fill(0))
   },
-  OPR_DDcost_DLY: {
+  OPR_AIcost_DLY: {
     type: "-",
-    variable: "OPR_DDcost_DLY",
+    variable: "OPR_AIcost_DLY",
     label: "총 국내선 이륙과정 운항 절감비용",
     value: Array(MAX).fill(Array(YEAR).fill(0))
   },
+
   OPR_DIcost_DLY: {
     type: "-",
     variable: "OPR_DIcost_DLY",
