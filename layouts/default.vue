@@ -1,7 +1,9 @@
 <template>
   <div class="layout-container">
     <Header />
-    <h2 class="page-title">{{ pageTitle }}</h2>
+    <nuxt-link to="/">
+      <h2 class="page-title">{{ pageTitle }}</h2>
+    </nuxt-link>
     <div class="divider" />
     <Nuxt />
     <Footer />
@@ -30,11 +32,16 @@ export default {
   align-items: center;
   height: 100%;
 
-  & > h2 {
+  a {
+    text-decoration: none;
+  }
+
+  .page-title {
     text-align: center;
     font-size: 1.8rem;
     font-weight: bolder;
     margin-bottom: 1rem;
+    color: #3c3c3c;
   }
 
   .divider {
