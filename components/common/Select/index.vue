@@ -1,6 +1,10 @@
 <template>
   <select class="select" @change="onChange">
-    <option :key="`${item}-${index}`" v-for="(item, index) in selectItems">
+    <option
+      :selected="selectedIndex"
+      :key="`${item}-${index}`"
+      v-for="(item, index) in selectItems"
+    >
       {{ `데이터 ${index + 1}` }}
     </option>
   </select>
@@ -12,6 +16,9 @@ export default {
   props: {
     selectItems: {
       type: Array,
+    },
+    selectedIndex: {
+      type: Number,
     },
     onChange: {
       type: Function,

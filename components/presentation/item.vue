@@ -20,7 +20,11 @@
         <input :value="value" @change="onValueChange" />
       </div>
       <div v-else class="multiple-input">
-        <Select :selectItems="value" :onChange="onSelect" />
+        <Select
+          :selectItems="value"
+          :selectedIndex="selectedIndex"
+          :onChange="onSelect"
+        />
         <input :value="value[selectedIndex]" @change="onValueChange" />
       </div>
     </div>
@@ -88,7 +92,6 @@ export default {
             : el;
         });
         this.mutateANSData(modifiedList);
-        console.log(modifiedList);
         this.filterANSDataList();
       }
     },
