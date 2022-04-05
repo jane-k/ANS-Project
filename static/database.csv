@@ -1,3 +1,9 @@
+FTRgoal_Start,40,,
+FTRgoal_Fin,100,,
+Dlygoal_Start,40,,
+Dlygoal_Fin,10,,
+FTRgoal_Start,2010,,
+FTRgoal_Fin,2040,,
 FCE_flight,50,55,60
 ACE_TO_flight,100,110,120
 ACE_LD_flight ,100,110,120
@@ -52,3 +58,12 @@ OP_DDcost,8,8.8,9.6
 OP_DIcost,8,8.8,9.6
 OP_ADcost,10,11,12
 OP_AIcost,10,11,12
+Time_DD_Dly,8,8.8,9.6
+Time_DI_Dly,8,8.8,9.6
+Time_AD_Dly,10,11,12
+Time_AI_Dly,10,11,12
+DLY_DD_ANSshare,5,6,7
+DLY_DI_ANSshare,5,6,7
+DLY_AD_ANSshare,5,6,7
+DLY_AI_ANSshare,5,6,7
+average_AITime,10,11,12

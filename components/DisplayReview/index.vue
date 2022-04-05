@@ -15,6 +15,7 @@ export default {};
   border: 1px solid #cdcdcd;
   border-radius: 0.5rem;
   position: relative;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .review-container::after {

@@ -27,7 +27,12 @@ export default {
         })
           .fromString(csvFile)
           .then((csvRow) => {
-            this.mutateInitialData(csvRow);
+            const parsedDatabase = {};
+            csvRow.forEach((rowItem) => {
+              parsedDatabase[rowItem[0]] = rowItem.slice(1);
+            });
+            console.log(parsedDatabase);
+            this.mutateInitialData(parsedDatabase);
           });
       };
       initialDataReader.readAsText(file);

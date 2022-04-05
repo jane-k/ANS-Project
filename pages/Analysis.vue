@@ -8,6 +8,6 @@ export default {
   components: {
     Analysis: () => import("@/components/pages/Analysis"),
   },
-  layout: "analysis",
+  layout: "default",
 };
 </script>

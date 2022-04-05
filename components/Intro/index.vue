@@ -17,6 +17,7 @@ export default {};
   align-items: center;
   border: 1px solid #cdcdcd;
   border-radius: 0.5rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
