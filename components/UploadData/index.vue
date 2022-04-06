@@ -49,6 +49,7 @@ export default {
             });
             this.mutateInitialData(parsedDatabase);
             calculateANS(parsedDatabase);
+            this.mutateANSData(ANSDataTemplate);
             console.log(ANSDataTemplate);
           });
       };
@@ -66,7 +67,11 @@ export default {
       const uploadedFile = e.dataTransfer.files[0];
       this.readFile(uploadedFile);
     },
-    ...mapMutations("ansData", ["mutateInitialData"]),
+    ...mapMutations("ansData", [
+      "mutateInitialData",
+      "mutateANSData",
+      "mutateFilteredANSData",
+    ]),
   },
 };
 </script>

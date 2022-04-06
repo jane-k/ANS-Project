@@ -25,7 +25,7 @@ export default {
     })
       .fromString(csvFile)
       .then((csvRow) => {
-        console.log(csvRow);
+        // console.log(csvRow);
       });
     // this.initData(data);
   },

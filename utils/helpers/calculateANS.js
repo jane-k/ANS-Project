@@ -120,7 +120,6 @@ const calculateANS = (database) => {
         database.N_DI_Flght[l][t] * FTR_DIgoal[l][t]; // 국제선 이륙과정 총절감시간
       ANSDataTemplate.FTR_DIRtotal.value[l][t] =
         database.N_DI_Flght[l][t] * FTR_DIRgoal[l][t]; // 국제선 이륙-항로과정 총절감시간  FTR_DIRtotal 추가정의
-      console.log(database.N_DI_Flght[l][t], FTR_DIRgoal[l][t])
       ANSDataTemplate.FTR_AItotal.value[l][t] =
         database.N_AI_Flght[l][t] * FTR_AIgoal[l][t]; // 국제선 착률과정 총절감시간
       ANSDataTemplate.FTR_AIRtotal.value[l][t] =
@@ -143,7 +142,6 @@ const calculateANS = (database) => {
         ACE_TO_hour[l] * ANSDataTemplate.FTR_DItotal.value[l][t]; // 국제선 출발 총탄소배출량
       ANSDataTemplate.CER_DIRamount.value[l][t] =
         FCE_hour[l] * ANSDataTemplate.FTR_DIRtotal.value[l][t]; // 국제선 출발-항로 총탄소배출량 CER_DIRamount 추가정의
-      console.log(FCE_hour[l], ANSDataTemplate.FTR_DIRtotal.value[l][t])
       ANSDataTemplate.CER_AIamount.value[l][t] =
         ACE_LD_hour[l] * ANSDataTemplate.FTR_AItotal.value[l][t]; // 국제선 도착 총탄소배출량
       ANSDataTemplate.CER_AIRamount.value[l][t] =
