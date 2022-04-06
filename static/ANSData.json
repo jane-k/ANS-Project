@@ -281,7 +281,7 @@
     "variable": "OPR_ADcost_DLY",
     "label": "총 국내선 착륙과정 운항 절감비용",
     "value": []
-  },   
+  },
   {
     "type": "ASSUMPTION",
     "variable": "TL_DD_Dly",
@@ -341,7 +341,7 @@
     "variable": "FR_DIcost_byADLY",
     "label": "총 국제선 출발과정 연료 절감비용(지연시간 감소)",
     "value": []
-  },  
+  },
   {
     "type": "ASSUMPTION",
     "variable": "TL_AD_Dly",
@@ -353,7 +353,7 @@
     "variable": "TL_AI_Dly",
     "label": "총 국제선 도착과정 지연 절감시간",
     "value": []
-  },  
+  },
   {
     "type": "ASSUMPTION",
     "variable": "TL_AI_Dly_LD",

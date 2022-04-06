@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "Select",
+  name: "SelectItem",
   props: {
     selectItems: {
       type: Array,

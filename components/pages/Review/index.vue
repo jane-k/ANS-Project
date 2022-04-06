@@ -2,9 +2,9 @@
   <div class="Container">
     <DisplayReview />
     <ul class="button__list">
-      <button @click="handleRoute('/data')">데이터 리스트</button>
-      <button>데이터 조회 기록</button>
-      <button @click="handleRoute('/')">Return</button>
+      <button @click="handleRoute('/data')">표준 출력</button>
+      <button @click="handleRoute('/data')">선택 출력</button>
+      <button @click="handleRoute('/')">돌아가기</button>
     </ul>
   </div>
 </template>
