@@ -82,7 +82,7 @@ export default {
     isSingleData() {
       return !Array.isArray(this.value);
     },
-    ...mapState("ansData", ["ANSdatabase"]),
+    ...mapState("ansData", ["ANSDatabase"]),
   },
   methods: {
     onSelect(e) {
@@ -92,7 +92,7 @@ export default {
       console.log(index);
       if (this.isSingleData) {
         const mutatedDatabase = Object.assign(
-          JSON.parse(JSON.stringify(this.ANSdatabase))
+          JSON.parse(JSON.stringify(this.ANSDatabase))
         );
         mutatedDatabase[this.variable].value = e.target.value;
         this.mutateANSDatabase(mutatedDatabase);
@@ -101,7 +101,7 @@ export default {
         mutatedDataList[index] = e.target.value;
 
         const mutatedDatabase = Object.assign(
-          JSON.parse(JSON.stringify(this.ANSdatabase))
+          JSON.parse(JSON.stringify(this.ANSDatabase))
         );
         mutatedDatabase[this.variable].value = mutatedDataList;
         this.mutateANSDatabase(mutatedDatabase);
@@ -110,7 +110,7 @@ export default {
         mutatedDataList[index] = e.target.value;
 
         const mutatedDatabase = Object.assign(
-          JSON.parse(JSON.stringify(this.ANSdatabase))
+          JSON.parse(JSON.stringify(this.ANSDatabase))
         );
         mutatedDatabase[this.variable].value[this.selectedIndexData] =
           mutatedDataList;

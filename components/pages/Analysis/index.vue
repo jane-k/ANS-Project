@@ -1,9 +1,10 @@
 <template>
   <div class="Container">
-    <Chart />
+    <Chart :isCalculationComplete="isCalculationComplete" />
+    <Calculation />
     <ul class="button__list">
       <button>데이터 입력 및 확인</button>
-      <button @click="launchCalculation">데이터 분석</button>
+      <button @click="finishCalculation">데이터 분석</button>
       <button @click="handleRoute('/')">돌아가기</button>
     </ul>
   </div>
@@ -15,17 +16,18 @@ import ANSDataTemplate from "@/utils/constants/ANSDataTemplate.js";
 export default {
   name: "AnalysisPage",
   components: {
+    Calculation: () => import("./Calculation"),
     Chart: () => import("@/components/Chart"),
+  },
+  data() {
+    return { isCalculationComplete: false };
   },
   methods: {
     handleRoute(path) {
       this.$router.push(path);
     },
-    launchCalculation() {
-      for (let Cetha = 1; Cetha <= 3; Cetha++) {
-        calculateANS(Cetha);
-        console.log(ANSDataTemplate);
-      }
+    finishCalculation() {
+      this.isCalculationComplete = true;
     },
   },
 };

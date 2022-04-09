@@ -1,7 +1,7 @@
 <template>
   <div class="upload-container" @onclick="handleDrop">
-    <input type="file" id="ANSdatabase" @change="handleUpload" />
-    <label for="ANSdatabase" class="data-upload__text">
+    <input type="file" id="ANSDatabase" @change="handleUpload" />
+    <label for="ANSDatabase" class="data-upload__text">
       <font-awesome-icon icon="fa-upload" class="fa-2x upload-icon" />
       <p class="upload-guide__text">클릭 또는 드래그</p>
       <p>ANS 계산을 위한 .CSV 형식의 초기 데이터를 업로드해주세요.</p>
@@ -20,8 +20,8 @@ export default {
   name: "UploadData",
   methods: {
     readFile(file) {
-      let ANSdatabaseReader = new FileReader();
-      ANSdatabaseReader.onloadend = (e) => {
+      let ANSDatabaseReader = new FileReader();
+      ANSDatabaseReader.onloadend = (e) => {
         let readFile = e.target;
         const csvFile = readFile.result;
         csv({
@@ -49,10 +49,10 @@ export default {
             });
             this.mutateANSDatabase(parsedDatabase);
 
-            this.mutateANSData(ANSDataTemplate);
+            this.mutateANSDataTemplate(ANSDataTemplate);
           });
       };
-      ANSdatabaseReader.readAsText(file);
+      ANSDatabaseReader.readAsText(file);
     },
 
     handleUpload(e) {
@@ -69,7 +69,7 @@ export default {
     },
     ...mapMutations("ansData", [
       "mutateANSDatabase",
-      "mutateANSData",
+      "mutateANSDataTemplate",
       "mutateFilteredANSData",
     ]),
   },
