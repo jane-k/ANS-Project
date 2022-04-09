@@ -130,12 +130,8 @@ const calculateANS = (Cetha) => {
           ANSDatabase.N_AD_Flght.value[l][t]) /
           2) *
         FTR_DDgoal[l][t]; // 국내선 항로과정 총절감시간 FTR_DRtotal 추가정의
-
       ANSDataTemplate.FTR_DItotal.value[l][t] =
         ANSDatabase.N_DI_Flght.value[l][t] * FTR_DIgoal[l][t]; // 국제선 이륙과정 총절감시간
-      console.log(ANSDatabase.N_DI_Flght.value[l][t], FTR_DIgoal[l][t])
-      console.log("ans: ", ANSDataTemplate.FTR_DItotal.value[l][t])
-      console.log("result", ANSDataTemplate)
       ANSDataTemplate.FTR_DIRtotal.value[l][t] =
         ANSDatabase.N_DI_Flght.value[l][t] * FTR_DIRgoal[l][t]; // 국제선 이륙-항로과정 총절감시간  FTR_DIRtotal 추가정의
       ANSDataTemplate.FTR_AItotal.value[l][t] =

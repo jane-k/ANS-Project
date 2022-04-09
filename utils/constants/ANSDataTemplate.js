@@ -5,7 +5,7 @@ const ANSDataTemplate = {
     type: "-",
     variable: "Flt_Sav",
     label: "연도별 운항시간 목표 절감율",
-    value: Array(MAX).fill(0),
+    value: Array(YEAR).fill(0),
   },
   FTR_DDtotal: {
     type: "-",
@@ -450,25 +450,25 @@ const ANSDataTemplate = {
     type: "-",
     variable: "CER_amount_byAFT",
     label: "총 영공 통과 탄소배출 절감량",
-    value: Array(MAX).fill(0),
+    value: Array(YEAR).fill(0),
   },
   FR_amount_byAFT: {
     type: "-",
     variable: "FR_amount_byAFT",
     label: "총 영공 통과 연료 절감량",
-    value: Array(MAX).fill(0),
+    value: Array(YEAR).fill(0),
   },
   CER_cost_byAFT: {
     type: "-",
     variable: "CER_cost_byAFT",
     label: "총 영공 통과 탄소배출 절감비용",
-    value: Array(MAX).fill(0),
+    value: Array(YEAR).fill(0),
   },
   FR_cost_byAFT: {
     type: "-",
     variable: "FR_cost_byAFT",
     label: "총 영공 통과 연료 절감비용",
-    value: Array(MAX).fill(0),
+    value: Array(YEAR).fill(0),
   },
 };
 
