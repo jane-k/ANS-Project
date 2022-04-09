@@ -1,18 +1,18 @@
 <template>
   <div class="presentation-container">
-    <div class="presentation-title" v-if="initialData">
+    <div class="presentation-title" v-if="ANSDatabase">
       <h2 class="data-title">
         {{ dataTypeheaderText }} ({{ dataCountHeaderText }})
       </h2>
       <div class="data-reset">데이터 초기화</div>
       <div class="data-save">데이터 저장</div>
     </div>
-    <!-- TODO: initialData 업로드 로직 작성 -->
-    <UploadData v-if="!initialData" />
+    <!-- TODO: ANSDatabase 업로드 로직 작성 -->
+    <UploadData v-if="!ANSDatabase" />
     <ul v-else class="presentation-list">
       <PresentationItem
         :key="data.variable"
-        v-for="data in filteredANSData"
+        v-for="data in ANSDatabase"
         :label="data.label"
         :variable="data.variable"
         :value="data.value"
@@ -32,8 +32,8 @@ export default {
   },
   computed: {
     ...mapState("ansData", [
-      "ANSData",
-      "initialData",
+      "ANSDataTemplate",
+      "ANSDatabase",
       "filteredANSData",
       "filteredDataName",
       "filteredDataCount",
@@ -44,11 +44,11 @@ export default {
     },
     dataCountHeaderText() {
       return (
-        this.filteredANSData?.length || Object.values(this.ANSData)?.length
+        this.filteredANSData?.length ||
+        Object.values(this.ANSDataTemplate)?.length
       );
     },
   },
-  mounted: () => {},
 };
 </script>
 

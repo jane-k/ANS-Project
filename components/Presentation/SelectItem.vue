@@ -5,7 +5,7 @@
       :key="`${item}-${index}`"
       v-for="(item, index) in selectItems"
     >
-      {{ `데이터 ${index + 1}` }}
+      {{ `공항 ${index + 1}` }}
     </option>
   </select>
 </template>
@@ -29,7 +29,7 @@ export default {
 
 <style lang="scss" scoped>
 .select {
-  width: 6rem;
+  min-width: 6rem;
   padding: 0.25rem;
   border: 1px solid #cdcdcd;
 

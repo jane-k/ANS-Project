@@ -29,7 +29,7 @@ export default {
     },
     filterANSDataList(type) {
       if (type !== "ALL") {
-        const filteredANSData = Object.values(this.ANSData).filter(
+        const filteredANSData = Object.values(this.ANSDataTemplate).filter(
           (data) => data.type === type
         );
         const filteredDataName = this.setFilteredDataName(type);
@@ -38,8 +38,10 @@ export default {
         this.mutateFilteredDataName(filteredDataName);
       } else {
         const filteredDataName = "전체 자료 목록";
-        this.mutateFilteredANSData(Object.values(this.ANSData));
-        this.mutateFilteredDataCount(Object.values(this.ANSData)?.length);
+        this.mutateFilteredANSData(Object.values(this.ANSDataTemplate));
+        this.mutateFilteredDataCount(
+          Object.values(this.ANSDataTemplate)?.length
+        );
         this.mutateFilteredDataName(filteredDataName);
       }
     },
@@ -67,7 +69,7 @@ export default {
     ]),
   },
   computed: {
-    ...mapState("ansData", ["ANSData"]),
+    ...mapState("ansData", ["ANSDataTemplate"]),
   },
 };
 </script>

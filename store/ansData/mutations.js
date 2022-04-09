@@ -1,9 +1,9 @@
-export const mutateInitialData = (state, data) => {
-  state.initialData = data
+export const mutateANSDatabase = (state, data) => {
+  state.ANSDatabase = data
 }
 
-export const mutateANSData = (state, data) => {
-  state.ANSData = data
+export const mutateANSDataTemplate = (state, data) => {
+  state.ANSDataTemplate = data
 }
 
 export const mutateFilteredANSData = (state, data) => {
