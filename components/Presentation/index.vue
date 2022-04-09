@@ -12,7 +12,7 @@
     <ul v-else class="presentation-list">
       <PresentationItem
         :key="data.variable"
-        v-for="data in filteredANSData"
+        v-for="data in initialData"
         :label="data.label"
         :variable="data.variable"
         :value="data.value"
@@ -48,7 +48,6 @@ export default {
       );
     },
   },
-  mounted: () => {},
 };
 </script>
 

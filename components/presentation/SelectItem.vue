@@ -5,7 +5,7 @@
       :key="`${item}-${index}`"
       v-for="(item, index) in selectItems"
     >
-      {{ `데이터 ${index + 1}` }}
+      {{ `공항 ${index + 1}` }}
     </option>
   </select>
 </template>
