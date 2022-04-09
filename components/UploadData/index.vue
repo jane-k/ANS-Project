@@ -48,13 +48,13 @@ export default {
                   : rowItem.slice(1).filter((el) => el || el === 0);
             });
             this.mutateInitialData(parsedDatabase);
-            calculateANS((Cetha = 1));
+
             this.mutateANSData(ANSDataTemplate);
-            console.log(ANSDataTemplate);
           });
       };
       initialDataReader.readAsText(file);
     },
+
     handleUpload(e) {
       const uploadedFile = e.target.files[0];
       this.readFile(uploadedFile);

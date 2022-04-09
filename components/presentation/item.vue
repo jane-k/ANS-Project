@@ -63,30 +63,6 @@ export default {
     toggleIOMode() {
       this.isEditable = !this.isEditable;
     },
-    onValueChange(e) {
-      if (Array.isArray(this.value)) {
-        let modifiedList = Object.values(this.ANSData).map((el) => {
-          const modifiedValue = [...this.value];
-          modifiedValue[this.selectedIndex] = e.target.value;
-          return el.label === this.label
-            ? {
-                ...el,
-                value: modifiedValue,
-              }
-            : el;
-        });
-        this.mutateANSData(modifiedList);
-        this.filterANSDataList();
-      } else {
-        let modifiedList = Object.values(this.ANSData).map((el) => {
-          return el.label === this.label
-            ? { ...el, value: +e.target.value }
-            : el;
-        });
-        this.mutateANSData(modifiedList);
-        this.filterANSDataList();
-      }
-    },
 
     onChangeComplete() {
       this.isEditable = false;
@@ -105,9 +81,6 @@ export default {
       return !Array.isArray(this.value);
     },
     ...mapState("ansData", ["ANSData"]),
-  },
-  mounted() {
-    console.log(this.value);
   },
 };
 </script>

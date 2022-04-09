@@ -1,8 +1,8 @@
-import { MAX, N_AC, YEAR, Cetha } from "../constants/config";
+import { MAX, N_AC, YEAR } from "../constants/config";
 import ANSDataTemplate from "../constants/ANSDataTemplate";
 import ANSDatabase from "../constants/ANSDatabase";
 
-const calculateANS = () => {
+const calculateANS = (Cetha) => {
   const FCE_hour = Array(YEAR).fill(0); // 시간당 항로 탄소배출량
   const ACE_TO_hour = Array(YEAR).fill(0); // 시간당 이륙(출발) 탄소배출량
   const ACE_LD_hour = Array(YEAR).fill(0); // 시간당 착륙(도착) 탄소배출량
@@ -28,10 +28,12 @@ const calculateANS = () => {
 
   // console.log(ANSANSDatabase)
   var a = Math.log(
-    ANSDatabase.FTRgoal_Start.value[0] /
-      (0.999 * ANSDatabase.FTRgoal_Fin.value[0])
+    ANSDatabase.FTRgoal_Start.value /
+    (0.999 * ANSDatabase.FTRgoal_Fin.value)
   ); // FTRgoal_Start, FTRgoal_Fin 추가정의 / 자연로그함수 ln() 확인 / a, b 전역변수 사용가능?
   var b = (1 / YEAR) * (Math.log(Cetha / 0.999) - a);
+
+  console.log(b)
 
   for (let t = 0; t < YEAR; t++) {
     //Flt_Sav 변수(연도별 운함시감 절감률 목표) 추가 정의
@@ -59,11 +61,11 @@ const calculateANS = () => {
       Temp_CB =
         Temp_CB +
         ANSDatabase.ACE_TO_flight.value[l][k] *
-          ANSDatabase.AU_flight.value[l][k];
+        ANSDatabase.AU_flight.value[l][k];
       Temp_CC =
         Temp_CC +
         ANSDatabase.ACE_LD_flight.value[l][k] *
-          ANSDatabase.AU_flight.value[l][k];
+        ANSDatabase.AU_flight.value[l][k];
     }
     //공항별 이륙, 착륙, 항로의 시간당 탄소배출량 산출  FCE_hour, ACE_TO_hour, ACE_LD_hour 인덱스 t-> l 공항으로 변경
     FCE_hour[l] = Temp_CA; // 시간당 항로 탄소배출량
@@ -85,11 +87,11 @@ const calculateANS = () => {
       Temp_CB =
         Temp_CB +
         ANSDatabase.AFE_TO_flight.value[l][k] *
-          ANSDatabase.AU_flight.value[l][k];
+        ANSDatabase.AU_flight.value[l][k];
       Temp_CC =
         Temp_CC +
         ANSDatabase.AFE_LD_flight.value[l][k] *
-          ANSDatabase.AU_flight.value[l][k];
+        ANSDatabase.AU_flight.value[l][k];
     }
     //공항별 이륙, 착륙, 항로의 시간당 연료소모량 산출   FFE_hour, AFE_TO_hour, AFE_LD_hour 인덱스 t-> l 공항으로 변경
     FFE_hour[l] = Temp_CA; // 시간당 항로 연료소모량
@@ -131,6 +133,9 @@ const calculateANS = () => {
 
       ANSDataTemplate.FTR_DItotal.value[l][t] =
         ANSDatabase.N_DI_Flght.value[l][t] * FTR_DIgoal[l][t]; // 국제선 이륙과정 총절감시간
+      console.log(ANSDatabase.N_DI_Flght.value[l][t], FTR_DIgoal[l][t])
+      console.log("ans: ", ANSDataTemplate.FTR_DItotal.value[l][t])
+      console.log("result", ANSDataTemplate)
       ANSDataTemplate.FTR_DIRtotal.value[l][t] =
         ANSDatabase.N_DI_Flght.value[l][t] * FTR_DIRgoal[l][t]; // 국제선 이륙-항로과정 총절감시간  FTR_DIRtotal 추가정의
       ANSDataTemplate.FTR_AItotal.value[l][t] =
@@ -267,15 +272,15 @@ const calculateANS = () => {
   // 1_지연시간 감소율 목표 계산 : Logistic 모형 적용
 
   var a = Math.log(
-    ANSDatabase.Dlygoal_Start.value[0] /
-      (0.999 * ANSDatabase.Dlygoal_Fin.value[0])
+    ANSDatabase.Dlygoal_Start.value /
+    (0.999 * ANSDatabase.Dlygoal_Fin.value)
   ); // Dlygoal_Start, Dlygoal_Fin 추가정의 / 자연로그함수 ln() 확인 / a, b 전역변수 사용가능?
   var b = (Cetha / YEAR) * (Math.log(Cetha / 0.999) - a);
 
   for (let t = 0; t < YEAR; t++) {
     //Dly_Sav 변수(연도별 운함시감 절감률 목표) 추가 정의
     Dly_Sav[t] =
-      (ANSDatabase.Dlygoal_Fin.value[0] * 0.999) /
+      (ANSDatabase.Dlygoal_Fin.value * 0.999) /
       (Cetha + Math.exp(a + b * t)) /
       100;
   }
@@ -458,22 +463,22 @@ const calculateANS = () => {
   // 운항시간 절감률 목표 계산 : Logistic 모형 적용 - 운항시간 절감 계수 동일하게 사용
 
   var a = Math.log(
-    ANSDatabase.FTRgoal_Start.value[0] /
-      (0.999 * ANSDatabase.FTRgoal_Fin.value[0])
+    ANSDatabase.FTRgoal_Start.value /
+    (0.999 * ANSDatabase.FTRgoal_Fin.value)
   );
   var b = (Cetha / YEAR) * (Math.log(Cetha / 0.999) - a);
 
   for (let t = 0; t < YEAR; t++) {
     // Flt_Sav 변수(연도별 운함시감 절감률 목표) 추가 정의
     ANSDataTemplate.Flt_Sav.value[t] =
-      (ANSDatabase.FTRgoal_Fin.value[0] * 0.999) /
+      (ANSDatabase.FTRgoal_Fin.value * 0.999) /
       (Cetha + Math.exp(a + b * t)) /
       100;
   }
 
   for (let t = 0; t < YEAR; t++) {
     Time_Pass[t] =
-      ANSDataTemplate.Flt_Sav.value[t] * ANSDatabase.Time_Pass_S.value[0]; // 영공통과 시간 절감
+      ANSDataTemplate.Flt_Sav.value[t] * ANSDatabase.Time_Pass_S.value; // 영공통과 시간 절감
     FTR_Pass[t] = ANSDatabase.N_Pass_Flght.value[t] * Time_Pass[t]; // 총 영공통과 운항시간 절감
 
     ANSDataTemplate.CER_amount_byAFT.value[t] = FCE_hour[t] * FTR_Pass[t]; // 총 영공통과 탄소배출 감소

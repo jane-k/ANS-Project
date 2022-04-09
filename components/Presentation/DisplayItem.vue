@@ -16,12 +16,12 @@
     <MultiItemList v-else class="multiple-display">
       <SelectItem
         :selectItems="value"
-        :selectedIndex="selectedIndex"
+        :selectedIndex="selectedIndexData"
         :onChange="onSelect"
       />
       <li
         :key="index"
-        v-for="(item, index) in value[selectedIndex]"
+        v-for="(item, index) in value[selectedIndexData]"
         class="display-multi__item"
       >
         <p class="multi-data__index">{{ `데이터 ${index + 1}` }}</p>
@@ -55,7 +55,13 @@ export default {
     },
     selectedIndex: {
       type: Number,
+      default: 0,
     },
+  },
+  data() {
+    return {
+      selectedIndexData: this.selectedIndex,
+    };
   },
   computed: {
     isMultiDimensionalData() {
@@ -68,7 +74,7 @@ export default {
   },
   methods: {
     onSelect(e) {
-      this.selectedIndex = e.target.selectedIndex;
+      this.selectedIndexData = e.target.selectedIndex;
     },
   },
 };
@@ -128,38 +134,6 @@ export default {
   &::-webkit-scrollbar-track {
     background-color: #f8f8f8;
     border-radius: 10px;
-  }
-}
-.presentation-input__container {
-  display: flex;
-  gap: 1rem;
-  flex: 8;
-}
-.single-input {
-  input {
-    padding: 0.25rem 0.5rem;
-    width: 8rem;
-    border: 1px solid #cdcdcd;
-    border-radius: 0.25rem;
-    transition: 0.2s ease-in-out all;
-    &:focus {
-      border: 1px solid #666;
-      outline: none;
-    }
-  }
-}
-.multiple-input {
-  input {
-    margin-left: 1rem;
-    padding: 0.25rem 0.5rem;
-    width: 8rem;
-    border: 1px solid #cdcdcd;
-    border-radius: 0.25rem;
-    transition: 0.2s ease-in-out all;
-    &:focus {
-      border: 1px solid #666;
-      outline: none;
-    }
   }
 }
 .presentation-value {

@@ -29,7 +29,7 @@ export default {
 
 <style lang="scss" scoped>
 .select {
-  width: 6rem;
+  min-width: 6rem;
   padding: 0.25rem;
   border: 1px solid #cdcdcd;
 
