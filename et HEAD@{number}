@@ -1,0 +1,236 @@
+[33mcommit 6279bb4c1671a713715fc20aea317cd21c7da912[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Reflog: HEAD@{0} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to HEAD^
+Merge: 90e55ab be11ea9
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Wed Apr 6 16:04:29 2022 +0900
+
+    Merge pull request #14 from C17AN/master
+    
+    feat: implement calculation logic
+
+[33mcommit 6fb80c8b96f54110b01746e5501616af77b5868a[m[33m ([m[1;31morigin/master[m[33m)[m
+Reflog: HEAD@{1} (jiin3909 <jiin3909@admin.com>)
+Reflog message: commit: chore: fixing data type export
+Author: jiin3909 <jiin3909@admin.com>
+Date:   Sat Apr 9 09:03:02 2022 +0900
+
+    chore: fixing data type export
+
+[33mcommit 6279bb4c1671a713715fc20aea317cd21c7da912[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Reflog: HEAD@{2} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to ORIG_HEAD
+Merge: 90e55ab be11ea9
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Wed Apr 6 16:04:29 2022 +0900
+
+    Merge pull request #14 from C17AN/master
+    
+    feat: implement calculation logic
+
+[33mcommit 6279bb4c1671a713715fc20aea317cd21c7da912[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Reflog: HEAD@{3} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: 90e55ab be11ea9
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Wed Apr 6 16:04:29 2022 +0900
+
+    Merge pull request #14 from C17AN/master
+    
+    feat: implement calculation logic
+
+[33mcommit 90e55abed8073572b68a6af1ebbadcc243b1f9ed[m
+Reflog: HEAD@{4} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to ORIG_HEAD
+Author: jiin3909 <jiin3909@admin.com>
+Date:   Tue Apr 5 17:31:46 2022 +0900
+
+    chore: implement calculate ANS Data logic
+
+[33mcommit 90e55abed8073572b68a6af1ebbadcc243b1f9ed[m
+Reflog: HEAD@{5} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to ORIG_HEAD
+Author: jiin3909 <jiin3909@admin.com>
+Date:   Tue Apr 5 17:31:46 2022 +0900
+
+    chore: implement calculate ANS Data logic
+
+[33mcommit 90e55abed8073572b68a6af1ebbadcc243b1f9ed[m
+Reflog: HEAD@{6} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to HEAD
+Author: jiin3909 <jiin3909@admin.com>
+Date:   Tue Apr 5 17:31:46 2022 +0900
+
+    chore: implement calculate ANS Data logic
+
+[33mcommit 90e55abed8073572b68a6af1ebbadcc243b1f9ed[m
+Reflog: HEAD@{7} (jiin3909 <jiin3909@admin.com>)
+Reflog message: commit: chore: implement calculate ANS Data logic
+Author: jiin3909 <jiin3909@admin.com>
+Date:   Tue Apr 5 17:31:46 2022 +0900
+
+    chore: implement calculate ANS Data logic
+
+[33mcommit 267244e4f7b3d7af2eca0fb305665cac73e4d57b[m
+Reflog: HEAD@{8} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: 56d2059 e10bfbc
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Tue Apr 5 17:13:44 2022 +0900
+
+    Merge pull request #13 from C17AN/master
+    
+    feat: implement data review page
+
+[33mcommit 56d205935f72fb885c14277eb5a11fca3f1f19fb[m
+Reflog: HEAD@{9} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: 3d0127b 35cae92
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Sun Apr 3 01:29:52 2022 +0900
+
+    Merge pull request #12 from C17AN/master
+    
+    chore: add version text
+
+[33mcommit 66b8675619b845e52052e355bc2b74b6313b3e59[m
+Reflog: HEAD@{10} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to ORIG_HEAD
+Merge: 05adc2a 8d27bcf
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Sat Mar 19 17:59:24 2022 +0900
+
+    Merge pull request #9 from C17AN/chanmin/upload-ui
+    
+    Chanmin/upload UI
+
+[33mcommit 1f89ab133e57aa5bdf7b2d2c7b5168b4eeece064[m
+Reflog: HEAD@{11} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: 66b8675 d1e7c7c
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Fri Mar 25 11:50:18 2022 +0900
+
+    Merge pull request #10 from C17AN/master
+    
+    feat: implement initial database upload logic
+
+[33mcommit 66b8675619b845e52052e355bc2b74b6313b3e59[m
+Reflog: HEAD@{12} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: 05adc2a 8d27bcf
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Sat Mar 19 17:59:24 2022 +0900
+
+    Merge pull request #9 from C17AN/chanmin/upload-ui
+    
+    Chanmin/upload UI
+
+[33mcommit 05adc2a0dabb3e6fe93871e5a416681f5c611959[m
+Reflog: HEAD@{13} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: f9af235 8563990
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Thu Mar 17 19:43:35 2022 +0900
+
+    Merge pull request #8 from C17AN/chanmin/select-feature
+    
+    feat: UI style change & implement multi-data edit feature
+
+[33mcommit f9af235e3bc1fa4155cfa69ed8c6ae0819aed5ac[m
+Reflog: HEAD@{14} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to HEAD
+Merge: 658f02e 21077a3
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Tue Mar 15 00:25:07 2022 +0900
+
+    Merge pull request #7 from C17AN/chanmin/data-filtering
+    
+    feat: change style & implement data filtering logic
+
+[33mcommit f9af235e3bc1fa4155cfa69ed8c6ae0819aed5ac[m
+Reflog: HEAD@{15} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: 658f02e 21077a3
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Tue Mar 15 00:25:07 2022 +0900
+
+    Merge pull request #7 from C17AN/chanmin/data-filtering
+    
+    feat: change style & implement data filtering logic
+
+[33mcommit 658f02eb03875fafc6ce53de84e1c89866452559[m
+Reflog: HEAD@{16} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to HEAD
+Merge: 68d7150 f2ce661
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Mon Mar 14 14:25:51 2022 +0900
+
+    Merge pull request #6 from C17AN/chanmin/item-change
+    
+    feat: implement item change UI & csv-to-json feature
+
+[33mcommit 658f02eb03875fafc6ce53de84e1c89866452559[m
+Reflog: HEAD@{17} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: 68d7150 f2ce661
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Mon Mar 14 14:25:51 2022 +0900
+
+    Merge pull request #6 from C17AN/chanmin/item-change
+    
+    feat: implement item change UI & csv-to-json feature
+
+[33mcommit 68d71504f03ad439663b239bb32006945edb4421[m
+Reflog: HEAD@{18} (jiin3909 <jiin3909@admin.com>)
+Reflog message: commit: style: add font
+Author: jiin3909 <jiin3909@admin.com>
+Date:   Thu Mar 10 10:01:28 2022 +0900
+
+    style: add font
+
+[33mcommit 580f92fbf63271e30439b89003e9fe348f014188[m
+Reflog: HEAD@{19} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: b807537 fe0872d
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Tue Mar 8 20:08:24 2022 +0900
+
+    Merge pull request #5 from C17AN/chanmin/data-manager
+    
+    feat: implement initial data load logic
+
+[33mcommit b80753760404cfbd8c5b8e97c3c57c82c68525e6[m
+Reflog: HEAD@{20} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to HEAD
+Merge: 768db4d 16d3bc7
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Sun Mar 6 17:22:09 2022 +0900
+
+    Merge pull request #4 from C17AN/chanmin/basic-layout-style
+    
+    Chanmin/basic layout style
+
+[33mcommit b80753760404cfbd8c5b8e97c3c57c82c68525e6[m
+Reflog: HEAD@{21} (jiin3909 <jiin3909@admin.com>)
+Reflog message: pull origin master: Fast-forward
+Merge: 768db4d 16d3bc7
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Sun Mar 6 17:22:09 2022 +0900
+
+    Merge pull request #4 from C17AN/chanmin/basic-layout-style
+    
+    Chanmin/basic layout style
+
+[33mcommit 768db4dd2b9202dd5916331a487e85699ea3ee49[m
+Reflog: HEAD@{22} (jiin3909 <jiin3909@admin.com>)
+Reflog message: reset: moving to HEAD
+Merge: adc8e3e 10ee203
+Author: jane-k <64597426+jane-k@users.noreply.github.com>
+Date:   Sun Mar 6 16:10:18 2022 +0900
+
+    Merge pull request #3 from C17AN/chanmin/fix-casing
+    
+    fix: fix casing issue
+
+[33mcommit 768db4dd2b9202dd5916331a487e8569

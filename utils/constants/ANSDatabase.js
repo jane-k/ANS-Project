@@ -1,99 +1,464 @@
-const FTRgoal_Start = []
-const FTRgoal_Fin = []
-const Dlygoal_Start = []
-const Dlygoal_Fin = []
-const Time_Pass_S = []
-const FCE_flight = []
-const ACE_TO_flight = []
-const ACE_LD_flight = []
-const FU_flight = []
-const AU_flight = []
-const N_DD_Flght = []
-const N_DI_Flght = []
-const N_AD_Flght = []
-const N_AI_Flght = []
-const AFT_Dshare = []
-const AFT_Ishare = []
-const carbonCredit = []
-const fuelCredit = []
-const FFE_flight = []
-const AFE_TO_flight = []
-const AFE_LD_flight = []
-const Time_ITO = []
-const Time_DTO = []
-const Time_ILD = []
-const Time_DLD = []
-const Time_DIRoute = []
-const Time_AIRoute = []
-const Time_DRoute = []
-const N_Pass_Flght = []
-const OP_DDcost = []
-const OP_DIcost = []
-const OP_ADcost = []
-const OP_AIcost = []
-const Time_DD_Dly = []
-const Time_DI_Dly = []
-const Time_AD_Dly = []
-const Time_AI_Dly = []
-const DLY_DD_ANSshare = []
-const DLY_DI_ANSshare = []
-const DLY_AD_ANSshare = []
-const DLY_AI_ANSshare = []
-const average_AITime = []
-const DLY_AD_cost_PSG = []
-const DLY_AI_cost_PSG = []
-const PSG_AD = []
-const PSG_AI = []
+const ANSDatabase = {
+  FTRgoal_Start: {
+    type: "-",
+    variable: "FTRgoal_Start",
+    label: "운항시간 절감 목표(시작 년도)",
+    value: [40],
+  },
+  FTRgoal_Fin: {
+    type: "-",
+    variable: "FTRgoal_Fin",
+    label: "운항시간 절감 목표(종료 년도)",
+    value: [100],
+  },
+  Dlygoal_Start: {
+    type: "-",
+    variable: "Dlygoal_Start",
+    label: "지연시간 목표(시작 년도)",
+    value: [40],
+  },
+  Dlygoal_Fin: {
+    type: "-",
+    variable: "Dlygoal_Fin",
+    label: "지연시간 목표(종료 년도)",
+    value: [10],
+  },
+  Time_Pass_S: {
+    type: "-",
+    variable: "Time_Pass_S",
+    label: "영공통과 운항시간",
+    value: [30],
+  },
+  FCE_flight: {
+    type: "-",
+    variable: "FCE_flight",
+    label: "항로 탄소 배출량",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  ACE_TO_flight: {
+    type: "-",
+    variable: "ACE_TO_flight",
+    label: "시간당 이륙 탄소 배출량",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  ACE_LD_flight: {
+    type: "-",
+    variable: "ACE_LD_flight",
+    label: "시간당 착륙 탄소 배출량",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  FU_flight: {
+    type: "-",
+    variable: "FU_flight",
+    label: "항로 이용분포",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  AU_flight: {
+    type: "-",
+    variable: "AU_flight",
+    label: "공항 이용분포",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  N_DD_Flght: {
+    type: "-",
+    variable: "N_DD_Flght",
+    label: "국내선 출발 총 운항편",
+    value: [
+      [
+        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
+        5, 6, 6, 6, 6, 6,
+      ],
+      [
+        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
+        11, 11, 11, 12, 12, 12, 12, 12,
+      ],
+    ],
+  },
+  N_DI_Flght: {
+    type: "-",
+    variable: "N_DI_Flght",
+    label: "국제선 출발 총 운항편",
+    value: [
+      [
+        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
+        5, 6, 6, 6, 6, 6,
+      ],
+      [
+        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
+        11, 11, 11, 12, 12, 12, 12, 12,
+      ],
+    ],
+  },
+  N_AD_Flght: {
+    type: "-",
+    variable: "N_AD_Flght",
+    label: "국내선 도착 총 운항편",
+    value: [
+      [
+        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
+        5, 6, 6, 6, 6, 6,
+      ],
+      [
+        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
+        11, 11, 11, 12, 12, 12, 12, 12,
+      ],
+    ],
+  },
+  N_AI_Flght: {
+    type: "-",
+    variable: "N_AI_Flght",
+    label: "국제선 도착 총 운항편",
+    value: [
+      [
+        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
+        5, 6, 6, 6, 6, 6,
+      ],
+      [
+        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
+        11, 11, 11, 12, 12, 12, 12, 12,
+      ],
+    ],
+  },
+  AFT_Dshare: {
+    type: "-",
+    variable: "AFT_Dshare",
+    label: "국내 영공 운항시간 점유율",
+    value: [
+      5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9,
+      10, 10, 10, 10, 10,
+    ],
+  },
+  AFT_Ishare: {
+    type: "-",
+    variable: "AFT_Ishare",
+    label: "국제 영공 운항시간 점유율",
+    value: [
+      5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9,
+      10, 10, 10, 10, 10,
+    ],
+  },
+  carbonCredit: {
+    type: "-",
+    variable: "carbonCredit",
+    label: "탄소 배출권 가격",
+    value: [
+      5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9,
+      10, 10, 10, 10, 10,
+    ],
+  },
+  fuelCredit: {
+    type: "-",
+    variable: "fuelCredit",
+    label: "연료 가격",
+    value: [
+      5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9,
+      10, 10, 10, 10, 10,
+    ],
+  },
+  FFE_flight: {
+    type: "-",
+    variable: "FFE_flight",
+    label: "항로 연료 소모량",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  AFE_TO_flight: {
+    type: "-",
+    variable: "AFE_TO_flight",
+    label: "이륙 연료 소모량",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  AFE_LD_flight: {
+    type: "-",
+    variable: "AFE_LD_flight",
+    label: "착륙 연료 소모량",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  Time_ITO: {
+    type: "-",
+    variable: "Time_ITO",
+    label: "국제선 이륙 소요시간",
+    value: [3, 3],
+  },
+  Time_DTO: {
+    type: "-",
+    variable: "Time_DTO",
+    label: "국내선 이륙 소요시간",
+    value: [3, 3],
+  },
+  Time_ILD: {
+    type: "-",
+    variable: "Time_ILD",
+    label: "국제선 착륙 소요시간",
+    value: [3, 3],
+  },
+  Time_DLD: {
+    type: "-",
+    variable: "Time_DLD",
+    label: "국내선 착륙 소요시간",
+    value: [3, 3],
+  },
+  Time_DIRoute: {
+    type: "-",
+    variable: "Time_DIRoute",
+    label: "평균 국제선 이륙-항로 운항시간",
+    value: [4, 4],
+  },
+  Time_AIRoute: {
+    type: "-",
+    variable: "Time_AIRoute",
+    label: "평균 국제선 착륙-항로 운항시간",
+    value: [4, 4],
+  },
+  Time_DRoute: {
+    type: "-",
+    variable: "Time_DRoute",
+    label: "국내선 평균 항로 운항시간",
+    value: [4, 4],
+  },
 
-export {
-  FTRgoal_Start,
-  FTRgoal_Fin,
-  Dlygoal_Start,
-  Dlygoal_Fin,
-  Time_Pass_S,
-  FCE_flight,
-  ACE_TO_flight,
-  ACE_LD_flight,
-  FU_flight,
-  AU_flight,
-  N_DD_Flght,
-  N_DI_Flght,
-  N_AD_Flght,
-  N_AI_Flght,
-  AFT_Dshare,
-  AFT_Ishare,
-  carbonCredit,
-  fuelCredit,
-  FFE_flight,
-  AFE_TO_flight,
-  AFE_LD_flight,
-  Time_ITO,
-  Time_DTO,
-  Time_ILD,
-  Time_DLD,
-  Time_DIRoute,
-  Time_AIRoute,
-  Time_DRoute,
-  Avg_DD_Dly,
-  Avg_DI_Dly,
-  Avg_AD_Dly,
-  Avg_AI_Dly,
-  N_Pass_Flght,
-  OP_DDcost,
-  OP_DIcost,
-  OP_ADcost,
-  OP_AIcost,
-  Time_DD_Dly,
-  Time_DI_Dly,
-  Time_AD_Dly,
-  Time_AI_Dly,
-  DLY_DD_ANSshare,
-  DLY_DI_ANSshare,
-  DLY_AD_ANSshare,
-  DLY_AI_ANSshare,
-  average_AITime,
-  DLY_AD_cost_PSG,
-  DLY_AI_cost_PSG,
-  PSG_AD,
-  PSG_AI,
-}
+  N_Pass_Flght: {
+    type: "-",
+    variable: "N_Pass_Flght",
+    label: "총 영공통과 운항편",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
+    ],
+  },
+  OP_DDcost: {
+    type: "-",
+    variable: "OP_DDcost",
+    label: "국내선 출발편 시간당 평균 운항 비용",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
+    ],
+  },
+  OP_DIcost: {
+    type: "-",
+    variable: "OP_DIcost",
+    label: "국제선 출발편 시간당 평균 운항 비용",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
+    ],
+  },
+  OP_ADcost: {
+    type: "-",
+    variable: "OP_ADcost",
+    label: "국내선 도착편 시간당 평균 운항 비용",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
+    ],
+  },
+  OP_AIcost: {
+    type: "-",
+    variable: "OP_AIcost",
+    label: "국제선 도착편 시간당 평균 운항 비용",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
+    ],
+  },
+  Time_DD_Dly: {
+    type: "-",
+    variable: "Time_DD_Dly",
+    label: "총 국내선 출발편 감소 지연시간",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+    ],
+  },
+  Time_DI_Dly: {
+    type: "-",
+    variable: "Time_DI_Dly",
+    label: "총 국제선 출발편 감소 지연시간",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+    ],
+  },
+  Time_AD_Dly: {
+    type: "-",
+    variable: "Time_AD_Dly",
+    label: "총 국내선 도착편 감소 지연시간",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+    ],
+  },
+  Time_AI_Dly: {
+    type: "-",
+    variable: "Time_AI_Dly",
+    label: "총 국제선 도착편 감소 지연시간",
+    value: [
+      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+      13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+    ],
+  },
+  DLY_DD_ANSshare: {
+    type: "-",
+    variable: "DLY_DD_ANSshare",
+    label: "국내선 출발 지연 항행원인 비율",
+    value: [5, 5],
+  },
+  DLY_DI_ANSshare: {
+    type: "-",
+    variable: "DLY_DI_ANSshare",
+    label: "국제선 출발 지연 항행원인 비율",
+    value: [5, 5],
+  },
+  DLY_AD_ANSshare: {
+    type: "-",
+    variable: "DLY_AD_ANSshare",
+    label: "국내선 도착 지연 항행원인 비율",
+    value: [5, 5],
+  },
+  DLY_AI_ANSshare: {
+    type: "-",
+    variable: "DLY_AI_ANSshare",
+    label: "국제선 도착 지연 항행원인 비율",
+    value: [5, 5],
+  },
+  average_AITime: {
+    type: "-",
+    variable: "average_AITime",
+    label: "국제선 도착편 평균 비행시간",
+    value: [5, 5],
+  },
+  DLY_AD_cost_PSG: {
+    type: "-",
+    variable: "DLY_AD_cost_PSG",
+    label: "국내선 도착편 여객 지연비용",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  DLY_AI_cost_PSG: {
+    type: "-",
+    variable: "DLY_AI_cost_PSG",
+    label: "국제선 도착편 여객 지연비용",
+    value: [
+      [
+        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
+        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+      ],
+      [
+        16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19,
+        19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21,
+      ],
+    ],
+  },
+  PSG_AD: {
+    type: "ASSUMPTION",
+    variable: "PSG_AD",
+    label: "국내선 도착편 평균 여객수",
+    value: [
+      [
+        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
+        5, 6, 6, 6, 6, 6,
+      ],
+      [
+        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
+        11, 11, 11, 12, 12, 12, 12, 12,
+      ],
+    ],
+  },
+  PSG_AI: {
+    type: "-",
+    variable: "PSG_AI",
+    label: "국제선 도착편 평균 여객수",
+    value: [
+      [
+        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
+        5, 6, 6, 6, 6, 6,
+      ],
+      [
+        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
+        11, 11, 11, 12, 12, 12, 12, 12,
+      ],
+    ],
+  },
+};
+
+export default ANSDatabase;

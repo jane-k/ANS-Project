@@ -1,5 +1,5 @@
 <template>
-  <div class="upload-container" @dragover="handleDrag" @drop="handleDrop">
+  <div class="upload-container" @onclick="handleDrop">
     <input type="file" id="initialData" @change="handleUpload" />
     <label for="initialData" class="data-upload__text">
       <font-awesome-icon icon="fa-upload" class="fa-2x upload-icon" />
@@ -48,7 +48,7 @@ export default {
                   : rowItem.slice(1).filter((el) => el || el === 0);
             });
             this.mutateInitialData(parsedDatabase);
-            calculateANS(parsedDatabase);
+            calculateANS((Cetha = 1));
             this.mutateANSData(ANSDataTemplate);
             console.log(ANSDataTemplate);
           });
