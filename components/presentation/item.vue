@@ -72,16 +72,6 @@ export default {
     },
     ...mapMutations("ansData", ["mutateANSData", "mutateFilteredANSData"]),
   },
-  computed: {
-    isMultiDimensionalData() {
-      if (typeof this.value === "number") return false;
-      return this.value?.every((item) => Array.isArray(item));
-    },
-    isSingleData() {
-      return !Array.isArray(this.value);
-    },
-    ...mapState("ansData", ["ANSData"]),
-  },
 };
 </script>
 

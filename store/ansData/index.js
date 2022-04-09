@@ -7,7 +7,7 @@ export const state = () => ({
   // ANSResult: ANSDataTemplate,
   ANSData: ANSDataTemplate,
   // 계산용 초기 데이터베이스
-  initialData: ANSDatabase,
+  ANSdatabase: ANSDatabase,
   filteredANSData: null,
   filteredDataName: null,
   filteredDataCount: 0,

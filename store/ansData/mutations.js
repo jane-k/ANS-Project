@@ -1,5 +1,5 @@
-export const mutateInitialData = (state, data) => {
-  state.initialData = data
+export const mutateANSDatabase = (state, data) => {
+  state.ANSdatabase = data
 }
 
 export const mutateANSData = (state, data) => {

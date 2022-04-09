@@ -1,8 +1,25 @@
 <template>
   <div class="presentation-input__container">
-    <div v-if="!isMultiDimensionalData" class="single-dimension-input">
+    <div v-if="isSingleData" class="single-input">
       <input :value="value" @change="onValueChange" />
     </div>
+    <MultiItemList
+      v-else-if="!isMultiDimensionalData"
+      class="single-dimension-input"
+    >
+      <li
+        :key="index"
+        v-for="(item, index) in value"
+        class="display-multi__item"
+      >
+        <p class="multi-data__index">{{ `데이터 ${index + 1}` }}</p>
+        <input
+          class="multi-data__value"
+          :value="item"
+          @change="(e) => onValueChange(e, index)"
+        />
+      </li>
+    </MultiItemList>
     <MultiItemList v-else class="multiple-dimension-input">
       <SelectItem
         :selectItems="value"
@@ -15,13 +32,19 @@
         class="display-multi__item"
       >
         <p class="multi-data__index">{{ `데이터 ${index + 1}` }}</p>
-        <input class="multi-data__value" :value="item" />
+        <input
+          class="multi-data__value"
+          :value="item"
+          @change="(e) => onValueChange(e, index)"
+        />
       </li>
     </MultiItemList>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
+
 export default {
   components: {
     DisplayItem: () => import("./DisplayItem.vue"),
@@ -53,42 +76,50 @@ export default {
   },
   computed: {
     isMultiDimensionalData() {
-      if (typeof this.value === "number") return false;
+      if (!Array.isArray(this.value)) return false;
       return this.value?.every((item) => Array.isArray(item));
     },
     isSingleData() {
       return !Array.isArray(this.value);
     },
+    ...mapState("ansData", ["ANSdatabase"]),
   },
   methods: {
     onSelect(e) {
       this.selectedIndexData = e.target.selectedIndex;
     },
-    onValueChange(e) {
-      if (Array.isArray(this.value)) {
-        let modifiedList = Object.values(this.ANSData).map((el) => {
-          const modifiedValue = [...this.value];
-          modifiedValue[this.selectedIndex] = e.target.value;
-          return el.label === this.label
-            ? {
-                ...el,
-                value: modifiedValue,
-              }
-            : el;
-        });
-        this.mutateANSData(modifiedList);
-        this.filterANSDataList();
+    onValueChange(e, index) {
+      console.log(index);
+      if (this.isSingleData) {
+        const mutatedDatabase = Object.assign(
+          JSON.parse(JSON.stringify(this.ANSdatabase))
+        );
+        mutatedDatabase[this.variable].value = e.target.value;
+        this.mutateANSDatabase(mutatedDatabase);
+      } else if (!this.isMultiDimensionalData) {
+        const mutatedDataList = [...this.value];
+        mutatedDataList[index] = e.target.value;
+
+        const mutatedDatabase = Object.assign(
+          JSON.parse(JSON.stringify(this.ANSdatabase))
+        );
+        mutatedDatabase[this.variable].value = mutatedDataList;
+        this.mutateANSDatabase(mutatedDatabase);
       } else {
-        let modifiedList = Object.values(this.ANSData).map((el) => {
-          return el.label === this.label
-            ? { ...el, value: +e.target.value }
-            : el;
-        });
-        this.mutateANSData(modifiedList);
-        this.filterANSDataList();
+        const mutatedDataList = [...this.value[this.selectedIndexData]];
+        mutatedDataList[index] = e.target.value;
+
+        const mutatedDatabase = Object.assign(
+          JSON.parse(JSON.stringify(this.ANSdatabase))
+        );
+        mutatedDatabase[this.variable].value[this.selectedIndexData] =
+          mutatedDataList;
+        this.mutateANSDatabase(mutatedDatabase);
       }
     },
+    ...mapMutations("ansData", ["mutateANSDatabase"]),
   },
+  mounted() {},
 };
 </script>
 
