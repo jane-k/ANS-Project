@@ -1,6 +1,6 @@
 <template>
   <div class="review-container">
-    <img src="@/assets/images/demo-review-image.png" width="600" />
+    <img src="@/assets/images/demo-review-image.png" width="1000" />
     <div>데이터 리뷰 데모 이미지</div>
   </div>
 </template>
