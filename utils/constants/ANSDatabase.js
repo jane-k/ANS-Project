@@ -1,36 +1,36 @@
 const ANSDatabase = {
   FTRgoal_Start: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "FTRgoal_Start",
     label: "운항시간 절감 목표(시작 년도)",
     value: 40,
   },
   FTRgoal_Fin: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "FTRgoal_Fin",
     label: "운항시간 절감 목표(종료 년도)",
     value: 100,
   },
   Dlygoal_Start: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "Dlygoal_Start",
     label: "지연시간 목표(시작 년도)",
     value: 40,
   },
   Dlygoal_Fin: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "Dlygoal_Fin",
     label: "지연시간 목표(종료 년도)",
     value: 10,
   },
   Time_Pass_S: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "Time_Pass_S",
     label: "영공통과 운항시간",
     value: 30,
   },
   FCE_flight: {
-    type: "-",
+    type: "OUTER",
     variable: "FCE_flight",
     label: "항로 탄소 배출량",
     value: [
@@ -45,7 +45,7 @@ const ANSDatabase = {
     ],
   },
   ACE_TO_flight: {
-    type: "-",
+    type: "OUTER",
     variable: "ACE_TO_flight",
     label: "시간당 이륙 탄소 배출량",
     value: [
@@ -60,7 +60,7 @@ const ANSDatabase = {
     ],
   },
   ACE_LD_flight: {
-    type: "-",
+    type: "OUTER",
     variable: "ACE_LD_flight",
     label: "시간당 착륙 탄소 배출량",
     value: [
@@ -75,7 +75,7 @@ const ANSDatabase = {
     ],
   },
   FU_flight: {
-    type: "-",
+    type: "OUTER",
     variable: "FU_flight",
     label: "항로 이용분포",
     value: [
@@ -90,7 +90,7 @@ const ANSDatabase = {
     ],
   },
   AU_flight: {
-    type: "-",
+    type: "OUTER",
     variable: "AU_flight",
     label: "공항 이용분포",
     value: [
@@ -105,7 +105,7 @@ const ANSDatabase = {
     ],
   },
   N_DD_Flght: {
-    type: "-",
+    type: "OUTER",
     variable: "N_DD_Flght",
     label: "국내선 출발 총 운항편",
     value: [
@@ -120,7 +120,7 @@ const ANSDatabase = {
     ],
   },
   N_DI_Flght: {
-    type: "-",
+    type: "OUTER",
     variable: "N_DI_Flght",
     label: "국제선 출발 총 운항편",
     value: [
@@ -135,7 +135,7 @@ const ANSDatabase = {
     ],
   },
   N_AD_Flght: {
-    type: "-",
+    type: "OUTER",
     variable: "N_AD_Flght",
     label: "국내선 도착 총 운항편",
     value: [
@@ -150,7 +150,7 @@ const ANSDatabase = {
     ],
   },
   N_AI_Flght: {
-    type: "-",
+    type: "OUTER",
     variable: "N_AI_Flght",
     label: "국제선 도착 총 운항편",
     value: [
@@ -165,7 +165,7 @@ const ANSDatabase = {
     ],
   },
   AFT_Dshare: {
-    type: "-",
+    type: "OUTER",
     variable: "AFT_Dshare",
     label: "국내 영공 운항시간 점유율",
     value: [
@@ -174,7 +174,7 @@ const ANSDatabase = {
     ],
   },
   AFT_Ishare: {
-    type: "-",
+    type: "OUTER",
     variable: "AFT_Ishare",
     label: "국제 영공 운항시간 점유율",
     value: [
@@ -183,7 +183,7 @@ const ANSDatabase = {
     ],
   },
   carbonCredit: {
-    type: "-",
+    type: "BASE",
     variable: "carbonCredit",
     label: "탄소 배출권 가격",
     value: [
@@ -192,7 +192,7 @@ const ANSDatabase = {
     ],
   },
   fuelCredit: {
-    type: "-",
+    type: "BASE",
     variable: "fuelCredit",
     label: "연료 가격",
     value: [
@@ -201,7 +201,7 @@ const ANSDatabase = {
     ],
   },
   FFE_flight: {
-    type: "-",
+    type: "BASE",
     variable: "FFE_flight",
     label: "항로 연료 소모량",
     value: [
@@ -216,7 +216,7 @@ const ANSDatabase = {
     ],
   },
   AFE_TO_flight: {
-    type: "-",
+    type: "BASE",
     variable: "AFE_TO_flight",
     label: "이륙 연료 소모량",
     value: [
@@ -231,7 +231,7 @@ const ANSDatabase = {
     ],
   },
   AFE_LD_flight: {
-    type: "-",
+    type: "BASE",
     variable: "AFE_LD_flight",
     label: "착륙 연료 소모량",
     value: [
@@ -246,50 +246,50 @@ const ANSDatabase = {
     ],
   },
   Time_ITO: {
-    type: "-",
+    type: "BASE",
     variable: "Time_ITO",
     label: "국제선 이륙 소요시간",
     value: [3, 3],
   },
   Time_DTO: {
-    type: "-",
+    type: "BASE",
     variable: "Time_DTO",
     label: "국내선 이륙 소요시간",
     value: [3, 3],
   },
   Time_ILD: {
-    type: "-",
+    type: "BASE",
     variable: "Time_ILD",
     label: "국제선 착륙 소요시간",
     value: [3, 3],
   },
   Time_DLD: {
-    type: "-",
+    type: "BASE",
     variable: "Time_DLD",
     label: "국내선 착륙 소요시간",
     value: [3, 3],
   },
   Time_DIRoute: {
-    type: "-",
+    type: "BASE",
     variable: "Time_DIRoute",
     label: "평균 국제선 이륙-항로 운항시간",
     value: [4, 4],
   },
   Time_AIRoute: {
-    type: "-",
+    type: "BASE",
     variable: "Time_AIRoute",
     label: "평균 국제선 착륙-항로 운항시간",
     value: [4, 4],
   },
   Time_DRoute: {
-    type: "-",
+    type: "BASE",
     variable: "Time_DRoute",
     label: "국내선 평균 항로 운항시간",
     value: [4, 4],
   },
 
   N_Pass_Flght: {
-    type: "-",
+    type: "INNER",
     variable: "N_Pass_Flght",
     label: "총 영공통과 운항편",
     value: [
@@ -298,7 +298,7 @@ const ANSDatabase = {
     ],
   },
   OP_DDcost: {
-    type: "-",
+    type: "INNER",
     variable: "OP_DDcost",
     label: "국내선 출발편 시간당 평균 운항 비용",
     value: [
@@ -307,7 +307,7 @@ const ANSDatabase = {
     ],
   },
   OP_DIcost: {
-    type: "-",
+    type: "INNER",
     variable: "OP_DIcost",
     label: "국제선 출발편 시간당 평균 운항 비용",
     value: [
@@ -316,7 +316,7 @@ const ANSDatabase = {
     ],
   },
   OP_ADcost: {
-    type: "-",
+    type: "INNER",
     variable: "OP_ADcost",
     label: "국내선 도착편 시간당 평균 운항 비용",
     value: [
@@ -325,7 +325,7 @@ const ANSDatabase = {
     ],
   },
   OP_AIcost: {
-    type: "-",
+    type: "INNER",
     variable: "OP_AIcost",
     label: "국제선 도착편 시간당 평균 운항 비용",
     value: [
@@ -334,7 +334,7 @@ const ANSDatabase = {
     ],
   },
   Time_DD_Dly: {
-    type: "-",
+    type: "INNER",
     variable: "Time_DD_Dly",
     label: "총 국내선 출발편 감소 지연시간",
     value: [
@@ -343,7 +343,7 @@ const ANSDatabase = {
     ],
   },
   Time_DI_Dly: {
-    type: "-",
+    type: "INNER",
     variable: "Time_DI_Dly",
     label: "총 국제선 출발편 감소 지연시간",
     value: [
@@ -352,7 +352,7 @@ const ANSDatabase = {
     ],
   },
   Time_AD_Dly: {
-    type: "-",
+    type: "INNER",
     variable: "Time_AD_Dly",
     label: "총 국내선 도착편 감소 지연시간",
     value: [
@@ -361,7 +361,7 @@ const ANSDatabase = {
     ],
   },
   Time_AI_Dly: {
-    type: "-",
+    type: "INNER",
     variable: "Time_AI_Dly",
     label: "총 국제선 도착편 감소 지연시간",
     value: [
@@ -370,37 +370,37 @@ const ANSDatabase = {
     ],
   },
   DLY_DD_ANSshare: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "DLY_DD_ANSshare",
     label: "국내선 출발 지연 항행원인 비율",
     value: [5, 5],
   },
   DLY_DI_ANSshare: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "DLY_DI_ANSshare",
     label: "국제선 출발 지연 항행원인 비율",
     value: [5, 5],
   },
   DLY_AD_ANSshare: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "DLY_AD_ANSshare",
     label: "국내선 도착 지연 항행원인 비율",
     value: [5, 5],
   },
   DLY_AI_ANSshare: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "DLY_AI_ANSshare",
     label: "국제선 도착 지연 항행원인 비율",
     value: [5, 5],
   },
   average_AITime: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "average_AITime",
     label: "국제선 도착편 평균 비행시간",
     value: [5, 5],
   },
   DLY_AD_cost_PSG: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "DLY_AD_cost_PSG",
     label: "국내선 도착편 여객 지연비용",
     value: [
@@ -415,7 +415,7 @@ const ANSDatabase = {
     ],
   },
   DLY_AI_cost_PSG: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "DLY_AI_cost_PSG",
     label: "국제선 도착편 여객 지연비용",
     value: [
@@ -445,7 +445,7 @@ const ANSDatabase = {
     ],
   },
   PSG_AI: {
-    type: "-",
+    type: "ASSUMPTION",
     variable: "PSG_AI",
     label: "국제선 도착편 평균 여객수",
     value: [

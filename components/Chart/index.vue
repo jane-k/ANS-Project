@@ -1,9 +1,8 @@
 <template>
   <div class="chart-container">
     <div class="data-selector">
-      <p>데이터 선택</p>
+      <!-- <p>데이터 선택</p> -->
       <!-- <Select /> -->
-
       <div v-if="isCalculationComplete">분석을 완료했습니다.</div>
     </div>
   </div>

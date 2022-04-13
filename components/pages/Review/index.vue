@@ -2,6 +2,7 @@
   <div class="Container">
     <DisplayReview />
     <ul class="button__list">
+      <button @click="SummaryReview">요약 출력</button>
       <button @click="DisplayReview">표준 출력</button>
       <button @click="handleRoute('/data')">선택 출력</button>
       <button @click="handleRoute('/')">돌아가기</button>
