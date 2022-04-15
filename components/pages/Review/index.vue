@@ -1,9 +1,9 @@
 <template>
   <div class="Container">
-    <DisplayReview />
+    <DisplayReview :isDisplayNeed="isDisplayNeed" />
     <ul class="button__list">
-      <button @click="SummaryReview">요약 출력</button>
-      <button @click="DisplayReview">표준 출력</button>
+      <button @click="DisplayData">요약 출력</button>
+      <button @click="DisplayNormal">표준 출력</button>
       <button @click="handleRoute('/data')">선택 출력</button>
       <button @click="handleRoute('/')">돌아가기</button>
     </ul>
@@ -14,12 +14,19 @@
 export default {
   name: "Review",
   components: {
-    // DisplayReview: () => import("@/components/DisplayReview"),
+    //DisplayReview: () => import("@/components/DisplayReview"),
+  },
+  data() {
+    return { isDisplayNeed: false };
   },
   methods: {
     handleRoute(path) {
       this.$router.push(path);
     },
+    DisplayData() {
+      this.isDisplayNeed = true;
+    },
+    DisplayNormal() {},
   },
 };
 </script>

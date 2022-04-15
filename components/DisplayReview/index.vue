@@ -1,12 +1,26 @@
 <template>
   <div class="review-container">
-    <img src="@/assets/images/demo-review-image.png" width="1000" />
+    <img v-if="isDisplayNeed" :src="ImageLocation" width="1000" />
     <div>데이터 리뷰 데모 이미지</div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  components: {
+    Select: () => import("@/components/common/Select"),
+  },
+  data() {
+    return {
+      ImageLocation: require("@/assets/images/demo-review-image.png"),
+    };
+  },
+  props: {
+    isDisplayNeed: {
+      type: Boolean,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
