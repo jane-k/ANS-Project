@@ -89,7 +89,6 @@ export default {
       this.selectedIndexData = e.target.selectedIndex;
     },
     onValueChange(e, index) {
-      console.log(index);
       if (this.isSingleData) {
         const mutatedDatabase = Object.assign(
           JSON.parse(JSON.stringify(this.ANSDatabase))
