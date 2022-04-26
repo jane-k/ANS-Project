@@ -33,8 +33,6 @@ const calculateANS = (Cetha) => {
   ); // FTRgoal_Start, FTRgoal_Fin 추가정의 / 자연로그함수 ln() 확인 / a, b 전역변수 사용가능?
   var b = (1 / YEAR) * (Math.log(Cetha / 0.999) - a);
 
-  console.log(b)
-
   for (let t = 0; t < YEAR; t++) {
     //Flt_Sav 변수(연도별 운함시감 절감률 목표) 추가 정의
     ANSDataTemplate.Flt_Sav.value[t] =
