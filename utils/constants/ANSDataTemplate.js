@@ -7,12 +7,6 @@ const ANSDataTemplate = {
     label: "연도별 운항시간 목표 절감율",
     value: Array(YEAR).fill(0),
   },
-  Flt_Sav_Air: {
-    type: "-",
-    variable: "Flt_Sav_Air",
-    label: "연도별 영공통과 운항시간 목표 절감율",
-    value: Array(YEAR).fill(0),
-  },
   FTR_DDtotal: {
     type: "-",
     variable: "FTR_DDtotal",
