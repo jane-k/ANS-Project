@@ -104,65 +104,41 @@ const ANSDatabase = {
       ],
     ],
   },
-  N_DD_Flght: {
+  N_DD_F: {
     type: "OUTER",
-    variable: "N_DD_Flght",
+    variable: "N_DD_F",
     label: "국내선 출발 총 운항편",
-    value: [
-      [
-        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
-        5, 6, 6, 6, 6, 6,
-      ],
-      [
-        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
-        11, 11, 11, 12, 12, 12, 12, 12,
-      ],
-    ],
+    value: 100,
   },
-  N_DI_Flght: {
+  N_DI_F: {
     type: "OUTER",
-    variable: "N_DI_Flght",
+    variable: "N_DI_F",
     label: "국제선 출발 총 운항편",
-    value: [
-      [
-        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
-        5, 6, 6, 6, 6, 6,
-      ],
-      [
-        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
-        11, 11, 11, 12, 12, 12, 12, 12,
-      ],
-    ],
+    value: 100,
   },
-  N_AD_Flght: {
+  N_AD_F: {
     type: "OUTER",
-    variable: "N_AD_Flght",
+    variable: "N_AD_F",
     label: "국내선 도착 총 운항편",
-    value: [
-      [
-        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
-        5, 6, 6, 6, 6, 6,
-      ],
-      [
-        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
-        11, 11, 11, 12, 12, 12, 12, 12,
-      ],
-    ],
+    value: 100,
   },
-  N_AI_Flght: {
+  N_AI_F: {
     type: "OUTER",
-    variable: "N_AI_Flght",
+    variable: "N_AI_F",
     label: "국제선 도착 총 운항편",
-    value: [
-      [
-        1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5,
-        5, 6, 6, 6, 6, 6,
-      ],
-      [
-        7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
-        11, 11, 11, 12, 12, 12, 12, 12,
-      ],
-    ],
+    value: 100,
+  },
+  r_Dom: {
+    type: "OUTER",
+    variable: "r_Dom",
+    label: "국내선 도착 총 운항편",
+    value: 30,
+  },
+  r_Int: {
+    type: "OUTER",
+    variable: "r_Int",
+    label: "국제선 도착 총 운항편",
+    value: 40,
   },
   AFT_Dshare: {
     type: "OUTER",
@@ -182,23 +158,29 @@ const ANSDatabase = {
       10, 10, 10, 10, 10,
     ],
   },
-  carbonCredit: {
+  carbon: {
     type: "BASE",
-    variable: "carbonCredit",
+    variable: "carbon",
     label: "탄소 배출권 가격",
-    value: [
-      5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9,
-      10, 10, 10, 10, 10,
-    ],
+    value: 100,
   },
-  fuelCredit: {
+  fuel: {
     type: "BASE",
-    variable: "fuelCredit",
+    variable: "fuel",
     label: "연료 가격",
-    value: [
-      5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9,
-      10, 10, 10, 10, 10,
-    ],
+    value: 100,
+  },
+  r_carbon: {
+    type: "BASE",
+    variable: "r_carbon",
+    label: "탄소 배출권 가격",
+    value: 10,
+  },
+  r_fuel: {
+    type: "BASE",
+    variable: "r_fuel",
+    label: "연료 가격",
+    value: 10,
   },
   FFE_flight: {
     type: "BASE",
@@ -287,51 +269,44 @@ const ANSDatabase = {
     label: "국내선 평균 항로 운항시간",
     value: [4, 4],
   },
-
-  N_Pass_Flght: {
+  N_Pass_F: {
     type: "INNER",
-    variable: "N_Pass_Flght",
+    variable: "N_Pass_F",
     label: "총 영공통과 운항편",
     value: [
       10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
       13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
     ],
   },
-  OP_DDcost: {
+  OPR_D: {
     type: "INNER",
-    variable: "OP_DDcost",
+    variable: "OPR_D",
     label: "국내선 출발편 시간당 평균 운항 비용",
     value: [
       10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
       13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
     ],
   },
-  OP_DIcost: {
+  OPR_I: {
     type: "INNER",
-    variable: "OP_DIcost",
+    variable: "OPR_I",
     label: "국제선 출발편 시간당 평균 운항 비용",
     value: [
       10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
       13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
     ],
   },
-  OP_ADcost: {
+  r_OPcost: {
     type: "INNER",
-    variable: "OP_ADcost",
-    label: "국내선 도착편 시간당 평균 운항 비용",
-    value: [
-      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
-      13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
-    ],
-  },
-  OP_AIcost: {
-    type: "INNER",
-    variable: "OP_AIcost",
+    variable: "r_OPcost",
     label: "국제선 도착편 시간당 평균 운항 비용",
-    value: [
-      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
-      13, 13, 14, 14, 14, 14, 14, 15, 16, 17, 18, 19,
-    ],
+    value: 0,
+  },
+  r_Pass: {
+    type: "INNER",
+    variable: "r_Pass",
+    label: "국제선 도착편 시간당 평균 운항 비용",
+    value: 0,
   },
   Time_DD_Dly: {
     type: "INNER",
@@ -458,6 +433,30 @@ const ANSDatabase = {
         11, 11, 11, 12, 12, 12, 12, 12,
       ],
     ],
+  },
+  Safty_Start: {
+    type: "INNER",
+    variable: "Safty_Start",
+    label: "국제선 도착편 시간당 평균 운항 비용",
+    value: 10,
+  },
+  Safty_Fin: {
+    type: "INNER",
+    variable: "Safty_Fin",
+    label: "국제선 도착편 시간당 평균 운항 비용",
+    value: 10,
+  },
+  Safty_cost_M: {
+    type: "INNER",
+    variable: "Safty_cost_M",
+    label: "국제선 도착편 시간당 평균 운항 비용",
+    value: 10,
+  },
+  N_Safty: {
+    type: "INNER",
+    variable: "N_Safty",
+    label: "국제선 도착편 시간당 평균 운항 비용",
+    value: 10,
   },
 };
 
