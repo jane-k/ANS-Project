@@ -44,18 +44,28 @@ export default {
       const { N_DI_Flght, N_AI_Flght, N_DD_Flght, N_AD_Flght } =
         this.ANSDataTemplate;
       console.log(N_DI_Flght, N_AI_Flght, N_DD_Flght, N_AD_Flght);
+      const stepYear = 5;
 
       const res = Array(YEAR)
         .fill(0)
-        .map((item, index) => ({
-          YEAR: new Date().getFullYear() + index,
-          INTER_START: N_DI_Flght.value[0][index],
-          INTER_END: N_AI_Flght.value[0][index],
-          INTER_SUM: N_DI_Flght.value[0][index] + N_AI_Flght.value[0][index],
-          DOMESTIC_START: N_DD_Flght.value[0][index],
-          DOMESTIC_END: N_AD_Flght.value[0][index],
-          DOMESTIC_SUM: N_DD_Flght.value[0][index] + N_AD_Flght.value[0][index],
-        }));
+        .reduce((acc, cur, index) => {
+          if (index % stepYear == 0) {
+            return [
+              ...acc,
+              {
+                YEAR: new Date().getFullYear() + index,
+                INTER_START: N_DI_Flght.value[0][index],
+                INTER_END: N_AI_Flght.value[0][index],
+                INTER_SUM:
+                  N_DI_Flght.value[0][index] + N_AI_Flght.value[0][index],
+                DOMESTIC_START: N_DD_Flght.value[0][index],
+                DOMESTIC_END: N_AD_Flght.value[0][index],
+                DOMESTIC_SUM:
+                  N_DD_Flght.value[0][index] + N_AD_Flght.value[0][index],
+              },
+            ];
+          } else return [...acc];
+        }, []);
 
       this.data = res;
       return res;

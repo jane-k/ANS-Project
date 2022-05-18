@@ -8,14 +8,14 @@ const calculateANS = (Cetha) => {
     (Math.log(0.1) -
       Math.log(
         (ANSDatabase.FTRgoal_Start.value * 1.1) /
-          ANSDatabase.FTRgoal_Fin.value -
-          Cetha
+        ANSDatabase.FTRgoal_Fin.value -
+        Cetha
       )) /
     (ANSDatabase.Time_Pass_S.value - Cetha);
   var b =
     Math.log(
       (ANSDatabase.FTRgoal_Start.value * 1.1) / ANSDatabase.FTRgoal_Fin.value -
-        Cetha
+      Cetha
     ) - a;
 
   for (let t = 0; t < YEAR; t++) {
@@ -44,11 +44,11 @@ const calculateANS = (Cetha) => {
       Temp_CB =
         Temp_CB +
         ANSDatabase.ACE_TO_flight.value[l][k] *
-          ANSDatabase.AU_flight.value[l][k];
+        ANSDatabase.AU_flight.value[l][k];
       Temp_CC =
         Temp_CC +
         ANSDatabase.ACE_LD_flight.value[l][k] *
-          ANSDatabase.AU_flight.value[l][k];
+        ANSDatabase.AU_flight.value[l][k];
     }
     //공항별 이륙, 착륙, 항로의 시간당 탄소배출량 산출  FCE_hour, ACE_TO_hour, ACE_LD_hour 인덱스 t-> l 공항으로 변경
     ANSDataTemplate.FCE_hour.value[l] = Temp_CA / 100.0; // 시간당 항로 탄소배출량
@@ -70,11 +70,11 @@ const calculateANS = (Cetha) => {
       Temp_CB =
         Temp_CB +
         ANSDatabase.AFE_TO_flight.value[l][k] *
-          ANSDatabase.AU_flight.value[l][k];
+        ANSDatabase.AU_flight.value[l][k];
       Temp_CC =
         Temp_CC +
         ANSDatabase.AFE_LD_flight.value[l][k] *
-          ANSDatabase.AU_flight.value[l][k];
+        ANSDatabase.AU_flight.value[l][k];
     }
     //공항별 이륙, 착륙, 항로의 시간당 연료소모량 산출   FFE_hour, AFE_TO_hour, AFE_LD_hour 인덱스 t-> l 공항으로 변경
     ANSDataTemplate.FFE_hour.value[l] = Temp_CA / 100.0; // 시간당 항로 연료소모량
@@ -84,18 +84,18 @@ const calculateANS = (Cetha) => {
 
   for (let l = 0; l < MAX; l++) {
     for (let t = 0; t < YEAR; t++) {
-      ANSDataTemplate.N_DD_Flght.value[i][j] =
+      ANSDataTemplate.N_DD_Flght.value[l][t] =
         ANSDatabase.N_DD_F.value *
-        Math.pow(1.0 + ANSDatabase.r_Dom.value / 100, j);
-      ANSDataTemplate.N_DI_Flght.value[i][j] =
+        Math.pow(1.0 + ANSDatabase.r_Dom.value / 100, t);
+      ANSDataTemplate.N_DI_Flght.value[l][t] =
         ANSDatabase.N_DI_F.value *
-        Math.pow(1.0 + ANSDatabase.r_Int.value / 100, j);
-      ANSDataTemplate.N_AD_Flght.value[i][j] =
+        Math.pow(1.0 + ANSDatabase.r_Int.value / 100, t);
+      ANSDataTemplate.N_AD_Flght.value[l][t] =
         ANSDatabase.N_AD_F.value *
-        Math.pow(1.0 + ANSDatabase.r_Dom.value / 100, j);
-      ANSDataTemplate.N_AI_Flght.value[i][j] =
+        Math.pow(1.0 + ANSDatabase.r_Dom.value / 100, t);
+      ANSDataTemplate.N_AI_Flght.value[l][t] =
         ANSDatabase.N_AI_F.value *
-        Math.pow(1.0 + ANSDatabase.r_Int.value / 100, j);
+        Math.pow(1.0 + ANSDatabase.r_Int.value / 100, t);
     }
   }
 
@@ -351,14 +351,14 @@ const calculateANS = (Cetha) => {
     (Math.log(0.1) -
       Math.log(
         (ANSDatabase.Dlygoal_Fin.value * 1.1) /
-          ANSDatabase.Dlygoal_Start.value -
-          Cetha
+        ANSDatabase.Dlygoal_Start.value -
+        Cetha
       )) /
     (ANSDatabase.Time_Pass_S.value - Cetha);
   var b =
     Math.log(
       (ANSDatabase.Dlygoal_Fin.value * 1.1) / ANSDatabase.Dlygoal_Start.value -
-        Cetha
+      Cetha
     ) - a;
 
   for (let t = 0; t < YEAR; t++) {
@@ -631,13 +631,13 @@ const calculateANS = (Cetha) => {
     (Math.log(0.1) -
       Math.log(
         (ANSDatabase.Safty_Fin.value * 1.1) / ANSDatabase.Safty_Start.value -
-          Cetha
+        Cetha
       )) /
     (ANSDatabase.Time_Pass_S.value - Cetha);
   var b =
     Math.log(
       (ANSDatabase.Safty_Fin.value * 1.1) / ANSDatabase.Safty_Start.value -
-        Cetha
+      Cetha
     ) - a;
   for (let t = 0; t < Year; t++) {
     // 연도별 안전사고 절감률 목표
