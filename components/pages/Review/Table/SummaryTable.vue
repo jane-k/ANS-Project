@@ -25,15 +25,13 @@ export default {
           value: "YEAR",
           align: "center",
         },
-        // TODO: 다른 항목들이 현재 미정 상태로, 정해지는 대로 구현하기
-        // { text: "탄소배출 총배출량", value: "CARBON_TOTAL_DISPOSE" },
-        // { text: "탄소배출 편당 배출량", value: "CARBON_PER_DISPOSE" },
-        { text: "탄소배출 감축량", value: "CARBON_REDUCTION" },
-        // { text: "탄소배출 절감률", value: "CARBON_REDUCTION_RATE" },
-        // { text: "연료 총소비량", value: "FUEL_TOTAL_CONSUME" },
-        // { text: "연료 편당 소모량", value: "FUEL_PER_CONSUME" },
-        { text: "연료 절감량", value: "FUEL_REDUCTION" },
-        // { text: "연료 절감률", value: "FUEL_PER_REDUCTION" },
+        ,
+        { text: "국제 출발", value: "INTER_START" },
+        { text: "국제 도착", value: "INTER_END" },
+        { text: "합계", value: "INTER_SUM" },
+        { text: "국내 출발", value: "DOMESTIC_START" },
+        { text: "국내 도착", value: "DOMESTIC_END" },
+        { text: "합계", value: "DOMESTIC_SUM" },
       ],
       data: [],
     };
@@ -43,58 +41,22 @@ export default {
   },
   methods: {
     computeDataSet() {
-      const {
-        CER_DDamount,
-        CER_DIamount,
-        CER_ADamount,
-        CER_AIamount,
-        CER_DRamount,
-        CER_DIRamount,
-        CER_AIRamount,
-        CER_DDamount_byADLY,
-        CER_DIamount_byADLY,
-        CER_ADamount_byADLY,
-        CER_AIamount_byADLY,
-        CER_AI_Ramount_byADLY,
-        CER_AI_LDamount_byADLY,
-        CER_amount_byAFT,
-
-        FR_DDamount,
-        FR_DIamount,
-        FR_ADamount,
-        FR_AIamount,
-        FR_DRamount,
-        FR_DIRamount,
-        FR_AIRamount,
-        FR_DDamount_byADLY,
-        FR_DIamount_byADLY,
-        FR_ADamount_byADLY,
-        FR_AIamount_byADLY,
-        FR_AI_LDamount_byADLY,
-        FR_AI_Ramount_byADLY,
-        FR_AIcost_byADLY,
-        FR_AI_LDcost_byADLY,
-        FR_AI_Rcost_byADLY,
-        FR_amount_byAFT,
-      } = this.ANSDataTemplate;
-      console.log(this.ANSDataTemplate);
-      const carbonReduction = Array(YEAR).fill(0);
-      for (let i = 0; i < YEAR; i++) {
-        carbonReduction[i] = CER_DDamount.value[i];
-      }
-
-      const fuelReduction = Array(YEAR).fill(0);
-      for (let i = 0; i < YEAR; i++) {
-        fuelReduction[i] = FR_DDamount.value[i];
-      }
+      const { N_DI_Flght, N_AI_Flght, N_DD_Flght, N_AD_Flght } =
+        this.ANSDataTemplate;
+      console.log(N_DI_Flght, N_AI_Flght, N_DD_Flght, N_AD_Flght);
 
       const res = Array(YEAR)
         .fill(0)
         .map((item, index) => ({
           YEAR: new Date().getFullYear() + index,
-          CARBON_REDUCTION: carbonReduction[index],
-          FUEL_REDUCTION: fuelReduction[index],
+          INTER_START: N_DI_Flght.value[0][index],
+          INTER_END: N_AI_Flght.value[0][index],
+          INTER_SUM: N_DI_Flght.value[0][index] + N_AI_Flght.value[0][index],
+          DOMESTIC_START: N_DD_Flght.value[0][index],
+          DOMESTIC_END: N_AD_Flght.value[0][index],
+          DOMESTIC_SUM: N_DD_Flght.value[0][index] + N_AD_Flght.value[0][index],
         }));
+
       this.data = res;
       return res;
     },

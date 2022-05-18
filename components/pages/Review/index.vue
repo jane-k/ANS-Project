@@ -22,6 +22,9 @@ export default {
     };
   },
   methods: {
+    handleRoute(path) {
+      this.$router.push(path);
+    },
     displaySummaryTable() {
       this.tableToDisplay = "SUMMARY_TABLE";
     },
