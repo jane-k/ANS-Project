@@ -54,14 +54,24 @@ export default {
               ...acc,
               {
                 YEAR: new Date().getFullYear() + index,
-                INTER_START: N_DI_Flght.value[0][index],
-                INTER_END: N_AI_Flght.value[0][index],
-                INTER_SUM:
-                  N_DI_Flght.value[0][index] + N_AI_Flght.value[0][index],
-                DOMESTIC_START: N_DD_Flght.value[0][index],
-                DOMESTIC_END: N_AD_Flght.value[0][index],
-                DOMESTIC_SUM:
-                  N_DD_Flght.value[0][index] + N_AD_Flght.value[0][index],
+                INTER_START: Number.parseFloat(
+                  N_DI_Flght.value[0][index]
+                ).toFixed(3),
+                INTER_END: Number.parseFloat(
+                  N_AI_Flght.value[0][index]
+                ).toFixed(3),
+                INTER_SUM: Number.parseFloat(
+                  N_DI_Flght.value[0][index] + N_AI_Flght.value[0][index]
+                ).toFixed(3),
+                DOMESTIC_START: Number.parseFloat(
+                  N_DD_Flght.value[0][index]
+                ).toFixed(3),
+                DOMESTIC_END: Number.parseFloat(
+                  N_AD_Flght.value[0][index]
+                ).toFixed(3),
+                DOMESTIC_SUM: Number.parseFloat(
+                  N_DD_Flght.value[0][index] + N_AD_Flght.value[0][index]
+                ).toFixed(3),
               },
             ];
           } else return [...acc];
