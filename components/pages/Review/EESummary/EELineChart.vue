@@ -1,0 +1,201 @@
+<template>
+  <v-card class="v-card-Chart" max-width="600">
+    <v-sheet class="v-sheet-Chart">
+      <chart-test :chart-data="data"></chart-test>
+    </v-sheet>
+  </v-card>
+</template>
+
+<script>
+import ChartTest from "@/utils/chart/lineChart";
+import { mapState } from "vuex";
+import { YEAR } from "@/utils/constants/config.js";
+
+export default {
+  components: {
+    ChartTest,
+  },
+  data() {
+    return {
+      dataCollection: [
+        {
+          text: "연도",
+          sortable: false,
+          value: "YEAR",
+          align: "center",
+        },
+        { text: "총 운항편수", value: "N_Flight" },
+        { text: "운항 효율성 기대효과", value: "FTR_EE" },
+        { text: "이용자 편의성 기대효과", value: "USER_EE" },
+        { text: "총 기대효과", value: "Total_EE" },
+        { text: "누적 기대효과", value: "ACCUM_EE" },
+      ],
+      data: [],
+    };
+  },
+  created() {
+    this.fillData();
+  },
+  computed: {
+    ...mapState("ansData", ["ANSDataTemplate"]),
+  },
+  methods: {
+    computeDataSet() {
+      const {
+        N_DI_Flght,
+        N_AI_Flght,
+        N_DD_Flght,
+        N_AD_Flght,
+        CER_DDcost,
+        CER_DIcost,
+        CER_ADcost,
+        CER_AIcost,
+        CER_DRcost,
+        CER_DIRcost,
+        CER_AIRcost,
+        FR_DDcost,
+        FR_DIcost,
+        FR_ADcost,
+        FR_AIcost,
+        FR_DRcost,
+        FR_DIRcost,
+        FR_AIRcost,
+        BNF_AD_PSG,
+        BNF_AI_PSG,
+        OPR_DDcost,
+        OPR_DIcost,
+        OPR_AIcost,
+        CER_DDcost_byADLY,
+        CER_DIcost_byADLY,
+        CER_ADcost_byADLY,
+        CER_AI_LDcost_byADLY,
+        CER_AI_Rcost_byADLY,
+        CER_AIcost_byADLY,
+        FR_DDcost_byADLY,
+        FR_DIcost_byADLY,
+        FR_ADcost_byADLY,
+        FR_AI_LDcost_byADLY,
+        FR_AI_Rcost_byADLY,
+        FR_AIcost_byADLY,
+        OPR_ADcost_DLY,
+        OPR_DIcost_DLY,
+        OPR_AIcost_DLY,
+        CER_cost_byAFT,
+        FR_cost_byAFT,
+        Safty_cost,
+      } = this.ANSDataTemplate;
+      const stepYear = 5;
+
+      const res = Array(YEAR)
+        .fill(0)
+        .reduce((acc, cur, index) => {
+          if (index % stepYear == 0) {
+            return [
+              ...acc,
+              {
+                YEAR: new Date().getFullYear() + index + 2,
+                N_Flight: Number.parseFloat(
+                  N_DD_Flght.value[0][index] +
+                    N_AD_Flght.value[0][index] +
+                    N_AI_Flght.value[0][index] +
+                    N_DI_Flght.value[0][index]
+                ).toFixed(3),
+                FTR_EE: Number.parseFloat(
+                  CER_DDcost.value[0][index] +
+                    CER_DIcost.value[0][index] +
+                    CER_ADcost.value[0][index] +
+                    CER_AIcost.value[0][index] +
+                    CER_DRcost.value[0][index] +
+                    CER_DIRcost.value[0][index] +
+                    CER_AIRcost.value[0][index] +
+                    FR_DDcost.value[0][index] +
+                    FR_DIcost.value[0][index] +
+                    FR_ADcost.value[0][index] +
+                    FR_AIcost.value[0][index] +
+                    FR_DRcost.value[0][index] +
+                    FR_DIRcost.value[0][index] +
+                    FR_AIRcost.value[0][index]
+                ).toFixed(3),
+                USER_EE: Number.parseFloat(
+                  N_DI_Flght.value[0][index] + N_AI_Flght.value[0][index]
+                ).toFixed(3),
+                Total_EE: Number.parseFloat(
+                  CER_DDcost.value[0][index] +
+                    CER_DIcost.value[0][index] +
+                    CER_ADcost.value[0][index] +
+                    CER_AIcost.value[0][index] +
+                    CER_DRcost.value[0][index] +
+                    CER_DIRcost.value[0][index] +
+                    CER_AIRcost.value[0][index] +
+                    FR_DDcost.value[0][index] +
+                    FR_DIcost.value[0][index] +
+                    FR_ADcost.value[0][index] +
+                    FR_AIcost.value[0][index] +
+                    FR_DRcost.value[0][index] +
+                    FR_DIRcost.value[0][index] +
+                    FR_AIRcost.value[0][index] +
+                    OPR_DDcost.value[0][index] +
+                    OPR_DIcost.value[0][index] +
+                    OPR_AIcost.value[0][index] +
+                    CER_DDcost_byADLY.value[0][index] +
+                    CER_DIcost_byADLY.value[0][index] +
+                    CER_ADcost_byADLY.value[0][index] +
+                    CER_AI_LDcost_byADLY.value[0][index] +
+                    CER_AI_Rcost_byADLY.value[0][index] +
+                    CER_AIcost_byADLY.value[0][index] +
+                    FR_DDcost_byADLY.value[0][index] +
+                    FR_DIcost_byADLY.value[0][index] +
+                    FR_ADcost_byADLY.value[0][index] +
+                    FR_AI_LDcost_byADLY.value[0][index] +
+                    FR_AI_Rcost_byADLY.value[0][index] +
+                    FR_AIcost_byADLY.value[0][index] +
+                    OPR_ADcost_DLY.value[0][index] +
+                    OPR_DIcost_DLY.value[0][index] +
+                    OPR_AIcost_DLY.value[0][index] +
+                    CER_cost_byAFT.value[index] +
+                    FR_cost_byAFT.value[index] +
+                    Safty_cost.value[index] +
+                    BNF_AD_PSG.value[0][index] +
+                    BNF_AI_PSG.value[0][index]
+                ).toFixed(3),
+                ACCUM_EE: Number.parseFloat(
+                  N_DD_Flght.value[0][index] + N_AD_Flght.value[0][index]
+                ).toFixed(3),
+              },
+            ];
+          } else return [...acc];
+        }, []);
+
+      this.data = res;
+      return res;
+    },
+    fillData() {
+      this.dataCollection = {
+        labels: [2024, 2029, 2034, 2039, 2044, 2049],
+        datasets: [
+          {
+            label: "Graph 1",
+            backgroundColor: "#f87979",
+            data: [this.data.N_AD_Flght],
+          },
+          {
+            label: "Graph 2",
+            backgroundColor: "#f87979",
+            data: [this.data.N_DD_Flght],
+          },
+        ],
+      };
+    },
+    getRandomInt() {
+      return Math.floor(Math.random() * (50 - 4)) + 5;
+    },
+  },
+};
+</script>
+
+<style>
+.small {
+  max-width: 600px;
+  margin: 150px auto;
+}
+</style>

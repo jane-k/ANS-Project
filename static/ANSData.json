@@ -1,0 +1,891 @@
+[
+  {
+    "type": "-",
+    "variable": "연도별 운항시간 목표 절감율",
+    "label": "Flt_Sav",
+    "value": [
+      "14.23",
+      "2084",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500",
+      "2500"
+    ]
+  },
+  {
+    "type": "-",
+    "variable": "FTR_DDtotal",
+    "label": "총 국내선 이륙과정 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_DItotal",
+    "label": "총 국제선 이륙과정 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_ADtotal",
+    "label": "총 국내선 착륙과정 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_AItotal",
+    "label": "총 국제선 착륙과정 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_DRtotal",
+    "label": "총 국내선 항로과정 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_DIRtotal",
+    "label": "총 국제선 이륙-항로과정 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_AIRtotal",
+    "label": "총 국제선 착륙-항로과정 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DDamount",
+    "label": "총 국내선 이륙과정 탄소배출 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DIamount",
+    "label": "총 국제선 이륙과정 탄소배출 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_ADamount",
+    "label": "총 국내선 착륙과정 탄소배출 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AIamount",
+    "label": "총 국제선 착륙과정 탄소배출 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DRamount",
+    "label": "총 국내선 항로과정 탄소배출 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DIRamount",
+    "label": "총 국제선 이륙-항로과정 탄소배출 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AIRamount",
+    "label": "총 국제선 착륙-항로과정 탄소배출 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DDcost",
+    "label": "총 국내선 이륙과정 탄소배출 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DIcost",
+    "label": "총 국제선 이륙과정 탄소배출 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_ADcost",
+    "label": "총 국내선 착륙과정 탄소배출 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AIcost",
+    "label": "총 국제선 착륙과정 탄소배출 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DRcost",
+    "label": "총 국내선 항로과정 탄소배출 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DIRcost",
+    "label": "총 국제선 이륙-항로과정 탄소배출 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AIRcost",
+    "label": "총 국제선 착륙-항로과정 탄소배출 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DDamount",
+    "label": "총 국내선 이륙과정 연료 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DIamount",
+    "label": "총 국제선 이륙과정 연료 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_ADamount",
+    "label": "총 국내선 착륙과정 연료 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AIamount",
+    "label": "총 국제선 착륙과정 연료 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DRamount",
+    "label": "총 국내선 항로과정 연료 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DIRamount",
+    "label": "총 국제선 이륙-항로과정 연료 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AIRamount",
+    "label": "총 국제선 착륙-항로과정 연료 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DDcost",
+    "label": "총 국내선 이륙과정 연료 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DIcost",
+    "label": "총 국제선 이륙과정 연료 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_ADcost",
+    "label": "총 국내선 착륙과정 연료 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AIcost",
+    "label": "총 국제선 착륙과정 연료 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DRcost",
+    "label": "총 국내선 항로과정 연료 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DIRcost",
+    "label": "총 국제선 이륙-항로과정 연료 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AIRcost",
+    "label": "총 국제선 착륙-항로과정 연료 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OPR_DDcost",
+    "label": "총 국내선 이륙과정 운항 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OPR_DIcost",
+    "label": "총 국제선 이륙과정 운항 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OPR_ADcost",
+    "label": "총 국내선 착륙과정 운항 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OPR_DDcost_DLY",
+    "label": "총 국내선 이륙과정 운항 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OPR_DIcost_DLY",
+    "label": "총 국제선 이륙과정 운항 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OPR_ADcost_DLY",
+    "label": "총 국내선 착륙과정 운항 절감비용",
+    "value": []
+  },
+  {
+    "type": "ASSUMPTION",
+    "variable": "TL_DD_Dly",
+    "label": "총 국내선 이륙과정 지연 절감시간",
+    "value": []
+  },
+  {
+    "type": "ASSUMPTION",
+    "variable": "TL_DI_Dly",
+    "label": "총 국제선 이륙과정 지연 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DDamount_byADLY",
+    "label": "총 국내선 출발과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DIamount_byADLY",
+    "label": "총 국제선 출발과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DDamount_byADLY",
+    "label": "총 국내선 출발과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DIamount_byADLY",
+    "label": "총 국제선 출발과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DDcost_byADLY",
+    "label": "총 국내선 출발과정 탄소배출 절감비용(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_DIcost_byADLY",
+    "label": "총 국제선 출발과정 탄소배출 절감비용(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DDcost_byADLY",
+    "label": "총 국내선 출발과정 연료 절감비용(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_DIcost_byADLY",
+    "label": "총 국제선 출발과정 연료 절감비용(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "ASSUMPTION",
+    "variable": "TL_AD_Dly",
+    "label": "총 국내선 도착과정 지연 절감시간",
+    "value": []
+  },
+  {
+    "type": "ASSUMPTION",
+    "variable": "TL_AI_Dly",
+    "label": "총 국제선 도착과정 지연 절감시간",
+    "value": []
+  },
+  {
+    "type": "ASSUMPTION",
+    "variable": "TL_AI_Dly_LD",
+    "label": "총 국제선 도착 착륙과정 지연 절감시간",
+    "value": []
+  },
+  {
+    "type": "ASSUMPTION",
+    "variable": "TL_AI_Dly_R",
+    "label": "총 국제선 도착 항로과정 지연 절감시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_ADamount_byADLY",
+    "label": "총 국내선 도착과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AIamount_byADLY",
+    "label": "총 국제선 도착과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AI_Ramount_byADLY",
+    "label": "총 국내선 도착 항로과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AI_LDamount_byADLY",
+    "label": "총 국제선 도착 착륙과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_ADamount_byADLY",
+    "label": "총 국내선 착륙과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AIamount_byADLY",
+    "label": "총 국제선 착륙과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AI_LDamount_byADLY",
+    "label": "총 국내선 도착 착륙과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AI_Ramount_byADLY",
+    "label": "총 국제선 도착 항로과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_ADcost_byADLY",
+    "label": "총 국내선 도착과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AIcost_byADLY",
+    "label": "총 국제선 도착과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AI_Rcost_byADLY",
+    "label": "총 국내선 도착 항로과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_AI_LDcost_byADLY",
+    "label": "총 국제선 도착 착륙과정 탄소배출 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_ADcost_byADLY",
+    "label": "총 국내선 착륙과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AIcost_byADLY",
+    "label": "총 국제선 착륙과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AI_LDcost_byADLY",
+    "label": "총 국내선 도착 착륙과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_AI_Rcost_byADLY",
+    "label": "총 국제선 도착 항로과정 연료 절감량(지연시간 감소)",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "BNF_AD_PSG",
+    "label": "국내선 도착 지연시간 감소편익",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "BNF_AI_PSG",
+    "label": "국제선 도착 지연시간 감소편익",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_amount_byAFT",
+    "label": "총 영공 통과 탄소배출 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_amount_byAFT",
+    "label": "총 영공 통과 연료 절감량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "CER_cost_byAFT",
+    "label": "총 영공 통과 탄소배출 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FR_cost_byAFT",
+    "label": "총 영공 통과 연료 절감비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "fuelCredit",
+    "label": "연료 가격",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "carbonCredit",
+    "label": "탄소 배출권 가격",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FCE_hour",
+    "label": "공항별 항로의 탄소 배출량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "ACE_TO_hour",
+    "label": "공항별 이륙 시 탄소 배출량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "ACE_LD_hour",
+    "label": "공항별 착륙 시 탄소 배출량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FFE_hour",
+    "label": "공항별 항로의 연료 소모량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "AFE_TO_hour",
+    "label": "공항별 이륙 시 연료 소모량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "AFE_LD_hour",
+    "label": "공항별 착륙 시 연료 소모량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_DRoute",
+    "label": "국내선 평균 항로 운항시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_DIRoute",
+    "label": "국제선 이륙-항로 운항시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_AIRoute",
+    "label": "국제선 착륙-항로 운항시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_ITO",
+    "label": "국제선 이륙 소요시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_ILD",
+    "label": "국제선 착륙 소요시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_DTO",
+    "label": "국내선 이륙 소요시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_DLD",
+    "label": "국내선 착륙 소요시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Avg_DD_Dly",
+    "label": "국내선 출발편 평균 목표 지연시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Avg_DI_Dly",
+    "label": "국제선 출발편 평균 목표 지연시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Avg_AD_Dly",
+    "label": "국내선 도착편 평균 목표 지연시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Avg_AI_Dly",
+    "label": "국제선 도착편 평균 목표 지연시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Avg_AI_Dly_LD",
+    "label": "국제선 도착편 착륙 평균 목표 지연시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Avg_AI_Dly_R",
+    "label": "국제선 도착편 항로 평균 목표 지연시간",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "DLY_AD_cost_PSG",
+    "label": "국내선 도착편 여객지연 비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "DLY_AI_cost_PSG",
+    "label": "국제선 도착편 여객지연 비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "DLY_AD_cost_CRG",
+    "label": "국내선 도착편 화물지연 비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "DLY_AI_cost_CRG",
+    "label": "국제선 도착편 화물지연 비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "DLY_DD_ANSshare",
+    "label": "국내선 출발지연 항행원인 비율",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "DLY_DI_ANSshare",
+    "label": "국제선 출발지연 항행원인 비율",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "DLY_AD_ANSshare",
+    "label": "국내선 도착지연 항행원인 비율",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "DLY_AI_ANSshare",
+    "label": "국제선 도착지연 항행원인 비율",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "N_DI_Flght",
+    "label": "총 국제선 출발편 운항편수",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "N_AI_Flght",
+    "label": "총 국제선 도착편 운항편수",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "N_DD_Flght",
+    "label": "총 국내선 출발편 운항편수",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "N_AD_Flght",
+    "label": "총 국내선 도착편 운항편수",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "N_Pass_Flght",
+    "label": "총 영공통과 운항편수",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OP_DDcost",
+    "label": "국내선 출발편 시간당 평균 운항비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OP_DIcost",
+    "label": "국제선 출발편 시간당 평균 운항비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OP_ADcost",
+    "label": "국내선 도착편 시간당 평균 운항비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "OP_AIcost",
+    "label": "국제선 도착편 시간당 평균 운항비용",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_DDgoal",
+    "label": "국내선 출발편 운항시간 절감목표",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_DIgoal",
+    "label": "국제선 출발편 운항시간 절감목표",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_ADgoal",
+    "label": "국내선 도착편 운항시간 절감목표",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_AIgoal",
+    "label": "국제선 도착편 운항시간 절감목표",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_DRgoal",
+    "label": "국내선 항로 운항시간 절감목표",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_DIRgoal",
+    "label": "국제선 출발편 이륙-항로 운항시간 절감목표",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_AIRgoal",
+    "label": "국제선 도착편 착륙-항로 운항시간 절감목표",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FCE_flight",
+    "label": "공항별 탄소 배출량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "ACE_TO_flight",
+    "label": "공항별 이륙 시 탄소 배출량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "ACE_LD_flight",
+    "label": "공항별 착륙 시 탄소 배출량",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FFE_flight",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "AFE_TO_flight",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "AFE_LD_flight",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FU_flight",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "AU_flight",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTRgoal_Start",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTRgoal_Fin",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Dlygoal_Start",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Dlygoal_Fin",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Dly_Sav",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_Pass_S",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_Pass",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "FTR_Pass",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_DD_Dly",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_DI_Dly",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_AD_Dly",
+    "label": "",
+    "value": []
+  },
+  {
+    "type": "-",
+    "variable": "Time_AI_Dly",
+    "label": "",
+    "value": []
+  }
+]
