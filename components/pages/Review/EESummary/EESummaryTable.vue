@@ -218,7 +218,6 @@ export default {
                     BNF_AI_PSG.value[0][index]
                 ).toFixed(3),
               },
-              console.log(this.data.ACCUM_EE),
             ];
           } else return [...acc];
         }, []);

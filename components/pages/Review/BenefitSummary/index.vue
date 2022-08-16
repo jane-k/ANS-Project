@@ -20,6 +20,9 @@
 
 <script>
 import { xlsx } from "xlsx";
+import { mapState } from "vuex";
+import { YEAR, MAX } from "@/utils/constants/config.js";
+
 export default {
   name: "BenefitSummary",
   components: {
@@ -48,12 +51,305 @@ export default {
       // sheet 생성 - aoa_to_sheet 방식
       const worksheet = xlsx.utils.aoa_to_sheet(BenefitSummaryData);
       // 엑셀 파일에 sheet set(엑셀파일, 시트데이터, 시트명)
-      xlsx.utils.book_append_sheet(book, worksheet, "aoa");
+      xlsx.utils.book_append_sheet(book, worksheet, "사업자별 경제적 편익");
       // 엑셀 다운로드
-      xlsx.writeFile(book, "Result.xlsx");
+      xlsx.writeFile(
+        book,
+        "운항효율성 및 이용편리성에 대한 사업자별 경제적 편익.xlsx"
+      );
     },
     getBenefitSummary() {
       let arr = [];
+      const Year = Array(7).fill(0);
+      const CER_Cost = Array(7).fill(0);
+      const FTR_Cost = Array(7).fill(0);
+      const DTR_Cost = Array(7).fill(0);
+      const INC_Safety = Array(7).fill(0);
+      const ACCUM_Effect = Array(7).fill(0);
+      const PSG_Effect = Array(7).fill(0);
+      const FTR_EE = Array(7).fill(0);
+      const Total_EE = Array(7).fill(0);
+
+      for (let t = 0; t < YEAR; t++) {
+        if (t % 5 == 0) {
+          Year[t / 5] = new Date().getFullYear() + t;
+        }
+        if (t == 29) {
+          Year[(t + 1) / 5] = new Date().getFullYear() + t;
+        }
+      }
+
+      for (let l = 0; l < MAX; l++) {
+        for (let t = 0; t < YEAR; t++) {
+          if (t % 5 == 0) {
+            CER_Cost[t / 5] =
+              CER_Cost[t / 5] +
+              this.ANSDataTemplate.CER_DDcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_DRcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIRcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIRcost.value[l][t] +
+              this.ANSDataTemplate.CER_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_cost_byAFT.value[t];
+          }
+          if (t == 29) {
+            CER_Cost[(t + 1) / 5] =
+              CER_Cost[(t + 1) / 5] +
+              this.ANSDataTemplate.CER_DDcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_DRcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIRcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIRcost.value[l][t] +
+              this.ANSDataTemplate.CER_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_cost_byAFT.value[t];
+          }
+        }
+      }
+
+      for (let l = 0; l < MAX; l++) {
+        for (let t = 0; t < YEAR; t++) {
+          if (t % 5 == 0) {
+            FTR_Cost[t / 5] =
+              FTR_Cost[t / 5] +
+              this.ANSDataTemplate.CER_DDcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_DRcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIRcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DDcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost.value[l][t] +
+              this.ANSDataTemplate.FR_DRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIRcost.value[l][t] +
+              this.ANSDataTemplate.OPR_DDcost.value[l][t] +
+              this.ANSDataTemplate.OPR_DIcost.value[l][t] +
+              this.ANSDataTemplate.OPR_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_cost_byAFT.value[t] +
+              this.ANSDataTemplate.FR_cost_byAFT.value[t];
+          }
+          if (t == 29) {
+            FTR_Cost[(t + 1) / 5] =
+              FTR_Cost[(t + 1) / 5] +
+              this.ANSDataTemplate.CER_DDcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_DRcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIRcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DDcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost.value[l][t] +
+              this.ANSDataTemplate.FR_DRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIRcost.value[l][t] +
+              this.ANSDataTemplate.OPR_DDcost.value[l][t] +
+              this.ANSDataTemplate.OPR_DIcost.value[l][t] +
+              this.ANSDataTemplate.OPR_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_cost_byAFT.value[t] +
+              this.ANSDataTemplate.FR_cost_byAFT.value[t];
+          }
+        }
+      }
+
+      for (let l = 0; l < MAX; l++) {
+        for (let t = 0; t < YEAR; t++) {
+          if (t % 5 == 0) {
+            DTR_Cost[t / 5] =
+              DTR_Cost[t / 5] +
+              this.ANSDataTemplate.CER_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.OPR_ADcost_DLY.value[l][t] +
+              this.ANSDataTemplate.OPR_DIcost_DLY.value[l][t] +
+              this.ANSDataTemplate.OPR_AIcost_DLY.value[l][t];
+          }
+          if (t == 29) {
+            DTR_Cost[(t + 1) / 5] =
+              DTR_Cost[(t + 1) / 5] +
+              this.ANSDataTemplate.CER_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.OPR_ADcost_DLY.value[l][t] +
+              this.ANSDataTemplate.OPR_DIcost_DLY.value[l][t] +
+              this.ANSDataTemplate.OPR_AIcost_DLY.value[l][t];
+          }
+        }
+      }
+
+      for (let l = 0; l < MAX; l++) {
+        for (let t = 0; t < YEAR; t++) {
+          if (t % 5 == 0) {
+            INC_Safety[t / 5] =
+              INC_Safety[t / 5] + this.ANSDataTemplate.Safty_cost.value[t];
+          }
+          if (t == 29) {
+            INC_Safety[(t + 1) / 5] =
+              INC_Safety[(t + 1) / 5] +
+              this.ANSDataTemplate.Safty_cost.value[t];
+          }
+        }
+      }
+      for (let l = 0; l < MAX; l++) {
+        for (let t = 0; t < YEAR; t++) {
+          if (t % 5 == 0) {
+            FTR_EE[t / 5] =
+              FTR_EE[t / 5] +
+              this.ANSDataTemplate.CER_DDcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_DRcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIRcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DDcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost.value[l][t] +
+              this.ANSDataTemplate.FR_DRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIRcost.value[l][t] +
+              this.ANSDataTemplate.OPR_DDcost.value[l][t] +
+              this.ANSDataTemplate.OPR_DIcost.value[l][t] +
+              this.ANSDataTemplate.OPR_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.OPR_ADcost_DLY.value[l][t] +
+              this.ANSDataTemplate.OPR_DIcost_DLY.value[l][t] +
+              this.ANSDataTemplate.OPR_AIcost_DLY.value[l][t] +
+              this.ANSDataTemplate.CER_cost_byAFT.value[t] +
+              this.ANSDataTemplate.FR_cost_byAFT.value[t] +
+              this.ANSDataTemplate.Safty_cost.value[t];
+          }
+          if (t == 29) {
+            FTR_EE[(t + 1) / 5] =
+              FTR_EE[(t + 1) / 5] +
+              this.ANSDataTemplate.CER_DDcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_DRcost.value[l][t] +
+              this.ANSDataTemplate.CER_DIRcost.value[l][t] +
+              this.ANSDataTemplate.CER_AIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DDcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost.value[l][t] +
+              this.ANSDataTemplate.FR_DRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIRcost.value[l][t] +
+              this.ANSDataTemplate.OPR_DDcost.value[l][t] +
+              this.ANSDataTemplate.OPR_DIcost.value[l][t] +
+              this.ANSDataTemplate.OPR_AIcost.value[l][t] +
+              this.ANSDataTemplate.CER_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_DDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AI_LDcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AI_Rcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t] +
+              this.ANSDataTemplate.OPR_ADcost_DLY.value[l][t] +
+              this.ANSDataTemplate.OPR_DIcost_DLY.value[l][t] +
+              this.ANSDataTemplate.OPR_AIcost_DLY.value[l][t] +
+              this.ANSDataTemplate.CER_cost_byAFT.value[t] +
+              this.ANSDataTemplate.FR_cost_byAFT.value[t] +
+              this.ANSDataTemplate.Safty_cost.value[t];
+          }
+        }
+      }
+
+      for (let l = 0; l < MAX; l++) {
+        for (let t = 0; t < YEAR; t++) {
+          if (t % 5 == 0) {
+            PSG_Effect[t / 5] =
+              PSG_Effect[t / 5] +
+              this.ANSDataTemplate.BNF_AD_PSG.value[l][t] +
+              this.ANSDataTemplate.BNF_AI_PSG.value[l][t];
+          }
+          if (t == 29) {
+            PSG_Effect[(t + 1) / 5] =
+              PSG_Effect[(t + 1) / 5] +
+              this.ANSDataTemplate.BNF_AD_PSG.value[l][t] +
+              this.ANSDataTemplate.BNF_AI_PSG.value[l][t];
+          }
+        }
+      }
+
+      for (let t = 0; t < YEAR; t++) {
+        if (t % 5 == 0) {
+          Total_EE[t / 5] = FTR_EE[t / 5] + PSG_Effect[t / 5];
+        }
+        if (t == 29) {
+          Total_EE[(t + 1) / 5] = FTR_EE[(t + 1) / 5] + PSG_Effect[(t + 1) / 5];
+        }
+      }
+
+      for (let t = 0; t < YEAR; t++) {
+        if (t % 5 == 0) {
+          if (t == 0) {
+            ACCUM_Effect[t / 5] = Total_EE[t / 5];
+          } else {
+            ACCUM_Effect[t / 5] = Total_EE[t / 5] + ACCUM_Effect[t / 5 - 1];
+          }
+        }
+        if (t == 29) {
+          ACCUM_Effect[(t + 1) / 5] =
+            Total_EE[(t + 1) / 5] + ACCUM_Effect[(t + 1) / 5 - 1];
+        }
+      }
+
       arr.push([
         "연도",
         "운항편 수",
@@ -66,16 +362,24 @@ export default {
         "편당 연료소비량",
         "연료소비 절감율",
       ]);
-      arr.push(["2024"]);
-      arr.push(["2029"]);
-      arr.push(["2034"]);
-      arr.push(["2039"]);
-      arr.push(["2044"]);
-      arr.push(["2049"]);
+
+      for (let i = 0; i < 7; i++) {
+        arr.push([
+          Year[i],
+          CER_Cost[i],
+          FTR_Cost[i],
+          DTR_Cost[i],
+          INC_Safety[i],
+          ACCUM_Effect[i],
+          PSG_Effect[i],
+        ]);
+      }
+
       return arr;
     },
   },
   computed: {
+    ...mapState("ansData", ["ANSDataTemplate"]),
     dataTypeheaderText() {
       const filteredDataName =
         "운항효율성 및 이용편리성에 대한 사업자별 직접적 경제적 편익";

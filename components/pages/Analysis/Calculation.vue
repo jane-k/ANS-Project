@@ -27,6 +27,7 @@ export default {
       "mutateANSDataTemplate",
     ]),
     calculateANS(Cetha = 1) {
+      const Avg_AI_Dly_LD = Array(MAX).fill(Array(YEAR).fill(0));
       var a =
         (Math.log(0.001) -
           Math.log(
