@@ -9,7 +9,7 @@
         v-for="(item, index) in value"
         class="display-multi__item"
       >
-        <p class="multi-data__index">{{ `데이터 ${index + 1}` }}</p>
+        <p class="multi-data__index">{{ `Data ${index + 1}` }}</p>
         <p class="multi-data__value">{{ item }}</p>
       </li>
     </MultiItemList>

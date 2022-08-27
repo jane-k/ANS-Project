@@ -2,7 +2,7 @@ const ANSDataType = {
   ASSUMPTION: "ASSUMPTION",
   INNER: "INNER",
   OUTER: "OUTER",
-  BASE: "BASE"
-}
+  BASE: "BASE",
+};
 
-export default ANSDataType
+export default ANSDataType;

@@ -11,7 +11,6 @@ const calculateANS = (Cetha) => {
           Cetha
       )) /
     (this.ANSDatabase.Time_Pass_S.value - Cetha);
-  console.log(a);
   var b =
     Math.log(
       (this.ANSDatabase.FTRgoal_Start.value * 1.1) /

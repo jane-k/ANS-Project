@@ -5,7 +5,6 @@
     <ul class="button__list">
       <button @click="handleRoute('/data')">데이터 입력 및 확인</button>
       <button @click="finishCalculation">데이터 분석</button>
-      <button @click="printResultReport">분석결과 출력</button>
       <button @click="handleRoute('/')">돌아가기</button>
     </ul>
   </div>

@@ -343,7 +343,6 @@ export default {
       return res;
     },
     fillData() {
-      console.log(this.data[0].YEAR);
       this.data = {
         labels: [
           this.data[0].YEAR,

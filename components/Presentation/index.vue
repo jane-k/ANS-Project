@@ -44,8 +44,7 @@ export default {
     },
     dataCountHeaderText() {
       return (
-        this.filteredANSData?.length ||
-        Object.values(this.ANSDataTemplate)?.length
+        this.filteredANSData?.length || Object.values(this.ANSDatabase)?.length
       );
     },
   },

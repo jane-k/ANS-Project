@@ -19,7 +19,6 @@ export default {
   created() {
     this.calculateANS();
     this.mutateANSDataTemplate(this.ANSDataTemplate);
-    console.log(this.ANSDataTemplate);
   },
   methods: {
     ...mapMutations("ansData", [
@@ -36,15 +35,12 @@ export default {
               Cetha
           )) /
         (this.ANSDatabase.Time_Pass_S.value - Cetha);
-      console.log(a);
       var b =
         Math.log(
           (this.ANSDatabase.FTRgoal_Fin.value * 1.1) /
             this.ANSDatabase.FTRgoal_Start.value -
             Cetha
         ) - a;
-      console.log(a);
-      console.log(b);
       for (let t = 0; t < YEAR; t++) {
         //Flt_Sav 변수(연도별 운함시감 절감률 목표) 추가 정의
         this.ANSDataTemplate.Flt_Sav.value[t] =

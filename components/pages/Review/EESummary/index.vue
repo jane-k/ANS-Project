@@ -9,7 +9,6 @@
       <div class="result-table">
         <SummaryTable />
         <LineChart />
-        <DoughnutChart />
       </div>
     </div>
     <ul class="button__list">
@@ -29,7 +28,6 @@ export default {
   components: {
     SummaryTable: () => import("./EESummaryTable.vue"),
     LineChart: () => import("./EELineChart.vue"),
-    DoughnutChart: () => import("./EEDoughnutChart.vue"),
   },
   props: {
     tableToDisplay: {

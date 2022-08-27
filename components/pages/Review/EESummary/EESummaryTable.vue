@@ -219,11 +219,11 @@ export default {
             ...acc,
             {
               YEAR: Number.parseInt(Year[index]),
-              N_Flight: Number.parseFloat(N_Flight[index]).toFixed(3),
-              FTR_EE: Number.parseFloat(FTR_EE[index]).toFixed(3),
-              USER_EE: Number.parseFloat(USER_EE[index]).toFixed(3),
-              Total_EE: Number.parseFloat(Total_EE[index]).toFixed(3),
-              ACCUM_EE: Number.parseFloat(ACCUM_EE[index]).toFixed(3),
+              N_Flight: Number.parseFloat(N_Flight[index]).toFixed(2),
+              FTR_EE: Number.parseFloat(FTR_EE[index]).toFixed(2),
+              USER_EE: Number.parseFloat(USER_EE[index]).toFixed(2),
+              Total_EE: Number.parseFloat(Total_EE[index]).toFixed(2),
+              ACCUM_EE: Number.parseFloat(ACCUM_EE[index]).toFixed(2),
             },
           ];
         }, []);

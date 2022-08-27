@@ -2,11 +2,11 @@
   <div class="Container">
     <Presentation />
     <ul class="button__list">
-      <button @click="filterANSDataList('ASSUMPTION')">가정 자료</button>
       <button @click="filterANSDataList('INNER')">내부 추정 자료</button>
       <button @click="filterANSDataList('OUTER')">외생 자료</button>
       <button @click="filterANSDataList('BASE')">기초 자료</button>
       <button @click="filterANSDataList('ALL')">전체보기</button>
+      <button @click="handleRoute('/')">돌아가기</button>
     </ul>
   </div>
 </template>
@@ -14,6 +14,7 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import ANSDataType from "@/utils/constants/ANSDataType";
+import ANSDatabase from "@/utils/constants/ANSDatabase";
 
 export default {
   name: "Data",
@@ -29,8 +30,8 @@ export default {
     },
     filterANSDataList(type) {
       if (type !== "ALL") {
-        const filteredANSData = Object.values(this.ANSDataTemplate).filter(
-          (data) => data.type === type
+        const filteredANSData = Object.values(this.ANSDatabase).filter(
+          (data) => data.type == type
         );
         const filteredDataName = this.setFilteredDataName(type);
         this.mutateFilteredANSData(filteredANSData);
@@ -38,17 +39,13 @@ export default {
         this.mutateFilteredDataName(filteredDataName);
       } else {
         const filteredDataName = "전체 자료 목록";
-        this.mutateFilteredANSData(Object.values(this.ANSDataTemplate));
-        this.mutateFilteredDataCount(
-          Object.values(this.ANSDataTemplate)?.length
-        );
+        this.mutateFilteredANSData(Object.values(this.ANSDatabase));
+        this.mutateFilteredDataCount(Object.values(this.ANSDatabase)?.length);
         this.mutateFilteredDataName(filteredDataName);
       }
     },
     setFilteredDataName(_ANSDataType) {
       switch (_ANSDataType) {
-        case ANSDataType.ASSUMPTION:
-          return "가정 자료 목록";
         case ANSDataType.BASE:
           return "기초 자료 목록";
         case ANSDataType.INNER:
@@ -69,7 +66,7 @@ export default {
     ]),
   },
   computed: {
-    ...mapState("ansData", ["ANSDataTemplate"]),
+    ...mapState("ansData", ["ANSDatabase"]),
   },
 };
 </script>

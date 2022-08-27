@@ -338,12 +338,12 @@ export default {
             ...acc,
             {
               YEAR: Number.parseFloat(Year[index]),
-              CER_Cost: Number.parseFloat(CER_Cost[index]).toFixed(3),
-              FTR_Cost: Number.parseFloat(FTR_Cost[index]).toFixed(3),
-              DTR_Cost: Number.parseFloat(DTR_Cost[index]).toFixed(3),
-              INC_Safety: Number.parseFloat(INC_Safety[index]).toFixed(3),
-              ACCUM_Effect: Number.parseFloat(ACCUM_Effect[index]).toFixed(3),
-              PSG_Effect: Number.parseFloat(PSG_Effect[index]).toFixed(3),
+              CER_Cost: Number.parseFloat(CER_Cost[index]).toFixed(2),
+              FTR_Cost: Number.parseFloat(FTR_Cost[index]).toFixed(2),
+              DTR_Cost: Number.parseFloat(DTR_Cost[index]).toFixed(2),
+              INC_Safety: Number.parseFloat(INC_Safety[index]).toFixed(2),
+              ACCUM_Effect: Number.parseFloat(ACCUM_Effect[index]).toFixed(2),
+              PSG_Effect: Number.parseFloat(PSG_Effect[index]).toFixed(2),
             },
           ];
         }, []);
