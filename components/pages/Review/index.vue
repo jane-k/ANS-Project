@@ -602,10 +602,7 @@ export default {
             this.ANSDataTemplate.TL_DD_Dly.value[l][t] +
             this.ANSDataTemplate.TL_DI_Dly.value[l][t] +
             this.ANSDataTemplate.TL_AD_Dly.value[l][t] +
-            this.ANSDataTemplate.TL_AI_Dly_LD.value[l][t] +
-            this.ANSDataTemplate.TL_AI_Dly_R.value[l][t] +
-            this.ANSDataTemplate.TL_AI_Dly.value[l][t] +
-            this.ANSDataTemplate.FTR_Pass.value[t];
+            this.ANSDataTemplate.TL_AI_Dly.value[l][t];
         }
       }
 
@@ -616,10 +613,7 @@ export default {
             this.ANSDataTemplate.CER_DDcost_byADLY.value[l][t] +
             this.ANSDataTemplate.CER_DIcost_byADLY.value[l][t] +
             this.ANSDataTemplate.CER_ADcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_amount_byAFT.value[t];
+            this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t];
         }
       }
 
@@ -630,10 +624,7 @@ export default {
             this.ANSDataTemplate.FR_DDcost_byADLY.value[l][t] +
             this.ANSDataTemplate.FR_DIcost_byADLY.value[l][t] +
             this.ANSDataTemplate.FR_ADcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AI_LDcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AI_Rcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_amount_byAFT.value[t];
+            this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t];
         }
       }
 
@@ -712,9 +703,7 @@ export default {
         for (let t = 0; t < YEAR; t++) {
           Total_CER_AIamount[t] =
             Total_CER_AIamount[t] +
-            this.ANSDataTemplate.CER_AIamount_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AI_LDamount_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AI_Ramount_byADLY.value[l][t];
+            this.ANSDataTemplate.CER_AIamount_byADLY.value[l][t];
         }
       }
 
@@ -722,9 +711,7 @@ export default {
         for (let t = 0; t < YEAR; t++) {
           Total_CER_AIcost[t] =
             Total_CER_AIcost[t] +
-            this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t];
+            this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t];
         }
       }
 
@@ -827,9 +814,7 @@ export default {
         for (let t = 0; t < YEAR; t++) {
           Total_FR_AIamount[t] =
             Total_FR_AIamount[t] +
-            this.ANSDataTemplate.FR_AIamount_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AI_LDamount_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AI_Ramount_byADLY.value[l][t];
+            this.ANSDataTemplate.FR_AIamount_byADLY.value[l][t];
         }
       }
 
@@ -837,9 +822,7 @@ export default {
         for (let t = 0; t < YEAR; t++) {
           Total_FR_AIcost[t] =
             Total_FR_AIcost[t] +
-            this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AI_LDcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AI_Rcost_byADLY.value[l][t];
+            this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t];
         }
       }
 
@@ -933,9 +916,7 @@ export default {
             this.ANSDataTemplate.TL_DD_Dly.value[l][t] +
             this.ANSDataTemplate.TL_DI_Dly.value[l][t] +
             this.ANSDataTemplate.TL_AD_Dly.value[l][t] +
-            this.ANSDataTemplate.TL_AI_Dly_LD.value[l][t] +
-            this.ANSDataTemplate.TL_AI_Dly_R.value[l][t] +
-            this.ANSDataTemplate.TL_AI_Dly.value[l][t] +
+            +this.ANSDataTemplate.TL_AI_Dly.value[l][t] +
             this.ANSDataTemplate.FTR_Pass.value[t];
         }
       }

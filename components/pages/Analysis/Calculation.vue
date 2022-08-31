@@ -25,10 +25,9 @@ export default {
       "mutateFilteredANSData",
       "mutateANSDataTemplate",
     ]),
-    calculateANS(Cetha = 1) {
-      const Avg_AI_Dly_LD = Array(MAX).fill(Array(YEAR).fill(0));
+    calculateANS(Cetha = 1.0) {
       var a =
-        (Math.log(0.001) -
+        (Math.log(0.1) -
           Math.log(
             (this.ANSDatabase.FTRgoal_Fin.value * 1.1) /
               this.ANSDatabase.FTRgoal_Start.value -
@@ -52,14 +51,14 @@ export default {
       //시간당 편균 탄소배출량, 연료소모량 계산, 임시 변수 정의
 
       // 공항별 항공기 기종별 시간당 탄소 배출량, 연료 소모량 기반으로 시간당 산출: 출도착, 항로 구분
-      for (let l = 0; l < N_AC; l++) {
+      for (let l = 0; l < MAX; l++) {
         // 공항별 시간당 탄소배출량
 
         let Temp_CA = 0.0,
           Temp_CB = 0.0,
           Temp_CC = 0.0; // 중간 계산용 임시변수
 
-        for (let k = 0; k < YEAR; k++) {
+        for (let k = 0; k < N_AC; k++) {
           // N_AC - 항공기 기종 정의, 나머지 인덱스 재 정의
           Temp_CA =
             Temp_CA +
@@ -170,7 +169,7 @@ export default {
             ((this.ANSDataTemplate.N_DD_Flght.value[l][t] +
               this.ANSDataTemplate.N_AD_Flght.value[l][t]) /
               2) *
-            this.ANSDataTemplate.FTR_DDgoal.value[l][t]; // 국내선 항로과정 총절감시간 FTR_DRtotal 추가정의
+            this.ANSDataTemplate.FTR_DRgoal.value[l][t]; // 국내선 항로과정 총절감시간 FTR_DRtotal 추가정의
           this.ANSDataTemplate.FTR_DItotal.value[l][t] =
             this.ANSDataTemplate.N_DI_Flght.value[l][t] *
             this.ANSDataTemplate.FTR_DIgoal.value[l][t]; // 국제선 이륙과정 총절감시간
@@ -181,7 +180,7 @@ export default {
             this.ANSDataTemplate.N_AI_Flght.value[l][t] *
             this.ANSDataTemplate.FTR_AIgoal.value[l][t]; // 국제선 착률과정 총절감시간
           this.ANSDataTemplate.FTR_AIRtotal.value[l][t] =
-            this.ANSDataTemplate.N_DI_Flght.value[l][t] *
+            this.ANSDataTemplate.N_AI_Flght.value[l][t] *
             this.ANSDataTemplate.FTR_AIRgoal.value[l][t]; // 국제선 착륙-항로과정 총절감시간  FTR_AIRtotal 추가정의
         }
       }
@@ -337,6 +336,15 @@ export default {
             (this.ANSDataTemplate.fuelCredit.value[t] *
               this.ANSDataTemplate.CER_AIRamount.value[l][t]) /
             1000000.0; // 국제선 도착-항로 총연료비절감   FR_AIRcost  추가정의
+          console.log(
+            this.ANSDataTemplate.FR_DDcost.value[l][t] +
+              this.ANSDataTemplate.FR_ADcost.value[l][t] +
+              this.ANSDataTemplate.FR_DRcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIcost.value[l][t] +
+              this.ANSDataTemplate.FR_DIRcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIcost.value[l][t] +
+              this.ANSDataTemplate.FR_AIRcost.value[l][t]
+          );
         }
       }
       for (let i = 0; i < YEAR; i++) {
@@ -361,17 +369,17 @@ export default {
               this.ANSDataTemplate.FTR_ADtotal.value[l][t] +
               this.ANSDataTemplate.FTR_DRtotal.value[l][t]) *
               this.ANSDataTemplate.OP_DDcost.value[t]) /
-            1000.0; // 국내선 운항비용 절감
+            1000000.0; // 국내선 운항비용 절감
           this.ANSDataTemplate.OPR_DIcost.value[l][t] =
             ((this.ANSDataTemplate.FTR_DItotal.value[l][t] +
               this.ANSDataTemplate.FTR_DIRtotal.value[l][t]) *
               this.ANSDataTemplate.OP_DIcost.value[t]) /
-            1000.0; // 국제선 출발편 운항비용 절감
+            1000000.0; // 국제선 출발편 운항비용 절감
           this.ANSDataTemplate.OPR_AIcost.value[l][t] =
             ((this.ANSDataTemplate.FTR_AItotal.value[l][t] +
               this.ANSDataTemplate.FTR_AIRtotal.value[l][t]) *
               this.ANSDataTemplate.OP_AIcost.value[t]) /
-            1000.0; // 국제선 도착편 운항비용 절감
+            1000000.0; // 국제선 도착편 운항비용 절감
         }
       }
 
@@ -380,7 +388,7 @@ export default {
       // 1_지연시간 감소율 목표 계산 : Logistic 모형 적용
 
       var a =
-        (Math.log(0.001) -
+        (Math.log(0.1) -
           Math.log(
             (this.ANSDatabase.Dlygoal_Fin.value * 1.1) /
               this.ANSDatabase.Dlygoal_Start.value -
@@ -440,11 +448,11 @@ export default {
               this.ANSDataTemplate.TL_DI_Dly.value[l][t]) /
             1000.0; // 국제선 총 공항 출발 탄소배출 절감량
           this.ANSDataTemplate.FR_DDamount_byADLY.value[l][t] =
-            (this.ANSDataTemplate.AFE_TO_hour.value[t] *
+            (this.ANSDataTemplate.AFE_TO_hour.value[l] *
               this.ANSDataTemplate.TL_DD_Dly.value[l][t]) /
             1000.0; // 국내선 총 공항 출발 연료 절감량
           this.ANSDataTemplate.FR_DIamount_byADLY.value[l][t] =
-            (this.ANSDataTemplate.AFE_TO_hour.value[t] *
+            (this.ANSDataTemplate.AFE_TO_hour.value[l] *
               this.ANSDataTemplate.TL_DI_Dly.value[l][t]) /
             1000.0; // 국제선 총 공항 출발 연료 절감량
 
@@ -481,12 +489,9 @@ export default {
             (100.0 * 60.0); // 국내선 도착 지연감소 시간
 
           let FIR_Share =
+            this.ANSDatabase.Time_AIRoute.value[l] /
             (this.ANSDatabase.Time_AIRoute.value[l] +
-              this.ANSDatabase.Time_ILD.value[l]) /
-            this.ANSDatabase.average_AITime.value[l]; // 국제선 도착 운항시간중 국내 공역 운항비율
-          //  let FIR_Share =
-          //   this.ANSDatabase.Time_AIRoute.value[l] /
-          //   (this.ANSDatabase.Time_AIRoute.value[l] + this.ANSDatabase.Time_ILD.value[l]);
+              this.ANSDatabase.Time_ILD.value[l]); // 국제선 도착 운항시간중 국내 공역 운항비율
           let FIR_LD_Share =
             this.ANSDatabase.Time_ILD.value[l] /
             (this.ANSDatabase.Time_AIRoute.value[l] +
@@ -500,12 +505,12 @@ export default {
           this.ANSDataTemplate.Avg_AI_Dly_LD.value[l][t] =
             this.ANSDataTemplate.Avg_AI_Dly.value[l][t] * FIR_LD_Share; // 국제선 도착 착륙(공항)과정 지연시간 감소
           this.ANSDataTemplate.Avg_AI_Dly_R.value[l][t] =
-            this.ANSDataTemplate.Avg_AI_Dly.value[l][t] * (1 - FIR_LD_Share); // 국제선 도착 항로 지연시간 감소
+            this.ANSDataTemplate.Avg_AI_Dly.value[l][t] * FIR_Share; // 국제선 도착 항로 지연시간 감소
 
           // 총출발지연 감소 시간을 국내선, 국제선으로 구분하여 산출
           this.ANSDataTemplate.TL_AD_Dly.value[l][t] =
             this.ANSDataTemplate.N_AD_Flght.value[l][t] *
-            this.ANSDataTemplate.Avg_AI_Dly.value[l][t]; // 국내선 총 도착 지연시간 절감
+            this.ANSDataTemplate.Avg_AD_Dly.value[l][t]; // 국내선 총 도착 지연시간 절감
           this.ANSDataTemplate.TL_AI_Dly_LD.value[l][t] =
             this.ANSDataTemplate.N_AI_Flght.value[l][t] *
             this.ANSDataTemplate.Avg_AI_Dly_LD.value[l][t]; // 국제선 총 도착 착륙과정 지연시간 절감
@@ -536,23 +541,23 @@ export default {
             1000.0; // 국제선 총 도착 항로 탄소배출 절감량
           this.ANSDataTemplate.CER_AIamount_byADLY.value[l][t] =
             this.ANSDataTemplate.CER_AI_LDamount_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AI_Ramount_byADLY.value[l][t] / 1000.0; // 국제선 총 도착 탄소배출 절감량
+            this.ANSDataTemplate.CER_AI_Ramount_byADLY.value[l][t]; // 국제선 총 도착 탄소배출 절감량
 
           this.ANSDataTemplate.FR_ADamount_byADLY.value[l][t] =
-            (this.ANSDataTemplate.AFE_TO_hour.value[t] *
+            (this.ANSDataTemplate.AFE_TO_hour.value[l] *
               this.ANSDataTemplate.TL_AD_Dly.value[l][t]) /
             1000.0; // 국내선 총 도착 연료 절감량
           this.ANSDataTemplate.FR_AI_LDamount_byADLY.value[l][t] =
-            (this.ANSDataTemplate.AFE_TO_hour.value[t] *
+            (this.ANSDataTemplate.AFE_TO_hour.value[l] *
               this.ANSDataTemplate.TL_AI_Dly_LD.value[l][t]) /
             1000.0; // 국제선 총 공항 도착(착륙) 연료 절감량
           this.ANSDataTemplate.FR_AI_Ramount_byADLY.value[l][t] =
-            (this.ANSDataTemplate.FFE_hour.value[t] *
+            (this.ANSDataTemplate.FFE_hour.value[l] *
               this.ANSDataTemplate.TL_AI_Dly_R.value[l][t]) /
             1000.0; // 국제선 총 도착 항로 연료 절감량
           this.ANSDataTemplate.FR_AIamount_byADLY.value[l][t] =
             this.ANSDataTemplate.FR_AI_LDamount_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AI_Ramount_byADLY.value[l][t] / 1000.0; // 국제선 총 도착 연료 절감량
+            this.ANSDataTemplate.FR_AI_Ramount_byADLY.value[l][t]; // 국제선 총 도착 연료 절감량
 
           this.ANSDataTemplate.CER_ADcost_byADLY.value[l][t] =
             (this.ANSDataTemplate.carbonCredit.value[t] *
@@ -568,7 +573,7 @@ export default {
             1000000.0; // 국제선 총 도착 항로 탄소배출 절감비용
           this.ANSDataTemplate.CER_AIcost_byADLY.value[l][t] =
             this.ANSDataTemplate.CER_AI_LDcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t] / 1000000.0; // 국제선 총 도착 탄소배출 절감비용
+            this.ANSDataTemplate.CER_AI_Rcost_byADLY.value[l][t]; // 국제선 총 도착 탄소배출 절감비용
 
           this.ANSDataTemplate.FR_ADcost_byADLY.value[l][t] =
             (this.ANSDataTemplate.fuelCredit.value[t] *
@@ -584,7 +589,7 @@ export default {
             1000000.0; // 국제선 총 공항 도착 연료 절감비용
           this.ANSDataTemplate.FR_AIcost_byADLY.value[l][t] =
             this.ANSDataTemplate.FR_AI_LDcost_byADLY.value[l][t] +
-            this.ANSDataTemplate.FR_AI_Rcost_byADLY.value[l][t] / 1000000.0; // 국제선 총 도착 연료 절감비용
+            this.ANSDataTemplate.FR_AI_Rcost_byADLY.value[l][t]; // 국제선 총 도착 연료 절감비용
         }
       }
 
@@ -596,15 +601,15 @@ export default {
           this.ANSDataTemplate.OPR_ADcost_DLY.value[l][t] =
             (this.ANSDataTemplate.TL_AD_Dly.value[l][t] *
               this.ANSDataTemplate.OP_DDcost.value[t]) /
-            1000.0; // 국내선 지연감소 운항비 절감
+            1000000.0; // 국내선 지연감소 운항비 절감
           this.ANSDataTemplate.OPR_DIcost_DLY.value[l][t] =
             (this.ANSDataTemplate.TL_DI_Dly.value[l][t] *
               this.ANSDataTemplate.OP_DIcost.value[t]) /
-            1000.0; // 국제선 출발지연 감소 운항비 절감
+            1000000.0; // 국제선 출발지연 감소 운항비 절감
           this.ANSDataTemplate.OPR_AIcost_DLY.value[l][t] =
             (this.ANSDataTemplate.TL_AI_Dly.value[l][t] *
-              this.ANSDataTemplate.OP_ADcost.value[t]) /
-            1000.0; // 국제선 도착지연 감소 운항비 절감
+              this.ANSDataTemplate.OP_AIcost.value[t]) /
+            1000000.0; // 국제선 도착지연 감소 운항비 절감
         }
       }
 
@@ -613,14 +618,14 @@ export default {
       for (let l = 0; l < MAX; l++) {
         for (let t = 0; t < YEAR; t++) {
           this.ANSDataTemplate.BNF_AD_PSG.value[l][t] =
-            (this.ANSDatabase.PSG_AD.value[l][t] *
+            (this.ANSDatabase.PSG_AD.value[l] *
               this.ANSDataTemplate.TL_AD_Dly.value[l][t] *
-              this.ANSDatabase.DLY_AD_cost_PSG.value[l][t]) /
+              this.ANSDatabase.DLY_AD_cost_PSG.value[l]) /
             1000000.0; // 국내선 도착지연 감소편익(여객)
           this.ANSDataTemplate.BNF_AI_PSG.value[l][t] =
-            (this.ANSDatabase.PSG_AI.value[l][t] *
+            (this.ANSDatabase.PSG_AI.value[l] *
               this.ANSDataTemplate.TL_AI_Dly.value[l][t] *
-              this.ANSDatabase.DLY_AI_cost_PSG.value[l][t]) /
+              this.ANSDatabase.DLY_AI_cost_PSG.value[l]) /
             1000000.0; // 국제선 도착지연 감소편익(여객)
 
           // BNF_AD_CRG[l][t] = CRG_AD[l][t] * TL_AD_Dly[l][t](화물) * DLY_AD_cost_CRG[l][t];   // 국내선 도착지연 감소편익(화물) 2차
@@ -639,36 +644,37 @@ export default {
             Math.pow(1.0 + this.ANSDatabase.r_Pass.value / 100.0, t); // 총 영공통과 항공편수 //추가변수
         }
       }
+      for (let l = 0; l < MAX; l++) {
+        for (let t = 0; t < YEAR; t++) {
+          this.ANSDataTemplate.Time_Pass.value[t] =
+            this.ANSDataTemplate.Flt_Sav.value[t] *
+            this.ANSDatabase.Time_Pass_S.value; // 영공통과 시간 절감
+          this.ANSDataTemplate.FTR_Pass.value[t] =
+            (this.ANSDataTemplate.N_Pass_Flght.value[t] *
+              this.ANSDataTemplate.Time_Pass.value[t]) /
+            60.0; // 총 영공통과 운항시간 절감
 
-      for (let t = 0; t < YEAR; t++) {
-        this.ANSDataTemplate.Time_Pass.value[t] =
-          this.ANSDataTemplate.Flt_Sav.value[t] *
-          this.ANSDatabase.Time_Pass_S.value; // 영공통과 시간 절감
-        this.ANSDataTemplate.FTR_Pass.value[t] =
-          (this.ANSDataTemplate.N_Pass_Flght.value[t] *
-            this.ANSDataTemplate.Time_Pass.value[t]) /
-          60.0; // 총 영공통과 운항시간 절감
+          this.ANSDataTemplate.CER_amount_byAFT.value[t] =
+            (this.ANSDataTemplate.FCE_hour.value[l] *
+              this.ANSDataTemplate.FTR_Pass.value[t]) /
+            1000.0; // 총 영공통과 탄소배출 감소
+          this.ANSDataTemplate.CER_cost_byAFT.value[t] =
+            (this.ANSDataTemplate.carbonCredit.value[t] *
+              this.ANSDataTemplate.CER_amount_byAFT.value[t]) /
+            1000000.0; // 총 영공통과 탄소배출 비용 감소
 
-        this.ANSDataTemplate.CER_amount_byAFT.value[t] =
-          (this.ANSDataTemplate.FCE_hour.value[t] *
-            this.ANSDataTemplate.FTR_Pass.value[t]) /
-          1000.0; // 총 영공통과 탄소배출 감소
-        this.ANSDataTemplate.CER_cost_byAFT.value[t] =
-          (this.ANSDataTemplate.carbonCredit.value[t] *
-            this.ANSDataTemplate.CER_amount_byAFT.value[t]) /
-          1000000.0; // 총 영공통과 탄소배출 비용 감소
-
-        this.ANSDataTemplate.FR_amount_byAFT.value[t] =
-          (this.ANSDataTemplate.FFE_hour.value[t] *
-            this.ANSDataTemplate.FTR_Pass.value[t]) /
-          1000.0; // 총 영공통과 연료소모 감소
-        this.ANSDataTemplate.FR_cost_byAFT.value[t] =
-          (this.ANSDataTemplate.fuelCredit.value[t] *
-            this.ANSDataTemplate.FR_amount_byAFT.value[t]) /
-          1000000.0; // 총 영공통과 연료비 절감}
+          this.ANSDataTemplate.FR_amount_byAFT.value[t] =
+            (this.ANSDataTemplate.FFE_hour.value[l] *
+              this.ANSDataTemplate.FTR_Pass.value[t]) /
+            1000.0; // 총 영공통과 연료소모 감소
+          this.ANSDataTemplate.FR_cost_byAFT.value[t] =
+            (this.ANSDataTemplate.fuelCredit.value[t] *
+              this.ANSDataTemplate.FR_amount_byAFT.value[t]) /
+            1000000.0; // 총 영공통과 연료비 절감}
+        }
       }
       var a =
-        (Math.log(0.001) -
+        (Math.log(0.1) -
           Math.log(
             (this.ANSDatabase.Safty_Fin.value * 1.1) /
               this.ANSDatabase.Safty_Start.value -

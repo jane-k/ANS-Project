@@ -137,22 +137,21 @@ export default {
         for (let t = 0; t < YEAR; t++) {
           if (t % 5 == 0) {
             CE_Flight[t / 5] =
-              (CE_Flight[t / 5] +
-                this.ANSDataTemplate.CER_DDamount.value[l][t] +
-                this.ANSDataTemplate.CER_ADamount.value[l][t] +
-                this.ANSDataTemplate.CER_DRamount.value[l][t] +
-                this.ANSDataTemplate.CER_DIamount.value[l][t] +
-                this.ANSDataTemplate.CER_DIRamount.value[l][t] +
-                this.ANSDataTemplate.CER_AIamount.value[l][t] +
-                this.ANSDataTemplate.CER_AIRamount.value[l][t] +
-                this.ANSDataTemplate.CER_DDamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_DIamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_ADamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_AI_LDamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_AI_Ramount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_AIamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_amount_byAFT.value[t] -
-                CE_Total) /
+              (CE_Total -
+                (this.ANSDataTemplate.CER_DDamount.value[l][t] +
+                  this.ANSDataTemplate.CER_ADamount.value[l][t] +
+                  this.ANSDataTemplate.CER_DRamount.value[l][t] +
+                  this.ANSDataTemplate.CER_DIamount.value[l][t] +
+                  this.ANSDataTemplate.CER_DIRamount.value[l][t] +
+                  this.ANSDataTemplate.CER_AIamount.value[l][t] +
+                  this.ANSDataTemplate.CER_AIRamount.value[l][t] +
+                  this.ANSDataTemplate.CER_DDamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_DIamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_ADamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_AI_LDamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_AI_Ramount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_AIamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_amount_byAFT.value[t])) /
               (this.ANSDataTemplate.N_DD_Flght.value[l][t] +
                 this.ANSDataTemplate.N_AD_Flght.value[l][t] +
                 this.ANSDataTemplate.N_AI_Flght.value[l][t] +
@@ -160,22 +159,21 @@ export default {
           }
           if (t == 29) {
             CE_Flight[(t + 1) / 5] =
-              (CE_Flight[(t + 1) / 5] +
-                this.ANSDataTemplate.CER_DDamount.value[l][t] +
-                this.ANSDataTemplate.CER_ADamount.value[l][t] +
-                this.ANSDataTemplate.CER_DRamount.value[l][t] +
-                this.ANSDataTemplate.CER_DIamount.value[l][t] +
-                this.ANSDataTemplate.CER_DIRamount.value[l][t] +
-                this.ANSDataTemplate.CER_AIamount.value[l][t] +
-                this.ANSDataTemplate.CER_AIRamount.value[l][t] +
-                this.ANSDataTemplate.CER_DDamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_DIamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_ADamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_AI_LDamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_AI_Ramount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_AIamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.CER_amount_byAFT.value[t] -
-                CE_Total) /
+              (CE_Total -
+                (this.ANSDataTemplate.CER_DDamount.value[l][t] +
+                  this.ANSDataTemplate.CER_ADamount.value[l][t] +
+                  this.ANSDataTemplate.CER_DRamount.value[l][t] +
+                  this.ANSDataTemplate.CER_DIamount.value[l][t] +
+                  this.ANSDataTemplate.CER_DIRamount.value[l][t] +
+                  this.ANSDataTemplate.CER_AIamount.value[l][t] +
+                  this.ANSDataTemplate.CER_AIRamount.value[l][t] +
+                  this.ANSDataTemplate.CER_DDamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_DIamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_ADamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_AI_LDamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_AI_Ramount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_AIamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.CER_amount_byAFT.value[t])) /
               (this.ANSDataTemplate.N_DD_Flght.value[l][t] +
                 this.ANSDataTemplate.N_AD_Flght.value[l][t] +
                 this.ANSDataTemplate.N_AI_Flght.value[l][t] +
@@ -187,10 +185,10 @@ export default {
       for (let l = 0; l < MAX; l++) {
         for (let t = 0; t < YEAR; t++) {
           if (t % 5 == 0) {
-            CER_Rate[t / 5];
+            CER_Rate[t / 5] = (CER_Total[t / 5] / CE_Total) * 100;
           }
           if (t == 29) {
-            CER_Rate[(t + 1) / 5];
+            CER_Rate[(t + 1) / 5] = (CER_Total[(t + 1) / 5] / CE_Total) * 100;
           }
         }
       }
@@ -246,22 +244,21 @@ export default {
         for (let t = 0; t < YEAR; t++) {
           if (t % 5 == 0) {
             FE_Flight[t / 5] =
-              (FE_Flight[t / 5] +
-                this.ANSDataTemplate.FR_DDamount.value[l][t] +
-                this.ANSDataTemplate.FR_ADamount.value[l][t] +
-                this.ANSDataTemplate.FR_DRamount.value[l][t] +
-                this.ANSDataTemplate.FR_DIamount.value[l][t] +
-                this.ANSDataTemplate.FR_DIRamount.value[l][t] +
-                this.ANSDataTemplate.FR_AIamount.value[l][t] +
-                this.ANSDataTemplate.FR_AIRamount.value[l][t] +
-                this.ANSDataTemplate.FR_DDamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_DIamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_ADamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_AI_LDamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_AI_Ramount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_AIamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_amount_byAFT.value[t] -
-                FE_Total) /
+              (FE_Total -
+                (this.ANSDataTemplate.FR_DDamount.value[l][t] +
+                  this.ANSDataTemplate.FR_ADamount.value[l][t] +
+                  this.ANSDataTemplate.FR_DRamount.value[l][t] +
+                  this.ANSDataTemplate.FR_DIamount.value[l][t] +
+                  this.ANSDataTemplate.FR_DIRamount.value[l][t] +
+                  this.ANSDataTemplate.FR_AIamount.value[l][t] +
+                  this.ANSDataTemplate.FR_AIRamount.value[l][t] +
+                  this.ANSDataTemplate.FR_DDamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_DIamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_ADamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_AI_LDamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_AI_Ramount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_AIamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_amount_byAFT.value[t])) /
               (this.ANSDataTemplate.N_DD_Flght.value[l][t] +
                 this.ANSDataTemplate.N_AD_Flght.value[l][t] +
                 this.ANSDataTemplate.N_AI_Flght.value[l][t] +
@@ -269,22 +266,21 @@ export default {
           }
           if (t == 29) {
             FE_Flight[(t + 1) / 5] =
-              (FE_Flight[(t + 1) / 5] +
-                this.ANSDataTemplate.FR_DDamount.value[l][t] +
-                this.ANSDataTemplate.FR_ADamount.value[l][t] +
-                this.ANSDataTemplate.FR_DRamount.value[l][t] +
-                this.ANSDataTemplate.FR_DIamount.value[l][t] +
-                this.ANSDataTemplate.FR_DIRamount.value[l][t] +
-                this.ANSDataTemplate.FR_AIamount.value[l][t] +
-                this.ANSDataTemplate.FR_AIRamount.value[l][t] +
-                this.ANSDataTemplate.FR_DDamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_DIamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_ADamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_AI_LDamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_AI_Ramount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_AIamount_byADLY.value[l][t] +
-                this.ANSDataTemplate.FR_amount_byAFT.value[t] -
-                FE_Total) /
+              (FE_Total -
+                (this.ANSDataTemplate.FR_DDamount.value[l][t] +
+                  this.ANSDataTemplate.FR_ADamount.value[l][t] +
+                  this.ANSDataTemplate.FR_DRamount.value[l][t] +
+                  this.ANSDataTemplate.FR_DIamount.value[l][t] +
+                  this.ANSDataTemplate.FR_DIRamount.value[l][t] +
+                  this.ANSDataTemplate.FR_AIamount.value[l][t] +
+                  this.ANSDataTemplate.FR_AIRamount.value[l][t] +
+                  this.ANSDataTemplate.FR_DDamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_DIamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_ADamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_AI_LDamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_AI_Ramount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_AIamount_byADLY.value[l][t] +
+                  this.ANSDataTemplate.FR_amount_byAFT.value[t])) /
               (this.ANSDataTemplate.N_DD_Flght.value[l][t] +
                 this.ANSDataTemplate.N_AD_Flght.value[l][t] +
                 this.ANSDataTemplate.N_AI_Flght.value[l][t] +
@@ -296,10 +292,10 @@ export default {
       for (let l = 0; l < MAX; l++) {
         for (let t = 0; t < YEAR; t++) {
           if (t % 5 == 0) {
-            FER_Rate[t / 5];
+            FER_Rate[t / 5] = (FER_Total[t / 5] / FE_Total) * 100;
           }
           if (t == 29) {
-            FER_Rate[(t + 1) / 5];
+            FER_Rate[(t + 1) / 5] = (FER_Total[(t + 1) / 5] / FE_Total) * 100;
           }
         }
       }
@@ -314,11 +310,11 @@ export default {
               N_Flight: Number.parseFloat(N_Flight[index]).toFixed(2),
               CE_Total: Number.parseFloat(CE_Total).toFixed(2),
               CER_Total: Number.parseFloat(CER_Total[index]).toFixed(2),
-              CE_Flight: Number.parseFloat(CE_Flight[index]).toFixed(2),
+              CE_Flight: Number.parseFloat(CE_Flight[index]).toFixed(4),
               CER_Rate: Number.parseFloat(CER_Rate[index]).toFixed(2),
               FE_Total: Number.parseFloat(FE_Total).toFixed(2),
               FER_Total: Number.parseFloat(FER_Total[index]).toFixed(2),
-              FE_Flight: Number.parseFloat(FE_Flight[index]).toFixed(2),
+              FE_Flight: Number.parseFloat(FE_Flight[index]).toFixed(4),
               FER_Rate: Number.parseFloat(FER_Rate[index]).toFixed(2),
             },
           ];
