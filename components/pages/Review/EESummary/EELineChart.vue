@@ -116,7 +116,7 @@ export default {
       const res = Array(7)
         .fill(0)
         .reduce((acc, cur, index) => {
-          if (index < 6) {
+          if (index < 4) {
             return [
               ...acc,
               {
@@ -133,15 +133,13 @@ export default {
             return [
               ...acc,
               {
-                YEAR: Number.parseInt(Year[index * 5 - 1]),
-                N_Flight: Number.parseInt(N_Flight[index * 5 - 1]),
-                FTR_EE: Number.parseFloat(FTR_EE[index * 5 - 1]).toFixed(2),
-                USER_EE: Number.parseFloat(USER_EE[index * 5 - 1]).toFixed(2),
-                SAFETY_EE: Number.parseFloat(SAFETY_EE[index * 5 - 1]).toFixed(
-                  2
-                ),
-                Total_EE: Number.parseFloat(Total_EE[index * 5 - 1]).toFixed(2),
-                ACCUM_EE: Number.parseFloat(ACCUM_EE[index * 5 - 1]).toFixed(2),
+                YEAR: Number.parseInt(Year[14 + index]),
+                N_Flight: Number.parseInt(N_Flight[14 + index]),
+                FTR_EE: Number.parseFloat(FTR_EE[14 + index]).toFixed(2),
+                USER_EE: Number.parseFloat(USER_EE[14 + index]).toFixed(2),
+                SAFETY_EE: Number.parseFloat(SAFETY_EE[14 + index]).toFixed(2),
+                Total_EE: Number.parseFloat(Total_EE[14 + index]).toFixed(2),
+                ACCUM_EE: Number.parseFloat(ACCUM_EE[14 + index]).toFixed(2),
               },
             ];
           }
@@ -158,8 +156,6 @@ export default {
           this.data[2].YEAR,
           this.data[3].YEAR,
           this.data[4].YEAR,
-          this.data[5].YEAR,
-          this.data[6].YEAR,
         ],
         datasets: [
           {
@@ -172,8 +168,6 @@ export default {
               this.data[2].Total_EE,
               this.data[3].Total_EE,
               this.data[4].Total_EE,
-              this.data[5].Total_EE,
-              this.data[6].Total_EE,
             ],
           },
           {
@@ -186,8 +180,6 @@ export default {
               this.data[2].ACCUM_EE,
               this.data[3].ACCUM_EE,
               this.data[4].ACCUM_EE,
-              this.data[5].ACCUM_EE,
-              this.data[6].ACCUM_EE,
             ],
           },
         ],

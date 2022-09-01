@@ -60,6 +60,7 @@ export default {
       this.mutateFilteredDataCount(dataCount);
     },
     ...mapMutations("ansData", [
+      "mutateANSDatabase",
       "mutateFilteredANSData",
       "mutateFilteredDataName",
       "mutateFilteredDataCount",

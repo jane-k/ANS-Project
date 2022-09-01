@@ -309,32 +309,32 @@ export default {
         for (let t = 0; t < YEAR; t++) {
           this.ANSDataTemplate.FR_DDcost.value[l][t] =
             (this.ANSDataTemplate.fuelCredit.value[t] *
-              this.ANSDataTemplate.CER_DDamount.value[l][t]) /
+              this.ANSDataTemplate.FR_DDamount.value[l][t]) /
             1000000.0; // 국내선 출발 총연료비절감
           this.ANSDataTemplate.FR_ADcost.value[l][t] =
             (this.ANSDataTemplate.fuelCredit.value[t] *
-              this.ANSDataTemplate.CER_ADamount.value[l][t]) /
+              this.ANSDataTemplate.FR_ADamount.value[l][t]) /
             1000000.0; // 국내선 착륙 총연료비절감
           this.ANSDataTemplate.FR_DRcost.value[l][t] =
             (this.ANSDataTemplate.fuelCredit.value[t] *
-              this.ANSDataTemplate.CER_DRamount.value[l][t]) /
+              this.ANSDataTemplate.FR_DRamount.value[l][t]) /
             1000000.0; // 국내선 항로 총연료비절감  FR_DRcost 추가정의
 
           this.ANSDataTemplate.FR_DIcost.value[l][t] =
             (this.ANSDataTemplate.fuelCredit.value[t] *
-              this.ANSDataTemplate.CER_DIamount.value[l][t]) /
+              this.ANSDataTemplate.FR_DIamount.value[l][t]) /
             1000000.0; // 국제선 출발 총연료비절감
           this.ANSDataTemplate.FR_DIRcost.value[l][t] =
             (this.ANSDataTemplate.fuelCredit.value[t] *
-              this.ANSDataTemplate.CER_DIRamount.value[l][t]) /
+              this.ANSDataTemplate.FR_DIRamount.value[l][t]) /
             1000000.0; // 국제선 출발-항로 총연료비절감  FR_DIRcost[l][t] 추가정의
           this.ANSDataTemplate.FR_AIcost.value[l][t] =
             (this.ANSDataTemplate.fuelCredit.value[t] *
-              this.ANSDataTemplate.CER_AIamount.value[l][t]) /
+              this.ANSDataTemplate.FR_AIamount.value[l][t]) /
             1000000.0; // 국제선 도착 총연료비절감
           this.ANSDataTemplate.FR_AIRcost.value[l][t] =
             (this.ANSDataTemplate.fuelCredit.value[t] *
-              this.ANSDataTemplate.CER_AIRamount.value[l][t]) /
+              this.ANSDataTemplate.FR_AIRamount.value[l][t]) /
             1000000.0; // 국제선 도착-항로 총연료비절감   FR_AIRcost  추가정의
           console.log(
             this.ANSDataTemplate.FR_DDcost.value[l][t] +

@@ -9,7 +9,7 @@ const ANSDatabase = {
     type: "BASE",
     variable: "FTRgoal_Fin",
     label: "운항시간 단축 목표(종료 년도)",
-    value: 10,
+    value: 11,
   },
   Dlygoal_Start: {
     type: "BASE",
@@ -21,13 +21,13 @@ const ANSDatabase = {
     type: "BASE",
     variable: "Dlygoal_Fin",
     label: "지연시간 단축 목표(종료 년도)",
-    value: 20,
+    value: 21,
   },
   Time_Pass_S: {
     type: "BASE",
     variable: "Time_Pass_S",
     label: "계획기간",
-    value: 40,
+    value: 20,
   },
   FCE_flight: {
     type: "OUTER",
@@ -153,7 +153,7 @@ const ANSDatabase = {
     type: "INNER",
     variable: "Time_ITO",
     label: "국제선 이륙 소요시간",
-    value: [31],
+    value: [30],
   },
   Time_DTO: {
     type: "INNER",
@@ -177,7 +177,7 @@ const ANSDatabase = {
     type: "INNER",
     variable: "Time_DIRoute",
     label: "평균 국제선 이륙-항로 운항시간",
-    value: [43],
+    value: [45],
   },
   Time_AIRoute: {
     type: "INNER",
@@ -189,7 +189,7 @@ const ANSDatabase = {
     type: "INNER",
     variable: "Time_DRoute",
     label: "국내선 평균 항로 운항시간",
-    value: [47],
+    value: [49],
   },
   N_Pass_F: {
     type: "INNER",
@@ -225,25 +225,25 @@ const ANSDatabase = {
     type: "INNER",
     variable: "Time_DD_Dly",
     label: "총 국내선 출발편 감소 지연시간",
-    value: [15],
+    value: [0.44],
   },
   Time_DI_Dly: {
     type: "INNER",
     variable: "Time_DI_Dly",
     label: "총 국제선 출발편 감소 지연시간",
-    value: [15],
+    value: [11.96],
   },
   Time_AD_Dly: {
     type: "INNER",
     variable: "Time_AD_Dly",
     label: "총 국내선 도착편 감소 지연시간",
-    value: [15],
+    value: [0.1],
   },
   Time_AI_Dly: {
     type: "INNER",
     variable: "Time_AI_Dly",
     label: "총 국제선 도착편 감소 지연시간",
-    value: [15],
+    value: [13.52],
   },
   DLY_DD_ANSshare: {
     type: "INNER",
@@ -273,7 +273,7 @@ const ANSDatabase = {
     type: "INNER",
     variable: "average_AITime",
     label: "국제선 도착편 평균 비행시간",
-    value: [55],
+    value: [15],
   },
   DLY_AD_cost_PSG: {
     type: "INNER",
@@ -309,13 +309,13 @@ const ANSDatabase = {
     type: "BASE",
     variable: "Safty_Fin",
     label: "안전도 감축 목표(최종 년도)",
-    value: 50,
+    value: 51,
   },
   Safty_cost_M: {
     type: "INNER",
     variable: "Safty_cost_M",
     label: "초기 안전사고 처리 비용(백만)",
-    value: 4000,
+    value: 4100,
   },
   N_Safty: {
     type: "BASE",
