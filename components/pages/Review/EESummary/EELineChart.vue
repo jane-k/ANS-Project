@@ -112,8 +112,13 @@ export default {
           ACCUM_EE[t] = Total_EE[t] + ACCUM_EE[t - 1];
         }
       }
+      var x = 0;
+      for (let t = 0; t < 18; t++) {
+        x = x + SAFETY_EE[t];
+      }
+      console.log(x);
 
-      const res = Array(7)
+      const res = Array(Number.parseInt(YEAR / 5) + 3)
         .fill(0)
         .reduce((acc, cur, index) => {
           if (index < 4) {
@@ -156,6 +161,8 @@ export default {
           this.data[2].YEAR,
           this.data[3].YEAR,
           this.data[4].YEAR,
+          this.data[5].YEAR,
+          this.data[6].YEAR,
         ],
         datasets: [
           {
@@ -168,6 +175,8 @@ export default {
               this.data[2].Total_EE,
               this.data[3].Total_EE,
               this.data[4].Total_EE,
+              this.data[5].Total_EE,
+              this.data[6].Total_EE,
             ],
           },
           {
@@ -180,6 +189,8 @@ export default {
               this.data[2].ACCUM_EE,
               this.data[3].ACCUM_EE,
               this.data[4].ACCUM_EE,
+              this.data[5].ACCUM_EE,
+              this.data[6].ACCUM_EE,
             ],
           },
         ],

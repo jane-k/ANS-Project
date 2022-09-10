@@ -5,14 +5,14 @@
         {{ dataTypeheaderText }} ({{ dataCountHeaderText }})
       </h2>
       <div class="data-reset">데이터 초기화</div>
-      <div class="data-save">데이터 저장</div>
+      <div class="data-save" @click="handleRoute('/data')">데이터 저장</div>
     </div>
     <!-- TODO: ANSDatabase 업로드 로직 작성 -->
     <UploadData v-if="!ANSDatabase" />
     <ul v-else class="presentation-list">
       <PresentationItem
         :key="data.variable"
-        v-for="data in ANSDatabase"
+        v-for="data in this.filteredANSData"
         :label="data.label"
         :variable="data.variable"
         :value="data.value"
@@ -29,6 +29,11 @@ export default {
   components: {
     PresentationItem: () => import("@/components/Presentation/item"),
     // UploadData: () => import("@/components/UploadData"),
+  },
+  methods: {
+    handleRoute(path) {
+      this.$router.push(path);
+    },
   },
   computed: {
     ...mapState("ansData", [

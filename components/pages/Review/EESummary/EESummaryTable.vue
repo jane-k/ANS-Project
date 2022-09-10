@@ -130,7 +130,7 @@ export default {
       }
       console.log(x);
 
-      const res = Array(7)
+      const res = Array(Number.parseInt(YEAR / 5) + 3)
         .fill(0)
         .reduce((acc, cur, index) => {
           if (index < 4) {
