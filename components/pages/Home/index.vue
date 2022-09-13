@@ -3,8 +3,8 @@
     <Intro />
     <ul class="button__list">
       <button @click="handleRoute('/data')">데이터 입력 및 확인</button>
-      <button @click="handleRoute('/analysis')">데이터 분석</button>
-      <button @click="handleRoute('/review')">분석 결과 확인</button>
+      <button @click="handleRoute('/analysis')">기대효과 분석</button>
+      <button @click="handleRoute('/review')">기대효과 검토 및 출력</button>
     </ul>
   </div>
 </template>

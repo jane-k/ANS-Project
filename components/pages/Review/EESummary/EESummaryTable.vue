@@ -27,9 +27,9 @@ export default {
         },
         ,
         { text: "총 운항편수", value: "N_Flight" },
-        { text: "운항시간 감소 기대효과", value: "FTR_EE" },
-        { text: "지연시간 감소 기대효과", value: "USER_EE" },
-        { text: "안전도 향상 기대효과", value: "SAFETY_EE" },
+        { text: "운항효율성 기대효과", value: "FTR_EE" },
+        { text: "정시성 기대효과", value: "USER_EE" },
+        { text: "안전운항 기대효과", value: "SAFETY_EE" },
         { text: "총 기대효과", value: "Total_EE" },
         { text: "누적 기대효과", value: "ACCUM_EE" },
       ],
@@ -130,36 +130,21 @@ export default {
       }
       console.log(x);
 
-      const res = Array(Number.parseInt(YEAR / 5) + 3)
+      const res = Array(Number.parseInt(YEAR / 5) + 1)
         .fill(0)
         .reduce((acc, cur, index) => {
-          if (index < 4) {
-            return [
-              ...acc,
-              {
-                YEAR: Number.parseInt(Year[index * 5]),
-                N_Flight: Number.parseInt(N_Flight[index * 5]),
-                FTR_EE: Number.parseFloat(FTR_EE[index * 5]).toFixed(2),
-                USER_EE: Number.parseFloat(USER_EE[index * 5]).toFixed(2),
-                SAFETY_EE: Number.parseFloat(SAFETY_EE[index * 5]).toFixed(2),
-                Total_EE: Number.parseFloat(Total_EE[index * 5]).toFixed(2),
-                ACCUM_EE: Number.parseFloat(ACCUM_EE[index * 5]).toFixed(2),
-              },
-            ];
-          } else {
-            return [
-              ...acc,
-              {
-                YEAR: Number.parseInt(Year[14 + index]),
-                N_Flight: Number.parseInt(N_Flight[14 + index]),
-                FTR_EE: Number.parseFloat(FTR_EE[14 + index]).toFixed(2),
-                USER_EE: Number.parseFloat(USER_EE[14 + index]).toFixed(2),
-                SAFETY_EE: Number.parseFloat(SAFETY_EE[14 + index]).toFixed(2),
-                Total_EE: Number.parseFloat(Total_EE[14 + index]).toFixed(2),
-                ACCUM_EE: Number.parseFloat(ACCUM_EE[14 + index]).toFixed(2),
-              },
-            ];
-          }
+          return [
+            ...acc,
+            {
+              YEAR: Number.parseInt(Year[index * 5]),
+              N_Flight: Number.parseInt(N_Flight[index * 5]),
+              FTR_EE: Number.parseFloat(FTR_EE[index * 5]).toFixed(2),
+              USER_EE: Number.parseFloat(USER_EE[index * 5]).toFixed(2),
+              SAFETY_EE: Number.parseFloat(SAFETY_EE[index * 5]).toFixed(2),
+              Total_EE: Number.parseFloat(Total_EE[index * 5]).toFixed(2),
+              ACCUM_EE: Number.parseFloat(ACCUM_EE[index * 5]).toFixed(2),
+            },
+          ];
         }, []);
 
       this.data = res;

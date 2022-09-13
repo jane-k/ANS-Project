@@ -3,8 +3,8 @@
     <Chart :isCalculationComplete="isCalculationComplete" />
     <Calculation />
     <ul class="button__list">
-      <button @click="handleRoute('/data')">데이터 입력 및 확인</button>
-      <button @click="finishCalculation">데이터 분석</button>
+      <button @click="finishCalculation">기대효과 분석 실행</button>
+      <button @click="printResultReport">분석결과 저장</button>
       <button @click="handleRoute('/')">돌아가기</button>
     </ul>
   </div>
@@ -198,7 +198,7 @@ export default {
         "누적 절감비용",
       ]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([
           Year[i],
           N_Flight[i],
@@ -265,7 +265,7 @@ export default {
 
       arr.push(["연도", "총 운항편수", "탄소배출 절감량", "탄소배출 절감비용"]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([Year[i], N_Flight[i], CER_amount[i], CER_cost[i]]);
       }
 
@@ -352,7 +352,7 @@ export default {
         "탄소배출 절감비용(국내선)",
       ]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([
           Year[i],
           Total_CER_DIamount[i],
@@ -419,7 +419,7 @@ export default {
 
       arr.push(["연도", "총 운항편수", "연료소모 절감량", "연료소모 절감비용"]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([Year[i], N_Flight[i], FR_amount[i], FR_cost[i]]);
       }
 
@@ -506,7 +506,7 @@ export default {
         "연료소모 절감비용(국내선)",
       ]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([
           Year[i],
           Total_FR_DIamount[i],
@@ -561,7 +561,7 @@ export default {
         "총 운항비 절감편익",
       ]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([Year[i], OPR_Icost[i], OPR_Dcost[i], Total_OPR[i]]);
       }
 
@@ -659,7 +659,7 @@ export default {
         "총 절감비용",
       ]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([
           Year[i],
           N_Flight[i],
@@ -770,7 +770,7 @@ export default {
         "총 탄소배출 절감비용",
       ]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([
           Year[i],
           Total_CER_DIamount[i],
@@ -783,8 +783,6 @@ export default {
           Total_CER_cost[i],
         ]);
       }
-
-      arr.push(["누적"]);
 
       return arr;
     },
@@ -885,7 +883,7 @@ export default {
         "총 연료소모 절감비용",
       ]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([
           Year[i],
           Total_FR_DIamount[i],
@@ -954,7 +952,7 @@ export default {
         "지연 감소 여객 편익",
       ]);
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < YEAR; i++) {
         arr.push([Year[i], N_Flight[i], TL_Dly[i], BNF_PSG[i]]);
       }
 

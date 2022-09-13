@@ -56,6 +56,7 @@ export default {
       const N_Flight = Array(YEAR).fill(0);
       const FTR_EE = Array(YEAR).fill(0);
       const USER_EE = Array(YEAR).fill(0);
+      const SAFETY_EE = Array(YEAR).fill(0);
       const Total_EE = Array(YEAR).fill(0);
       const ACCUM_EE = Array(YEAR).fill(0);
 
@@ -116,8 +117,15 @@ export default {
         }
       }
 
+      for (let l = 0; l < MAX; l++) {
+        for (let t = 0; t < YEAR; t++) {
+          SAFETY_EE[t] =
+            SAFETY_EE[t] + this.ANSDataTemplate.Safty_cost.value[t];
+        }
+      }
+
       for (let t = 0; t < YEAR; t++) {
-        Total_EE[t] = FTR_EE[t] + USER_EE[t];
+        Total_EE[t] = FTR_EE[t] + USER_EE[t] + SAFETY_EE[t];
       }
 
       for (let t = 0; t < YEAR; t++) {
@@ -127,23 +135,29 @@ export default {
           ACCUM_EE[t] = Total_EE[t] + ACCUM_EE[t - 1];
         }
       }
+      var x = 0;
+      for (let t = 0; t < 18; t++) {
+        x = x + SAFETY_EE[t];
+      }
 
       arr.push([
         "연도",
         "총 운항편수",
-        "운항 효율성 기대효과",
-        "이용자 편의성 기대효과",
+        "운항효율성 기대효과",
+        "정시성 기대효과",
+        "안전운항 기대효과",
         "총 기대효과",
         "누적 기대효과",
       ]);
 
-      for (let i = 0; i < YEAR; i++) {
+      for (let i = 0; i < Number.parseInt(YEAR / 5) + 1; i++) {
         if (i % 5 == 0) {
           arr.push([
             Year[i],
             N_Flight[i],
             FTR_EE[i],
             USER_EE[i],
+            SAFETY_EE[i],
             Total_EE[i],
             ACCUM_EE[i],
           ]);

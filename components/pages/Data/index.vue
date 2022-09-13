@@ -2,6 +2,7 @@
   <div class="Container">
     <Presentation />
     <ul class="button__list">
+      <button @click="filterANSDataList('ASSUMPTION')">가정 자료</button>
       <button @click="filterANSDataList('INNER')">내부 추정 자료</button>
       <button @click="filterANSDataList('OUTER')">외생 자료</button>
       <button @click="filterANSDataList('BASE')">기초 자료</button>
@@ -46,6 +47,8 @@ export default {
     },
     setFilteredDataName(_ANSDataType) {
       switch (_ANSDataType) {
+        case ANSDataType.ASSUMPTION:
+          return "가정 자료 목록";
         case ANSDataType.BASE:
           return "기초 자료 목록";
         case ANSDataType.INNER:

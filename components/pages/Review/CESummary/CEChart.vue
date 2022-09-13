@@ -172,42 +172,24 @@ export default {
         }
       }
 
-      const res = Array(Number.parseInt(YEAR / 5) + 3)
+      const res = Array(Number.parseInt(YEAR / 5) + 1)
         .fill(0)
         .reduce((acc, cur, index) => {
-          if (index < 4) {
-            return [
-              ...acc,
-              {
-                YEAR: Number.parseInt(Year[index * 5]),
-                N_Flight: Number.parseFloat(N_Flight[index * 5]).toFixed(2),
-                CE_Total: Number.parseFloat(CE_Total).toFixed(2),
-                CER_Total: Number.parseFloat(CER_Total[index * 5]).toFixed(2),
-                CE_Flight: Number.parseFloat(CE_Flight[index * 5]).toFixed(4),
-                CER_Rate: Number.parseFloat(CER_Rate[index * 5]).toFixed(2),
-                FE_Total: Number.parseFloat(FE_Total).toFixed(2),
-                FER_Total: Number.parseFloat(FER_Total[index * 5]).toFixed(2),
-                FE_Flight: Number.parseFloat(FE_Flight[index * 5]).toFixed(4),
-                FER_Rate: Number.parseFloat(FER_Rate[index * 5]).toFixed(2),
-              },
-            ];
-          } else {
-            return [
-              ...acc,
-              {
-                YEAR: Number.parseFloat(Year[14 + index]),
-                N_Flight: Number.parseFloat(N_Flight[14 + index]).toFixed(2),
-                CE_Total: Number.parseFloat(CE_Total).toFixed(2),
-                CER_Total: Number.parseFloat(CER_Total[14 + index]).toFixed(2),
-                CE_Flight: Number.parseFloat(CE_Flight[14 + index]).toFixed(4),
-                CER_Rate: Number.parseFloat(CER_Rate[14 + index]).toFixed(2),
-                FE_Total: Number.parseFloat(FE_Total).toFixed(2),
-                FER_Total: Number.parseFloat(FER_Total[14 + index]).toFixed(2),
-                FE_Flight: Number.parseFloat(FE_Flight[14 + index]).toFixed(4),
-                FER_Rate: Number.parseFloat(FER_Rate[14 + index]).toFixed(2),
-              },
-            ];
-          }
+          return [
+            ...acc,
+            {
+              YEAR: Number.parseInt(Year[index * 5]),
+              N_Flight: Number.parseFloat(N_Flight[index * 5]).toFixed(2),
+              CE_Total: Number.parseFloat(CE_Total).toFixed(2),
+              CER_Total: Number.parseFloat(CER_Total[index * 5]).toFixed(2),
+              CE_Flight: Number.parseFloat(CE_Flight[index * 5]).toFixed(4),
+              CER_Rate: Number.parseFloat(CER_Rate[index * 5]).toFixed(2),
+              FE_Total: Number.parseFloat(FE_Total).toFixed(2),
+              FER_Total: Number.parseFloat(FER_Total[index * 5]).toFixed(2),
+              FE_Flight: Number.parseFloat(FE_Flight[index * 5]).toFixed(4),
+              FER_Rate: Number.parseFloat(FER_Rate[index * 5]).toFixed(2),
+            },
+          ];
         }, []);
 
       this.data = res;

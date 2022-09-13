@@ -118,36 +118,21 @@ export default {
       }
       console.log(x);
 
-      const res = Array(Number.parseInt(YEAR / 5) + 3)
+      const res = Array(Number.parseInt(YEAR / 5) + 1)
         .fill(0)
         .reduce((acc, cur, index) => {
-          if (index < 4) {
-            return [
-              ...acc,
-              {
-                YEAR: Number.parseInt(Year[index * 5]),
-                N_Flight: Number.parseInt(N_Flight[index * 5]),
-                FTR_EE: Number.parseFloat(FTR_EE[index * 5]).toFixed(2),
-                USER_EE: Number.parseFloat(USER_EE[index * 5]).toFixed(2),
-                SAFETY_EE: Number.parseFloat(SAFETY_EE[index * 5]).toFixed(2),
-                Total_EE: Number.parseFloat(Total_EE[index * 5]).toFixed(2),
-                ACCUM_EE: Number.parseFloat(ACCUM_EE[index * 5]).toFixed(2),
-              },
-            ];
-          } else {
-            return [
-              ...acc,
-              {
-                YEAR: Number.parseInt(Year[14 + index]),
-                N_Flight: Number.parseInt(N_Flight[14 + index]),
-                FTR_EE: Number.parseFloat(FTR_EE[14 + index]).toFixed(2),
-                USER_EE: Number.parseFloat(USER_EE[14 + index]).toFixed(2),
-                SAFETY_EE: Number.parseFloat(SAFETY_EE[14 + index]).toFixed(2),
-                Total_EE: Number.parseFloat(Total_EE[14 + index]).toFixed(2),
-                ACCUM_EE: Number.parseFloat(ACCUM_EE[14 + index]).toFixed(2),
-              },
-            ];
-          }
+          return [
+            ...acc,
+            {
+              YEAR: Number.parseInt(Year[index * 5]),
+              N_Flight: Number.parseInt(N_Flight[index * 5]),
+              FTR_EE: Number.parseFloat(FTR_EE[index * 5]).toFixed(2),
+              USER_EE: Number.parseFloat(USER_EE[index * 5]).toFixed(2),
+              SAFETY_EE: Number.parseFloat(SAFETY_EE[index * 5]).toFixed(2),
+              Total_EE: Number.parseFloat(Total_EE[index * 5]).toFixed(2),
+              ACCUM_EE: Number.parseFloat(ACCUM_EE[index * 5]).toFixed(2),
+            },
+          ];
         }, []);
 
       this.data = res;
