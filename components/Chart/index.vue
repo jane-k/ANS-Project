@@ -5,6 +5,7 @@
       <!-- <Select /> -->
       <div v-if="isCalculationComplete">분석을 완료했습니다.</div>
     </div>
+    <img src="~/assets/images/Analysis.jpg" class="AnalImg" />
   </div>
 </template>
 
@@ -44,5 +45,11 @@ export default {
     color: #666;
     font-size: 0.875rem;
   }
+}
+
+.AnalImg {
+  width: 100%;
+  height: 100%;
+  margin-right: auto;
 }
 </style>

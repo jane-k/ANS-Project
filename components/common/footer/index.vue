@@ -1,6 +1,7 @@
 <template>
   <footer>
     <img src="~/assets/images/emblem.jpg" class="kau-logo" />
+    <img src="~/assets/images/emblem2.jpg" class="kiast-logo" />
     <section>
       <p>KAU Navigation Economic Factor Analyzer</p>
       <p class="service-version">현재 버전 : 1.0.1</p>
@@ -37,6 +38,12 @@ footer {
 }
 
 .kau-logo {
+  width: 12rem;
+  margin-left: 2rem;
+  margin-right: auto;
+}
+
+.kiast-logo {
   width: 12rem;
   margin-left: 2rem;
   margin-right: auto;

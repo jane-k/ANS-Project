@@ -18,7 +18,7 @@ import { YEAR, MAX } from "@/utils/constants/config.js";
 export default {
   name: "Review",
   components: {
-    ReviewTable: () => import("@/components/Intro"),
+    ReviewTable: () => import("@/components/Container"),
     xlsx,
   },
   data() {
