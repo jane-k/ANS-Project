@@ -10,13 +10,8 @@
     <!-- TODO: ANSDatabase 업로드 로직 작성 -->
     <UploadData v-if="!ANSDatabase" />
     <ul v-else class="presentation-list">
-      <PresentationItem
-        :key="data.variable"
-        v-for="data in this.filteredANSData"
-        :label="data.label"
-        :variable="data.variable"
-        :value="data.value"
-      />
+      <PresentationItem :key="data.variable" v-for="data in this.filteredANSData" :type="data.type" :label="data.label"
+        :variable="data.variable" :value="data.value" />
     </ul>
   </div>
 </template>

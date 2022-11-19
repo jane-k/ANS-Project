@@ -2,22 +2,10 @@
   <li class="presentation-item">
     <!-- <div class="presentation-value"> -->
     <p class="presentation-label">{{ label }}</p>
-    <DisplayItem
-      v-if="!isEditable"
-      :label="label"
-      :variable="variable"
-      :value="value"
-      :isEditable="isEditable"
-      :selectedIndex="selectedIndex"
-    />
-    <EditItem
-      v-else
-      :label="label"
-      :variable="variable"
-      :value="value"
-      :selectedIndex="selectedIndex"
-      :isEditable="isEditable"
-    />
+    <DisplayItem v-if="!isEditable" :label="label" :variable="variable" :value="value" :isEditable="isEditable"
+      :selectedIndex="selectedIndex" />
+    <EditItem v-else :label="label" :variable="variable" :value="value" :selectedIndex="selectedIndex"
+      :isEditable="isEditable" />
     <!-- </div> -->
     <div class="button__wrapper">
       <button v-if="!isEditable" class="edit__button" @click="toggleIOMode">
@@ -32,6 +20,8 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import ANSDataType from "@/utils/constants/ANSDataType";
+
 export default {
   name: "PresentationItem",
   components: {
@@ -47,6 +37,10 @@ export default {
     selectedIndex: 0,
   }),
   props: {
+    type: {
+      type: String,
+      default: "",
+    },
     label: {
       type: String,
       default: "",
@@ -59,18 +53,51 @@ export default {
       type: [Number, String, Array],
     },
   },
+  computed: {
+    ...mapState("ansData", ["ANSDatabase", 'filteredANSData', "ANSDataTemplate"]),
+  },
   methods: {
+    setFilteredDataName(_ANSDataType) {
+      switch (_ANSDataType) {
+        case ANSDataType.ASSUMPTION:
+          return "가정 자료 목록";
+        case ANSDataType.BASE:
+          return "기초 자료 목록";
+        case ANSDataType.INNER:
+          return "내부 자료 목록";
+        case ANSDataType.OUTER:
+          return "외부 자료 목록";
+        default:
+          return "전체 자료 목록";
+      }
+    },
+
     toggleIOMode() {
       this.isEditable = !this.isEditable;
     },
 
     onChangeComplete() {
+      if (this.type !== "ALL") {
+        const filteredANSData = Object.values(this.ANSDatabase).filter(
+          (data) => data.type == this.type
+        );
+        const filteredDataName = this.setFilteredDataName(this.type);
+        this.mutateFilteredANSData(filteredANSData);
+        this.mutateFilteredDataCount(filteredANSData?.length);
+        this.mutateFilteredDataName(filteredDataName);
+      } else {
+        const filteredDataName = "전체 자료 목록";
+        this.mutateFilteredANSData(Object.values(this.ANSDatabase));
+        this.mutateFilteredDataCount(Object.values(this.ANSDatabase)?.length);
+        this.mutateFilteredDataName(filteredDataName);
+      }
       this.isEditable = false;
     },
+
     filterANSDataList() {
       this.mutateFilteredANSData(Object.values(this.ANSData));
     },
-    ...mapMutations("ansData", ["mutateANSData", "mutateFilteredANSData"]),
+    ...mapMutations("ansData", ["mutateANSData", "mutateANSDatabase", "mutateFilteredANSData", "mutateFilteredDataName", "mutateFilteredDataCount",]),
   },
 };
 </script>
@@ -93,6 +120,7 @@ export default {
   padding: 1.25rem 1rem;
   border-radius: 0.5rem;
   border-bottom: 1px solid #efefef;
+
   &:hover {
     background-color: rgba(116, 158, 203, 0.24);
   }
@@ -101,6 +129,7 @@ export default {
 .button__wrapper {
   text-align: center;
   flex: 1;
+
   button {
     border: none;
     padding: 0.25rem 0.5rem;
@@ -110,9 +139,11 @@ export default {
     transition: 0.2s ease-in-out all;
   }
 }
+
 .edit__button {
   background-color: #bed6ed;
 }
+
 .confirm__button {
   background-color: #6c7ca6;
   color: #efefef;
